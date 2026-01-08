@@ -92,15 +92,13 @@ export default function NetworkNodes() {
 }
 
 function ConnectionLine({ start, end }: { start: [number, number, number]; end: [number, number, number] }) {
-  const geometry = useMemo(() => {
+  const line = useMemo(() => {
     const points = [new THREE.Vector3(...start), new THREE.Vector3(...end)]
-    return new THREE.BufferGeometry().setFromPoints(points)
+    const geometry = new THREE.BufferGeometry().setFromPoints(points)
+    const material = new THREE.LineBasicMaterial({ color: '#0ea5e9', opacity: 0.2, transparent: true })
+    return new THREE.Line(geometry, material)
   }, [start, end])
 
-  return (
-    <line geometry={geometry}>
-      <lineBasicMaterial color="#0ea5e9" opacity={0.2} transparent />
-    </line>
-  )
+  return <primitive object={line} />
 }
 
