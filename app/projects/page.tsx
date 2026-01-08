@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { ExternalLink, Github, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import ParticleBackground from '@/components/Particles'
 
