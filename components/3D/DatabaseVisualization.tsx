@@ -32,13 +32,14 @@ export default function DatabaseVisualization() {
     [1.5, 1.5, 1.5],
   ], [])
 
-  // Create line geometries
-  const lineGeometries = useMemo(() => {
+  // Create line objects
+  const lines = useMemo(() => {
     return positions.map((pos) => {
       const geometry = new THREE.BufferGeometry()
       const positionsArray = new Float32Array([0, 0, 0, pos[0], pos[1], pos[2]])
       geometry.setAttribute('position', new THREE.BufferAttribute(positionsArray, 3))
-      return geometry
+      const material = new THREE.LineBasicMaterial({ color: '#0ea5e9', opacity: 0.3, transparent: true })
+      return new THREE.Line(geometry, material)
     })
   }, [positions])
 
@@ -76,10 +77,8 @@ export default function DatabaseVisualization() {
       ))}
       
       {/* Connection Lines */}
-      {lineGeometries.map((geometry, i) => (
-        <line key={`line-${i}`} geometry={geometry}>
-          <lineBasicMaterial color="#0ea5e9" opacity={0.3} transparent />
-        </line>
+      {lines.map((line, i) => (
+        <primitive key={`line-${i}`} object={line} />
       ))}
     </group>
   )
