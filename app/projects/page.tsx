@@ -124,14 +124,16 @@ export default function ProjectsPage() {
                   </div>
 
                   <div className="flex items-center space-x-4">
-                    <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all glow-effect flex items-center space-x-2"
-                    >
-                      <span>View Details</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </motion.button>
+                    <Link href={`/projects/${project.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                      <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all glow-effect flex items-center space-x-2"
+                      >
+                        <span>View Details</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </motion.button>
+                    </Link>
                     <motion.button
                       whileHover={{ scale: 1.1, rotate: 360 }}
                       whileTap={{ scale: 0.95 }}

@@ -57,14 +57,24 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">Links</h4>
             <ul className="space-y-2">
               {footerLinks.company.map((link) => (
-                <li key={link.href}>
+                <motion.li 
+                  key={link.href}
+                  whileHover={{ x: 5 }}
+                >
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-colors"
+                    className="text-gray-400 hover:text-primary-400 transition-colors inline-flex items-center"
                   >
-                    {link.label}
+                    <span>{link.label}</span>
+                    <motion.span
+                      initial={{ opacity: 0, x: -5 }}
+                      whileHover={{ opacity: 1, x: 0 }}
+                      className="ml-2"
+                    >
+                      →
+                    </motion.span>
                   </Link>
-                </li>
+                </motion.li>
               ))}
             </ul>
           </motion.div>
