@@ -76,7 +76,7 @@ export default function ContactPage() {
               Get in touch with us
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed">
-              Have a project in mind? Let's discuss how we can help bring your vision to life.
+              Have a project in mind? Let&apos;s discuss how we can help bring your vision to life.
             </p>
           </motion.div>
         </div>

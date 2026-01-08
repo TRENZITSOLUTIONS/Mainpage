@@ -23,24 +23,24 @@ export default function DatabaseVisualization() {
     })
   })
 
-  const positions = [
+  const positions = useMemo(() => [
     [-2, 0, 0],
     [2, 0, 0],
     [0, 0, -2],
     [0, 0, 2],
     [-1.5, 1.5, -1.5],
     [1.5, 1.5, 1.5],
-  ]
+  ], [])
 
   // Create line geometries
   const lineGeometries = useMemo(() => {
     return positions.map((pos) => {
       const geometry = new THREE.BufferGeometry()
-      const positions = new Float32Array([0, 0, 0, pos[0], pos[1], pos[2]])
-      geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3))
+      const positionsArray = new Float32Array([0, 0, 0, pos[0], pos[1], pos[2]])
+      geometry.setAttribute('position', new THREE.BufferAttribute(positionsArray, 3))
       return geometry
     })
-  }, [])
+  }, [positions])
 
   return (
     <group ref={groupRef}>
