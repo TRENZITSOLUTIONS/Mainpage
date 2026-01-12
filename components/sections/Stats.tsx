@@ -3,7 +3,6 @@
 import { motion, useInView } from 'framer-motion'
 import { useRef, useState, useEffect } from 'react'
 import { Users, Briefcase, Star } from 'lucide-react'
-import ScrollReveal from '@/components/animations/ScrollReveal'
 
 export default function Stats() {
   const ref = useRef(null)
@@ -15,37 +14,48 @@ export default function Stats() {
       value: 50,
       suffix: '+',
       label: 'Team member',
-      color: 'from-blue-500 to-cyan-500',
+      gradient: 'from-primary-500 to-primary-600',
     },
     {
       icon: Briefcase,
       value: 100,
       suffix: '+',
       label: 'Complete project',
-      color: 'from-purple-500 to-pink-500',
+      gradient: 'from-accent-500 to-accent-600',
     },
     {
       icon: Star,
       value: 200,
       suffix: '+',
       label: 'Client review',
-      color: 'from-orange-500 to-red-500',
+      gradient: 'from-primary-500 to-accent-500',
     },
   ]
 
   return (
-    <section ref={ref} className="section-padding bg-black text-white relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl pointer-events-none" />
+    <section ref={ref} className="relative py-32 bg-black overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-[0.01]" />
+      <div className="absolute top-1/2 left-0 w-[600px] h-[600px] bg-primary-500/3 rounded-full filter blur-[150px] pointer-events-none" />
+      
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+        {/* Large Text Background */}
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
+          <motion.h2
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 0.03 }}
+            viewport={{ once: true }}
+            className="text-[15rem] md:text-[20rem] font-black text-white select-none"
+          >
+            STATS
+          </motion.h2>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative z-10">
           {stats.map((stat, index) => {
             const Icon = stat.icon
             return (
-              <ScrollReveal key={stat.label} direction="scale" delay={index * 0.2}>
-                <StatItem stat={stat} index={index} isInView={isInView} />
-              </ScrollReveal>
+              <StatItem key={stat.label} stat={stat} index={index} isInView={isInView} />
             )
           })}
         </div>
@@ -81,34 +91,20 @@ function StatItem({ stat, index, isInView }: { stat: any, index: number, isInVie
 
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.5 }}
-      whileInView={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 0.6, delay: index * 0.1 }}
-      whileHover={{ scale: 1.1, y: -10 }}
-      className="text-center relative"
+      transition={{ duration: 0.8, delay: index * 0.2 }}
+      whileHover={{ scale: 1.05, y: -10 }}
+      className="relative p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 hover:border-primary-500/30 transition-all"
     >
-      <motion.div
-        whileHover={{ rotate: 360, scale: 1.15 }}
-        transition={{ duration: 0.6 }}
-        className={`w-24 h-24 bg-gradient-to-br ${stat.color} rounded-3xl flex items-center justify-center mx-auto mb-8 shadow-2xl glow-effect`}
-      >
-        <Icon className="w-12 h-12 text-white" />
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1, delay: index * 0.2 }}
-        className="text-7xl md:text-8xl font-bold mb-4 glow-text"
-      >
+      <div className={`w-16 h-16 bg-gradient-to-br ${stat.gradient} rounded-xl flex items-center justify-center mb-6`}>
+        <Icon className="w-8 h-8 text-white" />
+      </div>
+      <div className="text-6xl md:text-7xl font-black text-white mb-2">
         {count}{stat.suffix}
-      </motion.div>
-      <p className="text-2xl text-gray-300 font-semibold">{stat.label}</p>
-      
-      {/* Decorative Elements */}
-      <div className={`absolute -top-4 -right-4 w-16 h-16 bg-gradient-to-br ${stat.color} opacity-20 rounded-full blur-xl`} />
-      <div className={`absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br ${stat.color} opacity-20 rounded-full blur-xl`} />
+      </div>
+      <p className="text-xl text-gray-400 font-medium">{stat.label}</p>
     </motion.div>
   )
 }

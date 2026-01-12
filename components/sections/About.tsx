@@ -1,8 +1,8 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Target, Zap, Users } from 'lucide-react'
-import ScrollReveal from '@/components/animations/ScrollReveal'
+import { Target, Zap, Users, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function About() {
   const features = [
@@ -10,77 +10,99 @@ export default function About() {
       icon: Target,
       title: 'Visionary Beginnings',
       description: 'Delivering end-to-end digital solutions that empower businesses with excellence, creativity, and cutting-edge technology.',
-      gradient: 'from-primary-500 to-primary-600',
     },
     {
       icon: Users,
       title: 'Expert Engineers',
-      description: 'Our team of skilled developers and innovators build scalable SaaS platforms, websites, and apps tailored to drive business growth and digital transformation.',
-      gradient: 'from-accent-500 to-accent-600',
+      description: 'Our team of skilled developers and innovators build scalable SaaS platforms, websites, and apps tailored to drive business growth.',
     },
     {
       icon: Zap,
       title: 'Innovation Focus',
       description: 'We consistently focus on innovation, quality, and client success across all our projects and solutions.',
-      gradient: 'from-primary-500 to-accent-500',
     },
   ]
 
   return (
-    <section className="section-padding bg-black relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-[0.02]" />
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary-500/3 rounded-full filter blur-3xl pointer-events-none" />
+    <section className="relative py-32 bg-black overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-[0.01]" />
       
       <div className="container-custom relative z-10">
-        <ScrollReveal direction="up" delay={0.1}>
-          <div className="text-center mb-20">
-            <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-4">
-              About Us
-            </span>
-            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mt-6 mb-6">
-              Unlock your business potential with us
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed">
+        {/* Split Layout */}
+        <div className="grid grid-cols-12 gap-8 lg:gap-16 items-center">
+          {/* Left - Large Text Block */}
+          <div className="col-span-12 lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9] mb-8">
+                <span className="block text-white">Unlock</span>
+                <span className="block gradient-text">Your Business</span>
+                <span className="block text-gray-600">Potential</span>
+              </h2>
+            </motion.div>
+          </div>
+
+          {/* Right - Content */}
+          <div className="col-span-12 lg:col-span-6 space-y-8">
+            <motion.p
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-gray-400 leading-relaxed"
+            >
               At Trenz Software IT Solutions, we specialize in creating SaaS applications, websites, and
               software products tailored for businesses of all sizes. Our goal is to empower companies
               with innovative technology that drives growth, efficiency, and long-term success.
-            </p>
-          </div>
-        </ScrollReveal>
+            </motion.p>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
-          {features.map((feature, index) => {
-            const Icon = feature.icon
-            return (
-              <ScrollReveal 
-                key={feature.title} 
-                direction="up" 
-                delay={0.2 + index * 0.1}
-              >
-                <motion.div
-                  whileHover={{ y: -8, scale: 1.02 }}
-                  className="group relative p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 hover:border-primary-500/30 transition-all duration-300 h-full"
-                >
+            {/* Features - Vertical List */}
+            <div className="space-y-6">
+              {features.map((feature, index) => {
+                const Icon = feature.icon
+                return (
                   <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ duration: 0.3 }}
-                    className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg`}
+                    key={feature.title}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
+                    className="flex gap-4 group"
                   >
-                    <Icon className="w-8 h-8 text-white" />
+                    <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-primary-500 to-accent-500 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+                      <Icon className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
+                      <p className="text-gray-400">{feature.description}</p>
+                    </div>
                   </motion.div>
-                  <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-primary-400 transition-colors">
-                    {feature.title}
-                  </h3>
-                  <p className="text-gray-400 leading-relaxed">
-                    {feature.description}
-                  </p>
-                  
-                  {/* Hover effect */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${feature.gradient} opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity duration-300`} />
-                </motion.div>
-              </ScrollReveal>
-            )
-          })}
+                )
+              })}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+            >
+              <Link href="/about">
+                <motion.button
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="inline-flex items-center gap-2 text-primary-400 font-semibold hover:text-primary-300 transition-colors"
+                >
+                  Learn More About Us
+                  <ArrowRight className="w-5 h-5" />
+                </motion.button>
+              </Link>
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>

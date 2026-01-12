@@ -1,117 +1,116 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { ExternalLink, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import ScrollReveal from '@/components/animations/ScrollReveal'
-import MagneticButton from '@/components/animations/MagneticButton'
 
 export default function Projects() {
   const projects = [
     {
       name: 'DigiOcean',
       description: 'A comprehensive digital ocean management platform that helps businesses manage their digital infrastructure efficiently.',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-primary-500 to-primary-600',
       slug: 'digiocean',
-      size: 'large'
     },
     {
       name: 'Jewellry',
       description: 'E-commerce platform for jewelry retail with advanced catalog management and customer engagement features.',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-accent-500 to-accent-600',
       slug: 'jewellry',
-      size: 'medium'
     },
     {
       name: 'Gym app',
       description: 'Fitness tracking and workout management application with social features and progress analytics.',
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-primary-500 to-accent-500',
       slug: 'gym-app',
-      size: 'medium'
     },
     {
       name: 'Iedutrack',
       description: 'Educational tracking and management system for institutions to monitor student progress and performance.',
-      gradient: 'from-green-500 to-emerald-500',
+      gradient: 'from-accent-500 to-primary-500',
       slug: 'iedutrack',
-      size: 'large'
     },
   ]
 
   return (
-    <section className="section-padding bg-black relative overflow-hidden">
-      <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl pointer-events-none" />
+    <section className="relative py-32 bg-black overflow-hidden">
+      <div className="absolute inset-0 grid-pattern opacity-[0.01]" />
       
       <div className="container-custom relative z-10">
-        <ScrollReveal direction="up" delay={0.1}>
-          <div className="text-center mb-20">
-            <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider">
-              Complete Projects
-            </span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mt-4 glow-text">
-              Our Portfolio
-            </h2>
-            <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
-              Showcasing innovative solutions that drive business success
-            </p>
+        {/* Header - Split */}
+        <div className="grid grid-cols-12 gap-8 mb-20">
+          <div className="col-span-12 lg:col-span-6">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+            >
+              <div className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium mb-4">
+                <span>Complete Projects</span>
+              </div>
+              <h2 className="text-6xl md:text-7xl lg:text-8xl font-black leading-[0.9]">
+                <span className="block text-white">Our</span>
+                <span className="block gradient-text">Portfolio</span>
+              </h2>
+            </motion.div>
           </div>
-        </ScrollReveal>
+          <div className="col-span-12 lg:col-span-6 flex items-end">
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-xl text-gray-400"
+            >
+              Showcasing innovative solutions that drive business success
+            </motion.p>
+          </div>
+        </div>
 
-        {/* Creative Masonry Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {projects.map((project, index) => {
-            const isLarge = project.size === 'large'
-            return (
-              <ScrollReveal 
-                key={project.name} 
-                direction={index % 2 === 0 ? 'left' : 'right'} 
-                delay={index * 0.15}
-              >
-                <motion.div
-                  whileHover={{ y: -15, scale: 1.03, rotateY: 2 }}
-                  className={`group relative overflow-hidden rounded-3xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-primary-500/50 transition-all duration-500 animated-border ${isLarge ? 'md:row-span-2' : ''}`}
-                  style={{ perspective: '1000px' }}
-                >
-                  {/* Gradient Background */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />
-                  
-                  {/* Content */}
-                  <div className="relative z-10 p-8 md:p-12 h-full flex flex-col justify-between min-h-[300px]">
-                    <div>
-                      <motion.div
-                        whileHover={{ rotate: 45, scale: 1.1 }}
-                        className="w-16 h-16 bg-slate-700 rounded-2xl flex items-center justify-center mb-6 group-hover:bg-primary-600 transition-colors glow-effect"
-                      >
-                        <ExternalLink className="w-8 h-8 text-primary-400 group-hover:text-white transition-colors" />
-                      </motion.div>
-                      
-                      <h3 className={`${isLarge ? 'text-5xl' : 'text-4xl'} font-bold text-white mb-4 group-hover:text-primary-400 transition-colors`}>
-                        {project.name}
-                      </h3>
-                      <p className="text-gray-300 text-lg leading-relaxed mb-8">
-                        {project.description}
-                      </p>
+        {/* Projects - Staggered Layout */}
+        <div className="space-y-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              className="group"
+            >
+              <Link href={`/projects/${project.slug}`}>
+                <div className="grid grid-cols-12 gap-8 items-center p-8 rounded-2xl bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 hover:border-primary-500/30 transition-all cursor-pointer">
+                  {/* Number */}
+                  <div className="col-span-12 md:col-span-1">
+                    <div className={`w-16 h-16 bg-gradient-to-br ${project.gradient} rounded-xl flex items-center justify-center text-white font-black text-2xl`}>
+                      {String(index + 1).padStart(2, '0')}
                     </div>
-
-                    <MagneticButton strength={0.3}>
-                      <Link
-                        href={`/projects/${project.slug}`}
-                        className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${project.gradient} text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all glow-effect`}
-                      >
-                        <span>View Project</span>
-                        <ArrowRight className="w-5 h-5 ml-2" />
-                      </Link>
-                    </MagneticButton>
                   </div>
 
-                  {/* Decorative Elements */}
-                  <div className={`absolute ${index % 2 === 0 ? 'top-0 right-0' : 'bottom-0 left-0'} w-32 h-32 bg-gradient-to-br ${project.gradient} opacity-10 rounded-full blur-3xl`} />
-                </motion.div>
-              </ScrollReveal>
-            )
-          })}
+                  {/* Content */}
+                  <div className="col-span-12 md:col-span-8">
+                    <h3 className="text-3xl md:text-4xl font-bold text-white mb-3 group-hover:text-primary-400 transition-colors">
+                      {project.name}
+                    </h3>
+                    <p className="text-lg text-gray-400 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+
+                  {/* Arrow */}
+                  <div className="col-span-12 md:col-span-3 flex justify-end">
+                    <motion.div
+                      whileHover={{ x: 10 }}
+                      className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-lg flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary-500 group-hover:to-accent-500 transition-all"
+                    >
+                      <ArrowRight className="w-6 h-6 text-gray-400 group-hover:text-white transition-colors" />
+                    </motion.div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>
