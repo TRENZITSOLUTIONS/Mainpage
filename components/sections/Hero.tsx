@@ -72,16 +72,7 @@ export default function Hero() {
   ]
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-black cursor-none">
-      {/* Custom Cursor */}
-      <motion.div
-        style={{
-          x: useTransform(x, (value) => value - 10),
-          y: useTransform(y, (value) => value - 10),
-        }}
-        className="fixed w-5 h-5 rounded-full bg-cyan-400 pointer-events-none z-50 mix-blend-difference"
-      />
-
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black">
       {/* Animated Background - Fluid Morphing */}
       <div className="absolute inset-0 overflow-hidden">
         {orbConfigs.map((orb, i) => (
