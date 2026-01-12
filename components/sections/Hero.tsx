@@ -2,86 +2,70 @@
 
 import { motion, useScroll, useTransform } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Sparkles, Zap, Rocket } from 'lucide-react'
-import dynamic from 'next/dynamic'
+import { ArrowRight, Code, Zap } from 'lucide-react'
 import ParticleBackground from '@/components/Particles'
 import ScrollReveal from '@/components/animations/ScrollReveal'
 import MagneticButton from '@/components/animations/MagneticButton'
-import TextReveal from '@/components/animations/TextReveal'
-import BlobAnimation from '@/components/animations/BlobAnimation'
-
-const Scene = dynamic(() => import('@/components/3D/Scene'), { ssr: false })
 
 export default function Hero() {
   const { scrollY } = useScroll()
-  const y = useTransform(scrollY, [0, 500], [0, 150])
+  const y = useTransform(scrollY, [0, 500], [0, 100])
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
-      {/* Particle Background */}
-      <ParticleBackground />
+      {/* Subtle Background Effects */}
+      <div className="absolute inset-0 grid-pattern opacity-[0.02]" />
       
-      {/* Subtle gradient orbs - static for performance */}
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl pointer-events-none" />
+      {/* Gradient Orbs - Subtle */}
+      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] bg-primary-500/5 rounded-full filter blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-accent-500/5 rounded-full filter blur-[120px] pointer-events-none" />
       
-      {/* Grid Pattern Overlay - Static */}
-      <div className="absolute inset-0 grid-pattern opacity-5" />
-      
-      {/* 3D Network Visualization Background */}
-      <motion.div 
-        style={{ y, opacity }}
-        className="absolute right-0 top-1/2 -translate-y-1/2 w-1/2 h-full opacity-40 hidden lg:block pointer-events-none"
-      >
-        <Scene type="network" />
-      </motion.div>
-      
-      {/* 3D Geometric Shapes Background */}
-      <motion.div 
-        style={{ y: useTransform(scrollY, [0, 500], [0, -100]), opacity }}
-        className="absolute left-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-30 hidden xl:block pointer-events-none"
-      >
-        <Scene type="geometric" />
-      </motion.div>
+      {/* Particle Background - Lighter */}
+      <div className="absolute inset-0 opacity-30">
+        <ParticleBackground />
+      </div>
 
       <div className="container-custom relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center min-h-screen py-20">
           {/* Text Content */}
-          <div className="text-left lg:text-left space-y-8">
+          <div className="text-left space-y-8">
             <ScrollReveal direction="down" delay={0.1}>
               <motion.div
-                whileHover={{ scale: 1.05, rotate: [0, -5, 5, -5, 0] }}
-                className="inline-flex items-center px-4 py-2 rounded-full bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 text-primary-400 text-sm font-semibold mb-4 glow-effect"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium"
               >
-                <Sparkles className="w-4 h-4 mr-2" />
-                <span>Transforming Businesses Through Technology</span>
+                <Code className="w-4 h-4" />
+                <span>Digital Innovation Experts</span>
               </motion.div>
             </ScrollReveal>
 
             <div className="space-y-6">
               <ScrollReveal direction="up" delay={0.2}>
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                  <motion.div
-                    initial={{ opacity: 0, x: -50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-[1.1]">
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.3 }}
+                    className="block text-white"
                   >
-                    <TextReveal text="We Bridge" className="block" delay={0.3} />
-                  </motion.div>
-                  <motion.span 
-                    className="gradient-text glow-text block mt-2"
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
+                    We Bridge
+                  </motion.span>
+                  <motion.span
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.5 }}
+                    className="block gradient-text mt-2"
                   >
-                    <TextReveal text="Vision to Reality" className="block" delay={0.5} />
+                    Vision to Reality
                   </motion.span>
                 </h1>
               </ScrollReveal>
 
               <ScrollReveal direction="up" delay={0.4}>
-                <p className="text-xl md:text-2xl text-gray-300 leading-relaxed max-w-2xl">
+                <p className="text-xl md:text-2xl text-gray-400 leading-relaxed max-w-2xl">
                   Empowering businesses with innovative SaaS applications, websites, and software solutions
                   that drive growth, efficiency, and long-term success.
                 </p>
@@ -89,26 +73,26 @@ export default function Hero() {
             </div>
 
             <ScrollReveal direction="up" delay={0.6}>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <MagneticButton strength={0.5}>
+              <div className="flex flex-col sm:flex-row gap-4 pt-4">
+                <MagneticButton strength={0.3}>
                   <Link href="/contact">
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-semibold text-lg flex items-center space-x-2 glow-effect hover:shadow-2xl hover:shadow-primary-500/50 transition-all"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="group px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold text-lg flex items-center gap-2 shadow-lg shadow-primary-500/20 hover:shadow-xl hover:shadow-primary-500/30 transition-all"
                     >
-                      <span>Learn More</span>
-                      <ArrowRight className="w-5 h-5" />
+                      <span>Get Started</span>
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
                     </motion.button>
                   </Link>
                 </MagneticButton>
                 
-                <MagneticButton strength={0.3}>
+                <MagneticButton strength={0.2}>
                   <Link href="/services">
                     <motion.button
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                      className="px-8 py-4 bg-transparent text-white rounded-full font-semibold text-lg border-2 border-primary-500 hover:bg-primary-500/10 transition-all animated-border"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className="px-8 py-4 bg-transparent text-white rounded-lg font-semibold text-lg border-2 border-primary-500/30 hover:border-primary-500/50 hover:bg-primary-500/5 transition-all"
                     >
                       Our Services
                     </motion.button>
@@ -119,35 +103,66 @@ export default function Hero() {
 
             {/* Stats Preview */}
             <ScrollReveal direction="up" delay={0.8}>
-              <div className="flex items-center space-x-8 pt-8 border-t border-slate-700">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-white mb-1">50+</div>
-                  <div className="text-sm text-gray-400">Team Members</div>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-white mb-1">100+</div>
-                  <div className="text-sm text-gray-400">Projects</div>
-                </motion.div>
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  className="text-center"
-                >
-                  <div className="text-3xl font-bold text-white mb-1">200+</div>
-                  <div className="text-sm text-gray-400">Happy Clients</div>
-                </motion.div>
+              <div className="flex items-center gap-12 pt-8 border-t border-gray-800">
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-white mb-1">50+</div>
+                  <div className="text-sm text-gray-500">Team Members</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-white mb-1">100+</div>
+                  <div className="text-sm text-gray-500">Projects</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-4xl font-bold text-white mb-1">200+</div>
+                  <div className="text-sm text-gray-500">Happy Clients</div>
+                </div>
               </div>
             </ScrollReveal>
           </div>
 
-          {/* 3D Database Visualization for Mobile/Tablet */}
-          <div className="w-full h-96 lg:hidden">
-            <Scene type="database" />
+          {/* Visual Element */}
+          <div className="relative hidden lg:block">
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1, delay: 0.5 }}
+              className="relative"
+            >
+              {/* Animated Grid Background */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-3xl blur-3xl" />
+              
+              {/* Card Stack Effect */}
+              <div className="relative space-y-4">
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                  className="p-8 bg-gradient-to-br from-gray-900 to-gray-950 rounded-2xl border border-gray-800 shadow-2xl"
+                >
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-3 h-3 rounded-full bg-primary-500" />
+                    <div className="w-3 h-3 rounded-full bg-accent-500" />
+                    <div className="w-3 h-3 rounded-full bg-gray-600" />
+                  </div>
+                  <div className="space-y-2">
+                    <div className="h-2 bg-primary-500/20 rounded w-3/4" />
+                    <div className="h-2 bg-gray-800 rounded w-full" />
+                    <div className="h-2 bg-gray-800 rounded w-5/6" />
+                  </div>
+                </motion.div>
+                
+                <motion.div
+                  animate={{ y: [0, -10, 0] }}
+                  transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 0.5 }}
+                  className="p-8 bg-gradient-to-br from-gray-900 to-gray-950 rounded-2xl border border-gray-800 shadow-2xl"
+                >
+                  <Zap className="w-12 h-12 text-primary-500 mb-4" />
+                  <div className="space-y-2">
+                    <div className="h-2 bg-accent-500/20 rounded w-2/3" />
+                    <div className="h-2 bg-gray-800 rounded w-full" />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
           </div>
         </div>
       </div>
@@ -156,56 +171,20 @@ export default function Hero() {
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1, duration: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
         className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-10"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 border-2 border-primary-500 rounded-full flex justify-center glow-effect cursor-pointer"
+          className="w-6 h-10 border-2 border-primary-500/30 rounded-full flex justify-center p-2"
         >
           <motion.div
             animate={{ y: [0, 12, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1.5 h-3 bg-primary-500 rounded-full mt-2"
+            className="w-1.5 h-1.5 bg-primary-500 rounded-full"
           />
         </motion.div>
-      </motion.div>
-
-      {/* Floating Icons */}
-      <motion.div
-        className="absolute top-1/4 right-1/4 hidden xl:block"
-        animate={{
-          y: [0, -20, 0],
-          rotate: [0, 10, -10, 0]
-        }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: 'easeInOut'
-        }}
-      >
-        <div className="w-16 h-16 bg-primary-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-primary-500/30">
-          <Zap className="w-8 h-8 text-primary-400" />
-        </div>
-      </motion.div>
-
-      <motion.div
-        className="absolute bottom-1/4 left-1/4 hidden xl:block"
-        animate={{
-          y: [0, 20, 0],
-          rotate: [0, -10, 10, 0]
-        }}
-        transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: 'easeInOut',
-          delay: 1
-        }}
-      >
-        <div className="w-16 h-16 bg-purple-500/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-purple-500/30">
-          <Rocket className="w-8 h-8 text-purple-400" />
-        </div>
       </motion.div>
     </section>
   )

@@ -32,7 +32,7 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-primary-500/20'
+          ? 'bg-black/95 backdrop-blur-xl shadow-2xl border-b border-primary-500/20'
           : 'bg-transparent'
       }`}
     >
@@ -67,18 +67,14 @@ export default function Navigation() {
               </motion.div>
             ))}
             <motion.div 
-              whileHover={{ scale: 1.05, y: -2 }} 
-              whileTap={{ scale: 0.95 }}
+              whileHover={{ scale: 1.02, y: -2 }} 
+              whileTap={{ scale: 0.98 }}
             >
               <Link
                 href="/contact"
-                className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-primary-500/50 transition-all duration-300 glow-effect relative overflow-hidden group"
+                className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
               >
-                <span className="relative z-10">Get a quote</span>
-                <motion.div
-                  className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  initial={false}
-                />
+                Get a quote
               </Link>
             </motion.div>
           </div>

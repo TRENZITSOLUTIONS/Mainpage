@@ -8,7 +8,6 @@ import Services from '@/components/sections/Services'
 import History from '@/components/sections/History'
 import Projects from '@/components/sections/Projects'
 import Stats from '@/components/sections/Stats'
-import Blog from '@/components/sections/Blog'
 
 export default function Home() {
   return (
@@ -19,7 +18,6 @@ export default function Home() {
       <History />
       <Projects />
       <Stats />
-      <Blog />
     </div>
   )
 }

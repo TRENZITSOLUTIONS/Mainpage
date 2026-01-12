@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Smartphone, Cloud, Globe, Code, Network, Package, Briefcase } from 'lucide-react'
+import { Smartphone, Cloud, Globe, Code, Network, Package, Briefcase, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import dynamic from 'next/dynamic'
 import ScrollReveal from '@/components/animations/ScrollReveal'
@@ -16,7 +16,7 @@ export default function Services() {
       icon: Smartphone,
       title: 'App Development',
       description: 'We design and develop mobile and web applications that are user-friendly, scalable, and tailored to your business goals. From idea to launch, we build apps that engage and deliver results.',
-      gradient: 'from-blue-500 to-cyan-500',
+      gradient: 'from-primary-500 to-primary-600',
       slug: 'app-development'
     },
     {
@@ -24,7 +24,7 @@ export default function Services() {
       icon: Cloud,
       title: 'SaaS Solutions',
       description: 'Our team creates powerful SaaS platforms that streamline workflows, automate processes, and provide scalable solutions for businesses of all sizes.',
-      gradient: 'from-purple-500 to-pink-500',
+      gradient: 'from-accent-500 to-accent-600',
       slug: 'saas-solutions'
     },
     {
@@ -32,7 +32,7 @@ export default function Services() {
       icon: Globe,
       title: 'Website Development',
       description: 'We craft modern, responsive, and high-performance websites that not only showcase your brand but also drive conversions and customer engagement.',
-      gradient: 'from-green-500 to-emerald-500',
+      gradient: 'from-primary-500 to-accent-500',
       slug: 'website-development'
     },
     {
@@ -40,7 +40,7 @@ export default function Services() {
       icon: Code,
       title: 'Software Development & Maintenance',
       description: 'We provide custom software solutions along with continuous maintenance and support to ensure your systems run smoothly and adapt to changing business needs.',
-      gradient: 'from-orange-500 to-red-500',
+      gradient: 'from-primary-600 to-accent-500',
       slug: 'software-development-&-maintenance'
     },
     {
@@ -48,7 +48,7 @@ export default function Services() {
       icon: Network,
       title: 'Blockchain Development',
       description: 'We build secure and scalable blockchain applications, smart contracts, and decentralized platforms to help businesses adopt the latest in Web3 technology.',
-      gradient: 'from-indigo-500 to-purple-500',
+      gradient: 'from-accent-500 to-primary-500',
       slug: 'blockchain-development'
     },
     {
@@ -56,7 +56,7 @@ export default function Services() {
       icon: Package,
       title: 'All Products Trial',
       description: 'We offer free trials for our products and solutions, giving you hands-on experience before making a full commitment.',
-      gradient: 'from-teal-500 to-cyan-500',
+      gradient: 'from-primary-500 to-primary-600',
       slug: 'all-products-trial'
     },
     {
@@ -64,7 +64,7 @@ export default function Services() {
       icon: Briefcase,
       title: 'IT Consulting',
       description: 'We provide expert IT consulting services to help you adopt the right technologies, optimize operations, and accelerate digital transformation.',
-      gradient: 'from-rose-500 to-pink-500',
+      gradient: 'from-accent-600 to-accent-500',
       slug: 'it-consulting'
     },
   ]
@@ -72,9 +72,9 @@ export default function Services() {
   return (
     <section className="section-padding bg-black relative overflow-hidden">
       {/* Background Effects - Static for performance */}
-      <div className="absolute inset-0 grid-pattern opacity-5" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute inset-0 grid-pattern opacity-[0.02]" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/3 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent-500/3 rounded-full filter blur-3xl pointer-events-none" />
       
       {/* 3D Code Blocks Background */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-20 hidden xl:block pointer-events-none">
@@ -84,13 +84,13 @@ export default function Services() {
       <div className="container-custom relative z-10">
         <ScrollReveal direction="up" delay={0.1}>
           <div className="text-center mb-20">
-            <span className="text-primary-400 font-semibold text-sm uppercase tracking-wider">
+            <span className="inline-flex items-center px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-medium mb-4">
               Our Service
             </span>
-            <h2 className="text-5xl md:text-7xl font-bold text-white mt-4 glow-text">
+            <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mt-6 mb-6">
               What We Offer
             </h2>
-            <p className="text-xl text-gray-300 mt-6 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-400 mt-6 max-w-3xl mx-auto">
               Comprehensive IT solutions tailored to transform your business
             </p>
           </div>
@@ -112,56 +112,35 @@ export default function Services() {
                   whileHover={{ scale: 1.02, x: isEven ? -10 : 10 }}
                   className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center group`}
                 >
-                  {/* Icon & Number Section - Enhanced */}
+                  {/* Icon & Number Section */}
                   <div className="flex-shrink-0 relative">
                     <motion.div
-                      whileHover={{ rotate: 360, scale: 1.15, y: -5 }}
-                      transition={{ duration: 0.6 }}
-                      className={`w-32 h-32 bg-gradient-to-br ${service.gradient} rounded-3xl flex items-center justify-center shadow-2xl glow-effect relative group/icon`}
+                      whileHover={{ scale: 1.05, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                      className={`w-24 h-24 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center shadow-lg relative`}
                     >
-                      <Icon className="w-16 h-16 text-white" />
-                      <motion.div
-                        whileHover={{ scale: 1.2, rotate: 360 }}
-                        className="absolute -top-4 -right-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center border-2 border-primary-500 glow-effect"
-                      >
-                        <span className="text-lg font-bold text-primary-400">{service.number}</span>
-                      </motion.div>
-                      {/* Pulsing ring effect */}
-                      <motion.div
-                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-3xl opacity-0 group-hover/icon:opacity-30`}
-                        animate={{
-                          scale: [1, 1.3, 1],
-                        }}
-                        transition={{
-                          duration: 2,
-                          repeat: Infinity,
-                          ease: 'easeInOut',
-                        }}
-                      />
+                      <Icon className="w-12 h-12 text-white" />
+                      <div className="absolute -top-2 -right-2 w-8 h-8 bg-gray-900 rounded-full flex items-center justify-center border border-primary-500/30">
+                        <span className="text-xs font-bold text-primary-400">{service.number}</span>
+                      </div>
                     </motion.div>
                   </div>
 
                   {/* Content Section */}
                   <div className={`flex-1 ${isEven ? 'md:text-left' : 'md:text-right'} text-center md:text-left`}>
-                    <h3 className={`text-4xl md:text-5xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent mb-4`}>
+                    <h3 className={`text-3xl md:text-4xl font-bold bg-gradient-to-r ${service.gradient} bg-clip-text text-transparent mb-4`}>
                       {service.title}
                     </h3>
-                    <p className="text-lg text-gray-300 leading-relaxed mb-6 max-w-2xl">
+                    <p className="text-lg text-gray-400 leading-relaxed mb-6 max-w-2xl">
                       {service.description}
                     </p>
-                    <MagneticButton strength={0.3}>
+                    <MagneticButton strength={0.2}>
                       <Link
                         href={`/services/${service.slug}`}
-                        className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${service.gradient} text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all glow-effect`}
+                        className={`inline-flex items-center px-6 py-3 bg-gradient-to-r ${service.gradient} text-white rounded-lg font-semibold hover:shadow-lg transition-all`}
                       >
                         <span>Explore Service</span>
-                        <motion.span
-                          animate={{ x: [0, 5, 0] }}
-                          transition={{ duration: 1.5, repeat: Infinity }}
-                          className="ml-2"
-                        >
-                          →
-                        </motion.span>
+                        <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </MagneticButton>
                   </div>
