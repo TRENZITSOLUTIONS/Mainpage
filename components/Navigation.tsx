@@ -32,7 +32,7 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-black/95 backdrop-blur-xl shadow-2xl border-b border-primary-500/20'
+          ? 'bg-black/95 backdrop-blur-xl shadow-2xl border-b border-cyan-500/20'
           : 'bg-transparent'
       }`}
     >
@@ -58,11 +58,11 @@ export default function Navigation() {
                 transition={{ delay: index * 0.1 }}
               >
                 <Link
-                  href={link.href}
-                  className="relative text-gray-300 hover:text-primary-400 font-medium transition-colors duration-300 group"
+                href={link.href}
+                className="relative text-gray-300 hover:text-cyan-400 font-medium transition-colors duration-300 group"
                 >
                   {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-primary-500 transition-all duration-300 group-hover:w-full" />
+                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
                 </Link>
               </motion.div>
             ))}
@@ -72,7 +72,7 @@ export default function Navigation() {
             >
               <Link
                 href="/contact"
-                className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/30 transition-all duration-300"
+                className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg shadow-cyan-500/50"
               >
                 Get a quote
               </Link>

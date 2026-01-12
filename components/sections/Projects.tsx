@@ -1,140 +1,133 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useRef } from 'react'
-import { ArrowRight, ExternalLink } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ExternalLink } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Projects() {
-  const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start end', 'end start']
-  })
-
   const projects = [
     {
       name: 'DigiOcean',
       description: 'A comprehensive digital ocean management platform that helps businesses manage their digital infrastructure efficiently.',
-      gradient: 'from-primary-500 to-primary-600',
+      gradient: 'from-cyan-500 to-blue-500',
       slug: 'digiocean',
     },
     {
       name: 'Jewellry',
       description: 'E-commerce platform for jewelry retail with advanced catalog management and customer engagement features.',
-      gradient: 'from-accent-500 to-accent-600',
+      gradient: 'from-purple-500 to-pink-500',
       slug: 'jewellry',
     },
     {
       name: 'Gym app',
       description: 'Fitness tracking and workout management application with social features and progress analytics.',
-      gradient: 'from-primary-500 to-accent-500',
+      gradient: 'from-blue-500 to-cyan-500',
       slug: 'gym-app',
     },
     {
       name: 'Iedutrack',
       description: 'Educational tracking and management system for institutions to monitor student progress and performance.',
-      gradient: 'from-accent-500 to-primary-500',
+      gradient: 'from-pink-500 to-purple-500',
       slug: 'iedutrack',
     },
   ]
 
   return (
-    <section ref={ref} className="relative py-40 bg-black overflow-hidden">
+    <section className="relative py-40 bg-black overflow-hidden">
       {/* Animated Background */}
-      <motion.div
-        style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [0, 360]),
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.5]),
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-primary-500/10 rounded-full"
-      />
-      <motion.div
-        style={{
-          rotate: useTransform(scrollYProgress, [0, 1], [360, 0]),
-          scale: useTransform(scrollYProgress, [0, 1], [1.2, 1.8]),
-        }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-accent-500/10 rounded-full"
-      />
+      <div className="absolute inset-0">
+        {Array.from({ length: 20 }).map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute w-1 h-1 rounded-full bg-cyan-400"
+            style={{
+              left: `${Math.random() * 100}%`,
+              top: `${Math.random() * 100}%`,
+            }}
+            animate={{
+              scale: [0, 1, 0],
+              opacity: [0, 1, 0],
+            }}
+            transition={{
+              duration: 2 + Math.random() * 2,
+              repeat: Infinity,
+              delay: Math.random() * 3,
+            }}
+          />
+        ))}
+      </div>
 
       <div className="container-custom relative z-10">
-        {/* Sticky Header */}
-        <div className="sticky top-20 mb-32">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-          >
-            <div className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium mb-4">
-              <span>Complete Projects</span>
-            </div>
-            <h2 className="text-8xl md:text-9xl font-black leading-[0.85]">
-              <span className="block text-white">Our</span>
-              <span className="block gradient-text">Portfolio</span>
-            </h2>
-          </motion.div>
-        </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="mb-32"
+        >
+          <div className="text-cyan-400 text-sm font-mono tracking-widest uppercase mb-6">
+            [ OUR PORTFOLIO ]
+          </div>
+          <h2 className="text-7xl md:text-9xl font-black leading-[0.9]">
+            <span className="block text-white">Complete</span>
+            <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Projects
+            </span>
+          </h2>
+        </motion.div>
 
-        {/* Projects - Card Flip Effect */}
-        <div className="space-y-8">
-          {projects.map((project, index) => {
-            const y = useTransform(scrollYProgress, [index * 0.2, (index + 1) * 0.2], [100, 0])
-            const opacity = useTransform(scrollYProgress, [index * 0.2, (index + 1) * 0.2], [0, 1])
-            
-            return (
-              <motion.div
-                key={project.name}
-                style={{ y, opacity }}
-                className="group"
-              >
-                <Link href={`/projects/${project.slug}`}>
+        {/* Projects - Interactive Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={project.name}
+              initial={{ opacity: 0, scale: 0.8, rotateY: -90 }}
+              whileInView={{ opacity: 1, scale: 1, rotateY: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              whileHover={{ scale: 1.05, rotateY: 10, z: 50 }}
+              className="group"
+              style={{ perspective: '1000px' }}
+            >
+              <Link href={`/projects/${project.slug}`}>
+                <div className="relative min-h-[400px] bg-gradient-to-br from-gray-900/50 to-gray-950/50 backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-500/50 transition-all cursor-pointer overflow-hidden">
+                  {/* Animated Gradient Background */}
                   <motion.div
-                    whileHover={{ scale: 1.02, y: -10 }}
-                    className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-gray-900 to-gray-950 border border-gray-800 hover:border-primary-500/50 transition-all cursor-pointer"
-                  >
-                    {/* Animated Background Gradient */}
-                    <motion.div
-                      className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
-                    />
-                    
-                    <div className="relative p-12 grid grid-cols-12 gap-8 items-center">
-                      {/* Number Badge */}
-                      <div className="col-span-12 md:col-span-2">
-                        <motion.div
-                          whileHover={{ rotate: 360, scale: 1.1 }}
-                          transition={{ duration: 0.6 }}
-                          className={`w-24 h-24 bg-gradient-to-br ${project.gradient} rounded-2xl flex items-center justify-center text-white font-black text-3xl`}
-                        >
-                          {String(index + 1).padStart(2, '0')}
-                        </motion.div>
-                      </div>
+                    className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`}
+                  />
+                  
+                  {/* Number Badge */}
+                  <div className="absolute top-8 right-8 text-8xl font-black text-white/5 group-hover:text-cyan-400/20 transition-colors">
+                    {String(index + 1).padStart(2, '0')}
+                  </div>
 
-                      {/* Content */}
-                      <div className="col-span-12 md:col-span-8">
-                        <h3 className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:text-primary-400 transition-colors">
-                          {project.name}
-                        </h3>
-                        <p className="text-xl text-gray-400 leading-relaxed">
-                          {project.description}
-                        </p>
-                      </div>
-
-                      {/* Arrow */}
-                      <div className="col-span-12 md:col-span-2 flex justify-end">
-                        <motion.div
-                          whileHover={{ x: 10, rotate: 45 }}
-                          className="w-16 h-16 bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl flex items-center justify-center group-hover:bg-gradient-to-br group-hover:from-primary-500 group-hover:to-accent-500 transition-all"
-                        >
-                          <ExternalLink className="w-8 h-8 text-gray-400 group-hover:text-white transition-colors" />
-                        </motion.div>
-                      </div>
+                  <div className="relative z-10 p-8 flex flex-col justify-between h-full min-h-[400px]">
+                    <div>
+                      <h3 className="text-5xl font-black text-white mb-6 group-hover:text-cyan-400 transition-colors">
+                        {project.name}
+                      </h3>
+                      <p className="text-xl text-gray-400 leading-relaxed">
+                        {project.description}
+                      </p>
                     </div>
-                  </motion.div>
-                </Link>
-              </motion.div>
-            )
-          })}
+
+                    <div className="flex items-center justify-between mt-8">
+                      <span className="text-cyan-400 font-mono text-sm uppercase tracking-wider">
+                        View Project
+                      </span>
+                      <motion.div
+                        whileHover={{ x: 10, rotate: 45 }}
+                        className="w-12 h-12 border-2 border-cyan-400 flex items-center justify-center group-hover:bg-cyan-400 transition-colors"
+                      >
+                        <ExternalLink className="w-6 h-6 text-cyan-400 group-hover:text-black transition-colors" />
+                      </motion.div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </motion.div>
+          ))}
         </div>
       </div>
     </section>

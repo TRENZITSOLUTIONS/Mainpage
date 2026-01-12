@@ -22,7 +22,7 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-black border-t border-primary-500/20 text-gray-300 relative overflow-hidden">
+    <footer className="bg-black border-t border-indigo-500/20 text-gray-300 relative overflow-hidden">
       {/* Background Effects */}
       <div className="absolute inset-0 grid-pattern opacity-10" />
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl" />
@@ -49,7 +49,7 @@ export default function Footer() {
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
+              className="inline-flex items-center text-indigo-400 hover:text-indigo-300 transition-colors"
             >
               Contact
               <span className="ml-2">→</span>
@@ -72,7 +72,7 @@ export default function Footer() {
                 >
                   <Link
                     href={link.href}
-                    className="text-gray-400 hover:text-primary-400 transition-colors inline-flex items-center"
+                    className="text-gray-400 hover:text-indigo-400 transition-colors inline-flex items-center"
                   >
                     <span>{link.label}</span>
                     <motion.span
@@ -98,26 +98,26 @@ export default function Footer() {
             <h4 className="text-white font-semibold mb-4">CONTACT INFO</h4>
             <ul className="space-y-3">
               <li className="flex items-start">
-                <MapPin className="w-5 h-5 mr-3 mt-0.5 text-primary-400 flex-shrink-0" />
+                <MapPin className="w-5 h-5 mr-3 mt-0.5 text-indigo-400 flex-shrink-0" />
                 <span className="text-gray-400">
                   No:2/699, VGN Nagar, 3rd Street,<br />
                   Iyappanthangal Chennai-600056
                 </span>
               </li>
               <li className="flex items-center">
-                <Phone className="w-5 h-5 mr-3 text-primary-400 flex-shrink-0" />
+                <Phone className="w-5 h-5 mr-3 text-indigo-400 flex-shrink-0" />
                 <a
                   href="tel:+917448665057"
-                  className="text-gray-400 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   +91 7448665057
                 </a>
               </li>
               <li className="flex items-center">
-                <Mail className="w-5 h-5 mr-3 text-primary-400 flex-shrink-0" />
+                <Mail className="w-5 h-5 mr-3 text-indigo-400 flex-shrink-0" />
                 <a
                   href="mailto:trenzitsolutions@gmail.com"
-                  className="text-gray-400 hover:text-primary-400 transition-colors"
+                  className="text-gray-400 hover:text-indigo-400 transition-colors"
                 >
                   trenzitsolutions@gmail.com
                 </a>
@@ -137,13 +137,13 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Your Email Here"
-                className="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors"
+                className="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-indigo-500 transition-colors"
               />
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.05, y: -2 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-full px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary-500/50 transition-all duration-300 glow-effect"
+                className="w-full px-6 py-2.5 bg-indigo-600 text-white font-semibold hover:bg-indigo-500 transition-all duration-300"
               >
                 Subscribe
               </motion.button>
@@ -157,7 +157,7 @@ export default function Footer() {
                     href={social.href}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-primary-600 transition-colors"
+                    className="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-lg hover:bg-indigo-600 transition-colors"
                     aria-label={social.label}
                   >
                     <Icon className="w-5 h-5" />

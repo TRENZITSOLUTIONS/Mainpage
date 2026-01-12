@@ -1,14 +1,10 @@
 'use client'
 
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useEffect } from 'react'
 import Link from 'next/link'
-import { ArrowRight, Code2, Sparkles } from 'lucide-react'
 
 export default function Hero() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
-  const [isHovering, setIsHovering] = useState(false)
-  
   const mouseX = useMotionValue(0)
   const mouseY = useMotionValue(0)
   
@@ -16,218 +12,260 @@ export default function Hero() {
   const x = useSpring(mouseX, springConfig)
   const y = useSpring(mouseY, springConfig)
 
+  // Create transforms for background orbs
+  const orb0X = useTransform(x, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerWidth) * 200 - 200
+  })
+  const orb0Y = useTransform(y, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerHeight) * 200 - 200
+  })
+  const orb1X = useTransform(x, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerWidth) * 300 - 300
+  })
+  const orb1Y = useTransform(y, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerHeight) * 300 - 300
+  })
+  const orb2X = useTransform(x, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerWidth) * 400 - 400
+  })
+  const orb2Y = useTransform(y, (value) => {
+    if (globalThis.window === undefined) return 0
+    return (value / globalThis.window.innerHeight) * 400 - 400
+  })
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY })
       mouseX.set(e.clientX)
       mouseY.set(e.clientY)
     }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
+    globalThis.addEventListener('mousemove', handleMouseMove)
+    return () => globalThis.removeEventListener('mousemove', handleMouseMove)
   }, [mouseX, mouseY])
 
-  const rotateX = useTransform(y, [0, typeof window !== 'undefined' ? window.innerHeight : 1000], [10, -10])
-  const rotateY = useTransform(x, [0, typeof window !== 'undefined' ? window.innerWidth : 1000], [-10, 10])
-
-  const words = ['We', 'Bridge', 'Vision', 'to', 'Reality']
-  const [currentWordIndex, setCurrentWordIndex] = useState(0)
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentWordIndex((prev) => (prev + 1) % words.length)
-    }, 2000)
-    return () => clearInterval(interval)
-  }, [])
+  const orbConfigs = [
+    {
+      id: 'orb-0',
+      bg: 'radial-gradient(circle, #00f5ff, #0066ff)',
+      x: orb0X,
+      y: orb0Y,
+      size: 400,
+    },
+    {
+      id: 'orb-1',
+      bg: 'radial-gradient(circle, #ff00ff, #ff0066)',
+      x: orb1X,
+      y: orb1Y,
+      size: 600,
+    },
+    {
+      id: 'orb-2',
+      bg: 'radial-gradient(circle, #00ff88, #00ccff)',
+      x: orb2X,
+      y: orb2Y,
+      size: 800,
+    },
+  ]
 
   return (
-    <section 
-      className="relative min-h-screen flex items-center overflow-hidden bg-black cursor-none"
-      onMouseEnter={() => setIsHovering(true)}
-      onMouseLeave={() => setIsHovering(false)}
-    >
-      {/* Interactive Cursor Effect */}
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-black cursor-none">
+      {/* Custom Cursor */}
       <motion.div
-        className="fixed w-6 h-6 rounded-full bg-primary-500 pointer-events-none z-50 mix-blend-difference"
         style={{
-          x: useTransform(x, (value) => value - 12),
-          y: useTransform(y, (value) => value - 12),
-          scale: isHovering ? 1.5 : 1,
+          x: useTransform(x, (value) => value - 10),
+          y: useTransform(y, (value) => value - 10),
         }}
+        className="fixed w-5 h-5 rounded-full bg-cyan-400 pointer-events-none z-50 mix-blend-difference"
       />
 
-      {/* Animated Grid Background */}
-      <div className="absolute inset-0">
-        {Array.from({ length: 20 }).map((_, i) => (
+      {/* Animated Background - Fluid Morphing */}
+      <div className="absolute inset-0 overflow-hidden">
+        {orbConfigs.map((orb, i) => (
           <motion.div
-            key={i}
-            className="absolute border border-primary-500/5"
+            key={orb.id}
+            className="absolute rounded-full blur-3xl opacity-20"
             style={{
-              left: `${(i % 5) * 20}%`,
-              top: `${Math.floor(i / 5) * 20}%`,
-              width: '20%',
-              height: '20%',
+              width: `${orb.size}px`,
+              height: `${orb.size}px`,
+              background: orb.bg,
+              x: orb.x,
+              y: orb.y,
             }}
             animate={{
-              borderColor: [
-                'rgba(99, 102, 241, 0.05)',
-                'rgba(168, 85, 247, 0.1)',
-                'rgba(99, 102, 241, 0.05)',
-              ],
+              scale: [1, 1.2, 0.8, 1],
+              rotate: [0, 180, 360],
             }}
             transition={{
-              duration: 3 + i * 0.2,
+              duration: 20 + i * 5,
               repeat: Infinity,
-              delay: i * 0.1,
+              ease: 'linear',
             }}
           />
         ))}
       </div>
 
-      {/* Floating Orbs */}
-      {Array.from({ length: 5 }).map((_, i) => (
-        <motion.div
-          key={i}
-          className="absolute rounded-full bg-gradient-to-br from-primary-500/20 to-accent-500/20 blur-3xl"
-          style={{
-            width: 300 + i * 100,
-            height: 300 + i * 100,
-            left: `${20 + i * 15}%`,
-            top: `${10 + i * 20}%`,
-          }}
-          animate={{
-            x: [0, 50, -50, 0],
-            y: [0, -50, 50, 0],
-            scale: [1, 1.2, 0.8, 1],
-          }}
-          transition={{
-            duration: 10 + i * 2,
-            repeat: Infinity,
-            ease: 'easeInOut',
-            delay: i * 0.5,
-          }}
-        />
-      ))}
+      {/* Grid Pattern Overlay */}
+      <div className="absolute inset-0" style={{
+        backgroundImage: `
+          linear-gradient(rgba(0, 245, 255, 0.03) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 245, 255, 0.03) 1px, transparent 1px)
+        `,
+        backgroundSize: '50px 50px',
+      }} />
 
       <div className="container-custom relative z-10 w-full">
-        <div className="grid grid-cols-12 gap-6 min-h-screen items-center py-20">
-          {/* Left - Text with Morphing Effect */}
-          <div className="col-span-12 lg:col-span-7 space-y-8">
-            <motion.div
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1 }}
-              className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium"
-            >
-              <Code2 className="w-4 h-4" />
-              <span>Digital Innovation Studio</span>
-            </motion.div>
-
-            {/* Morphing Text */}
-            <div className="relative h-32 md:h-40 lg:h-48">
-              {words.map((word, index) => (
-                <motion.h1
-                  key={word}
-                  initial={{ opacity: 0, y: 50, rotateX: -90 }}
-                  animate={{
-                    opacity: currentWordIndex === index ? 1 : 0,
-                    y: currentWordIndex === index ? 0 : 50,
-                    rotateX: currentWordIndex === index ? 0 : -90,
-                  }}
-                  transition={{ duration: 0.8 }}
-                  className="absolute text-7xl md:text-8xl lg:text-9xl font-black leading-none"
-                  style={{
-                    color: index === 1 || index === 2 ? 'transparent' : 'white',
-                    backgroundImage: index === 1 || index === 2 
-                      ? 'linear-gradient(135deg, rgb(99, 102, 241), rgb(168, 85, 247))'
-                      : 'none',
-                    WebkitBackgroundClip: index === 1 || index === 2 ? 'text' : 'none',
-                    backgroundClip: index === 1 || index === 2 ? 'text' : 'none',
-                  }}
-                >
-                  {word}
-                </motion.h1>
-              ))}
-            </div>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.3 }}
-              className="text-xl md:text-2xl text-gray-400 max-w-xl leading-relaxed"
-            >
-              Empowering businesses with innovative SaaS applications, websites, and software solutions
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 1, delay: 0.5 }}
-              className="flex flex-wrap gap-4 pt-4"
-            >
-              <Link href="/contact">
-                <motion.button
-                  whileHover={{ scale: 1.05, boxShadow: '0 20px 40px rgba(99, 102, 241, 0.4)' }}
-                  whileTap={{ scale: 0.95 }}
-                  className="group relative px-8 py-4 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold flex items-center gap-2 overflow-hidden"
-                >
-                  <span className="relative z-10">Start Your Project</span>
-                  <ArrowRight className="w-5 h-5 relative z-10 group-hover:translate-x-1 transition-transform" />
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-accent-500 to-accent-600"
-                    initial={{ x: '-100%' }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </motion.button>
-              </Link>
-            </motion.div>
-          </div>
-
-          {/* Right - 3D Interactive Element */}
-          <div className="col-span-12 lg:col-span-5 relative hidden lg:block">
-            <motion.div
-              style={{
-                rotateX,
-                rotateY,
-                transformStyle: 'preserve-3d',
+        <div className="min-h-screen flex flex-col justify-center py-20">
+          {/* Animated Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1 }}
+            className="mb-8"
+          >
+            <motion.span
+              className="inline-block text-cyan-400 text-sm font-mono tracking-[0.5em] uppercase"
+              animate={{
+                opacity: [0.5, 1, 0.5],
               }}
-              className="relative h-[500px] perspective-1000"
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
             >
-              {/* 3D Card Stack */}
-              {[0, 1, 2].map((i) => (
+              [ TRENZ SOFTWARE ]
+            </motion.span>
+          </motion.div>
+
+          {/* Main Headline - Glitch Effect */}
+          <motion.h1
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-8xl md:text-9xl lg:text-[12rem] font-black leading-[0.85] mb-8 relative"
+          >
+            <motion.span
+              className="block text-white"
+              animate={{
+                textShadow: [
+                  '0 0 20px rgba(0, 245, 255, 0.5)',
+                  '0 0 40px rgba(0, 245, 255, 0.8)',
+                  '0 0 20px rgba(0, 245, 255, 0.5)',
+                ],
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+              }}
+            >
+              WE BUILD
+            </motion.span>
+            <motion.span
+              className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              animate={{
+                backgroundPosition: ['0%', '100%', '0%'],
+              }}
+              transition={{
+                duration: 5,
+                repeat: Infinity,
+                ease: 'linear',
+              }}
+              style={{
+                backgroundSize: '200% 200%',
+              }}
+            >
+              DIGITAL
+            </motion.span>
+            <motion.span
+              className="block text-white/20"
+              animate={{
+                opacity: [0.1, 0.3, 0.1],
+              }}
+              transition={{
+                duration: 2,
+                repeat: Infinity,
+              }}
+            >
+              EXPERIENCES
+            </motion.span>
+          </motion.h1>
+
+          {/* Description */}
+          <motion.p
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.6 }}
+            className="text-2xl text-gray-300 max-w-2xl mb-12 leading-relaxed"
+          >
+            Transforming ideas into powerful digital solutions. We craft SaaS platforms, 
+            websites, and software that don&apos;t just work—they mesmerize.
+          </motion.p>
+
+          {/* CTA Buttons */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.9 }}
+            className="flex flex-wrap gap-6"
+          >
+            <Link href="/contact">
+              <motion.button
+                whileHover={{ scale: 1.05, boxShadow: '0 0 30px rgba(0, 245, 255, 0.5)' }}
+                whileTap={{ scale: 0.95 }}
+                className="relative px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-lg overflow-hidden group"
+              >
                 <motion.div
-                  key={i}
-                  initial={{ opacity: 0, z: -100 }}
-                  animate={{ opacity: 1, z: i * 50 }}
-                  transition={{ duration: 1, delay: 0.7 + i * 0.2 }}
-                  style={{
-                    transform: `translateZ(${i * 50}px)`,
-                  }}
-                  className="absolute inset-0 bg-gradient-to-br from-gray-900 to-gray-950 rounded-3xl border border-gray-800 p-8 shadow-2xl"
-                >
-                  <div className="flex gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-primary-500" />
-                    <div className="w-3 h-3 rounded-full bg-accent-500" />
-                    <div className="w-3 h-3 rounded-full bg-gray-600" />
-                  </div>
-                  <div className="space-y-2">
-                    <div className="h-2 bg-primary-500/30 rounded w-full" />
-                    <div className="h-2 bg-gray-800 rounded w-3/4" />
-                    <div className="h-2 bg-gray-800 rounded w-5/6" />
-                  </div>
-                  {i === 0 && (
-                    <div className="absolute bottom-8 right-8">
-                      <Sparkles className="w-12 h-12 text-primary-500" />
-                    </div>
-                  )}
-                </motion.div>
-              ))}
-            </motion.div>
-          </div>
+                  className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500"
+                  initial={{ x: '-100%' }}
+                  whileHover={{ x: 0 }}
+                  transition={{ duration: 0.3 }}
+                />
+                <span className="relative z-10">Start Your Project</span>
+              </motion.button>
+            </Link>
+            <Link href="/services">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 border-2 border-cyan-400 text-cyan-400 font-bold text-lg hover:bg-cyan-400/10 transition-all"
+              >
+                Explore Services
+              </motion.button>
+            </Link>
+          </motion.div>
+
+          {/* Floating Stats */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, delay: 1.2 }}
+            className="mt-20 flex flex-wrap gap-12"
+          >
+            {[
+              { num: '50+', label: 'Team Members' },
+              { num: '100+', label: 'Projects' },
+              { num: '200+', label: 'Happy Clients' },
+            ].map((stat, i) => (
+              <motion.div
+                key={stat.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 1.4 + i * 0.2 }}
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="text-center"
+              >
+                <div className="text-5xl font-black text-cyan-400 mb-2">{stat.num}</div>
+                <div className="text-sm text-gray-400 uppercase tracking-wider">{stat.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
 
-      {/* Scroll Indicator with Animation */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -239,14 +277,8 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Infinity }}
           className="flex flex-col items-center gap-2"
         >
-          <span className="text-xs text-gray-500 uppercase tracking-wider">Scroll</span>
-          <div className="w-6 h-10 border-2 border-primary-500/30 rounded-full flex justify-center p-2">
-            <motion.div
-              animate={{ y: [0, 16, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-              className="w-1.5 h-1.5 bg-primary-500 rounded-full"
-            />
-          </div>
+          <span className="text-xs text-cyan-400 uppercase tracking-widest">Scroll</span>
+          <div className="w-px h-16 bg-gradient-to-b from-cyan-400 to-transparent" />
         </motion.div>
       </motion.div>
     </section>

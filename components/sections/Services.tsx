@@ -14,122 +14,104 @@ export default function Services() {
 
   const services = [
     {
-      number: '01',
       icon: Smartphone,
       title: 'App Development',
       description: 'We design and develop mobile and web applications that are user-friendly, scalable, and tailored to your business goals.',
-      gradient: 'from-primary-500 to-primary-600',
+      gradient: 'from-cyan-500 to-blue-500',
       slug: 'app-development',
     },
     {
-      number: '02',
       icon: Cloud,
       title: 'SaaS Solutions',
       description: 'Our team creates powerful SaaS platforms that streamline workflows, automate processes, and provide scalable solutions.',
-      gradient: 'from-accent-500 to-accent-600',
+      gradient: 'from-purple-500 to-pink-500',
       slug: 'saas-solutions',
     },
     {
-      number: '03',
       icon: Globe,
       title: 'Website Development',
       description: 'We craft modern, responsive, and high-performance websites that showcase your brand and drive conversions.',
-      gradient: 'from-primary-500 to-accent-500',
+      gradient: 'from-blue-500 to-cyan-500',
       slug: 'website-development',
     },
   ]
 
+  const rotate = useTransform(scrollYProgress, [0, 1], [0, 360])
+
   return (
     <section ref={ref} className="relative py-40 bg-black overflow-hidden">
-      {/* Animated Background */}
+      {/* Rotating Background Element */}
       <motion.div
-        style={{
-          scale: useTransform(scrollYProgress, [0, 1], [1, 1.2]),
-          opacity: useTransform(scrollYProgress, [0, 0.5, 1], [0.1, 0.3, 0.1]),
-        }}
-        className="absolute top-1/2 right-0 w-[800px] h-[800px] bg-accent-500/10 rounded-full filter blur-[200px] pointer-events-none"
+        style={{ rotate }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-cyan-500/10 rounded-full"
       />
 
       <div className="container-custom relative z-10">
-        {/* Sticky Title */}
-        <div className="sticky top-20 mb-32">
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 1 }}
-            className="text-right"
-          >
-            <div className="inline-flex items-center gap-2 text-primary-400 text-sm font-medium mb-4">
-              <span>Our Service</span>
-            </div>
-            <h2 className="text-8xl md:text-9xl font-black leading-[0.85]">
-              <span className="block text-white">What We</span>
-              <span className="block gradient-text">Offer</span>
-            </h2>
-          </motion.div>
-        </div>
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, x: 100 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1 }}
+          className="text-right mb-32"
+        >
+          <div className="text-cyan-400 text-sm font-mono tracking-widest uppercase mb-6 inline-block">
+            [ OUR SERVICES ]
+          </div>
+          <h2 className="text-7xl md:text-9xl font-black leading-[0.9]">
+            <span className="block text-white">What We</span>
+            <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+              Offer
+            </span>
+          </h2>
+        </motion.div>
 
-        {/* Services - Pin Scroll Effect */}
-        <div className="space-y-40">
+        {/* Services - Staggered Cards */}
+        <div className="space-y-8">
           {services.map((service, index) => {
             const Icon = service.icon
-            const isEven = index % 2 === 0
-            
             return (
               <motion.div
-                key={service.number}
-                initial={{ opacity: 0, y: 100 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: '-200px' }}
-                transition={{ duration: 1, delay: index * 0.3 }}
-                className={`flex flex-col ${isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'} gap-16 items-center`}
+                key={service.title}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -100 : 100 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.8, delay: index * 0.2 }}
+                whileHover={{ scale: 1.02, x: index % 2 === 0 ? 20 : -20 }}
+                className="group"
               >
-                {/* Large Visual */}
-                <motion.div
-                  whileHover={{ scale: 1.05, rotate: isEven ? 5 : -5 }}
-                  className={`flex-shrink-0 w-full lg:w-2/5`}
-                >
-                  <div className={`relative aspect-square bg-gradient-to-br ${service.gradient} rounded-3xl p-12 flex flex-col items-center justify-center overflow-hidden`}>
+                <Link href={`/services/${service.slug}`}>
+                  <div className="relative p-12 bg-gradient-to-br from-gray-900/50 to-gray-950/50 backdrop-blur-sm border border-cyan-500/20 hover:border-cyan-500/50 transition-all cursor-pointer overflow-hidden">
+                    {/* Animated Background */}
                     <motion.div
-                      animate={{ rotate: [0, 360] }}
-                      transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-                      className="absolute inset-0 opacity-10"
-                    >
-                      <div className="absolute inset-0 border-4 border-white/20 rounded-full" style={{ transform: 'scale(1.5)' }} />
-                      <div className="absolute inset-0 border-4 border-white/20 rounded-full" style={{ transform: 'scale(2)' }} />
-                    </motion.div>
-                    <Icon className="w-32 h-32 text-white relative z-10" />
-                    <div className="absolute bottom-8 right-8 w-16 h-16 bg-black/30 rounded-2xl flex items-center justify-center backdrop-blur-sm relative z-10">
-                      <span className="text-2xl font-black text-white">{service.number}</span>
+                      className={`absolute inset-0 bg-gradient-to-r ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-500`}
+                    />
+                    
+                    <div className="relative z-10 flex items-center gap-12">
+                      <motion.div
+                        whileHover={{ rotate: 360, scale: 1.1 }}
+                        transition={{ duration: 0.6 }}
+                        className={`flex-shrink-0 w-32 h-32 bg-gradient-to-br ${service.gradient} rounded-3xl flex items-center justify-center`}
+                      >
+                        <Icon className="w-16 h-16 text-white" />
+                      </motion.div>
+                      <div className="flex-1">
+                        <h3 className="text-5xl font-black text-white mb-4 group-hover:text-cyan-400 transition-colors">
+                          {service.title}
+                        </h3>
+                        <p className="text-xl text-gray-400 leading-relaxed max-w-3xl">
+                          {service.description}
+                        </p>
+                      </div>
+                      <motion.div
+                        whileHover={{ x: 10, rotate: 45 }}
+                        className="text-5xl text-white/20 group-hover:text-cyan-400 transition-colors"
+                      >
+                        →
+                      </motion.div>
                     </div>
                   </div>
-                </motion.div>
-
-                {/* Content */}
-                <motion.div
-                  initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.2 }}
-                  className={`flex-1 ${isEven ? 'lg:text-left' : 'lg:text-right'} text-center lg:text-left`}
-                >
-                  <h3 className="text-5xl md:text-6xl font-black text-white mb-6">
-                    {service.title}
-                  </h3>
-                  <p className="text-xl text-gray-400 leading-relaxed mb-8 max-w-2xl">
-                    {service.description}
-                  </p>
-                  <Link href={`/services/${service.slug}`}>
-                    <motion.button
-                      whileHover={{ scale: 1.05, x: 10 }}
-                      whileTap={{ scale: 0.95 }}
-                      className={`inline-flex items-center px-8 py-4 bg-gradient-to-r ${service.gradient} text-white rounded-lg font-semibold text-lg hover:shadow-2xl transition-all`}
-                    >
-                      Explore Service
-                    </motion.button>
-                  </Link>
-                </motion.div>
+                </Link>
               </motion.div>
             )
           })}
