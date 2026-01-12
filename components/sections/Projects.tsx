@@ -39,10 +39,10 @@ export default function Projects() {
   ]
 
   return (
-    <section className="section-padding bg-slate-900 relative overflow-hidden">
+    <section className="section-padding bg-black relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl pointer-events-none" />
       
       <div className="container-custom relative z-10">
         <ScrollReveal direction="up" delay={0.1}>
@@ -70,8 +70,9 @@ export default function Projects() {
                 delay={index * 0.15}
               >
                 <motion.div
-                  whileHover={{ y: -15, scale: 1.02 }}
+                  whileHover={{ y: -15, scale: 1.03, rotateY: 2 }}
                   className={`group relative overflow-hidden rounded-3xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-primary-500/50 transition-all duration-500 animated-border ${isLarge ? 'md:row-span-2' : ''}`}
+                  style={{ perspective: '1000px' }}
                 >
                   {/* Gradient Background */}
                   <div className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-0 group-hover:opacity-20 transition-opacity duration-500`} />

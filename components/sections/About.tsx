@@ -28,8 +28,9 @@ export default function About() {
   ]
 
   return (
-    <section className="section-padding bg-slate-900 relative overflow-hidden">
+    <section className="section-padding bg-black relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-10" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
       
       {/* 3D Database Visualization Background */}
       <ParallaxSection speed={0.3}>
@@ -66,7 +67,7 @@ export default function About() {
                 delay={index * 0.2}
               >
                 <motion.div
-                  whileHover={{ y: -15, rotateZ: index % 2 === 0 ? 2 : -2 }}
+                  whileHover={{ y: -15, rotateZ: index % 2 === 0 ? 2 : -2, scale: 1.02 }}
                   className="group relative p-8 rounded-3xl bg-slate-800/50 backdrop-blur-sm border border-slate-700/50 hover:border-primary-500/50 transition-all duration-500 animated-border h-full"
                 >
                   {/* Animated Background Gradient */}

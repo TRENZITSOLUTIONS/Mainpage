@@ -22,8 +22,12 @@ export default function Footer() {
   ]
 
   return (
-    <footer className="bg-slate-950 border-t border-slate-800 text-gray-300">
-      <div className="container-custom section-padding">
+    <footer className="bg-black border-t border-primary-500/20 text-gray-300 relative overflow-hidden">
+      {/* Background Effects */}
+      <div className="absolute inset-0 grid-pattern opacity-10" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl" />
+      <div className="container-custom section-padding relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Company Info */}
           <motion.div
@@ -33,7 +37,12 @@ export default function Footer() {
             transition={{ duration: 0.5 }}
           >
             <Link href="/" className="inline-block mb-4">
-              <h3 className="text-2xl font-bold gradient-text">Trenz Solutions</h3>
+              <motion.h3 
+                whileHover={{ scale: 1.05 }}
+                className="text-2xl font-bold gradient-text glow-text"
+              >
+                Trenz Solutions
+              </motion.h3>
             </Link>
             <p className="text-gray-400 mb-4">
               Perfect for all IT Solutions
@@ -130,12 +139,14 @@ export default function Footer() {
                 placeholder="Your Email Here"
                 className="w-full px-4 py-2.5 bg-gray-800 border border-gray-700 rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-primary-500 transition-colors"
               />
-              <button
+              <motion.button
                 type="submit"
-                className="w-full px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all duration-300"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.95 }}
+                className="w-full px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-lg font-semibold hover:shadow-2xl hover:shadow-primary-500/50 transition-all duration-300 glow-effect"
               >
                 Subscribe
-              </button>
+              </motion.button>
             </form>
             <div className="flex space-x-4 mt-4">
               {socialLinks.map((social) => {

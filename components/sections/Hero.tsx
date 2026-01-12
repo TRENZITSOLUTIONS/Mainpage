@@ -18,17 +18,16 @@ export default function Hero() {
   const opacity = useTransform(scrollY, [0, 300], [1, 0])
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Particle Background */}
       <ParticleBackground />
       
-      {/* Animated Blobs */}
-      <BlobAnimation className="top-20 left-10" color="#0ea5e9" size={500} />
-      <BlobAnimation className="top-40 right-20" color="#8b5cf6" size={400} />
-      <BlobAnimation className="bottom-20 left-1/2" color="#ec4899" size={450} />
+      {/* Subtle gradient orbs - static for performance */}
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl pointer-events-none" />
       
-      {/* Grid Pattern Overlay */}
-      <div className="absolute inset-0 grid-pattern opacity-20" />
+      {/* Grid Pattern Overlay - Static */}
+      <div className="absolute inset-0 grid-pattern opacity-5" />
       
       {/* 3D Network Visualization Background */}
       <motion.div 
@@ -63,10 +62,21 @@ export default function Hero() {
             <div className="space-y-6">
               <ScrollReveal direction="up" delay={0.2}>
                 <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold leading-tight">
-                  <TextReveal text="We Bridge" className="block" delay={0.3} />
-                  <span className="gradient-text glow-text block mt-2">
+                  <motion.div
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.3 }}
+                  >
+                    <TextReveal text="We Bridge" className="block" delay={0.3} />
+                  </motion.div>
+                  <motion.span 
+                    className="gradient-text glow-text block mt-2"
+                    initial={{ opacity: 0, x: 50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8, delay: 0.5 }}
+                  >
                     <TextReveal text="Vision to Reality" className="block" delay={0.5} />
-                  </span>
+                  </motion.span>
                 </h1>
               </ScrollReveal>
 

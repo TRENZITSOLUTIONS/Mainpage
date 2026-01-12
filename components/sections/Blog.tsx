@@ -35,10 +35,10 @@ export default function Blog() {
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-b from-slate-900 to-slate-800 relative overflow-hidden">
+    <section className="section-padding bg-black relative overflow-hidden">
       <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl pointer-events-none" />
       
       <div className="container-custom relative z-10">
         <ScrollReveal direction="up" delay={0.1}>
@@ -64,7 +64,7 @@ export default function Blog() {
               delay={index * 0.15}
             >
               <motion.div
-                whileHover={{ y: -15, rotateY: 5 }}
+                whileHover={{ y: -15, rotateY: 5, scale: 1.02 }}
                 className="group relative h-full bg-slate-800/50 backdrop-blur-sm rounded-3xl border border-slate-700/50 hover:border-primary-500/50 transition-all duration-500 overflow-hidden animated-border"
                 style={{ perspective: '1000px' }}
               >

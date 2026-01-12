@@ -70,11 +70,11 @@ export default function Services() {
   ]
 
   return (
-    <section className="section-padding bg-gradient-to-b from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
-      {/* Background Effects */}
-      <div className="absolute inset-0 grid-pattern opacity-10" />
-      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/10 rounded-full filter blur-3xl" />
-      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full filter blur-3xl" />
+    <section className="section-padding bg-black relative overflow-hidden">
+      {/* Background Effects - Static for performance */}
+      <div className="absolute inset-0 grid-pattern opacity-5" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary-500/5 rounded-full filter blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/5 rounded-full filter blur-3xl pointer-events-none" />
       
       {/* 3D Code Blocks Background */}
       <div className="absolute right-0 top-1/2 -translate-y-1/2 w-1/3 h-full opacity-20 hidden xl:block pointer-events-none">
@@ -98,7 +98,7 @@ export default function Services() {
 
         {/* Unique Zigzag Layout */}
         <div className="space-y-8">
-          {services.map((service, index) => {
+          {services.slice(0, 3).map((service, index) => {
             const Icon = service.icon
             const isEven = index % 2 === 0
             
@@ -112,17 +112,32 @@ export default function Services() {
                   whileHover={{ scale: 1.02, x: isEven ? -10 : 10 }}
                   className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} gap-8 items-center group`}
                 >
-                  {/* Icon & Number Section */}
+                  {/* Icon & Number Section - Enhanced */}
                   <div className="flex-shrink-0 relative">
                     <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
+                      whileHover={{ rotate: 360, scale: 1.15, y: -5 }}
                       transition={{ duration: 0.6 }}
-                      className={`w-32 h-32 bg-gradient-to-br ${service.gradient} rounded-3xl flex items-center justify-center shadow-2xl glow-effect relative`}
+                      className={`w-32 h-32 bg-gradient-to-br ${service.gradient} rounded-3xl flex items-center justify-center shadow-2xl glow-effect relative group/icon`}
                     >
                       <Icon className="w-16 h-16 text-white" />
-                      <div className="absolute -top-4 -right-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center border-2 border-primary-500">
+                      <motion.div
+                        whileHover={{ scale: 1.2, rotate: 360 }}
+                        className="absolute -top-4 -right-4 w-12 h-12 bg-slate-900 rounded-full flex items-center justify-center border-2 border-primary-500 glow-effect"
+                      >
                         <span className="text-lg font-bold text-primary-400">{service.number}</span>
-                      </div>
+                      </motion.div>
+                      {/* Pulsing ring effect */}
+                      <motion.div
+                        className={`absolute inset-0 bg-gradient-to-br ${service.gradient} rounded-3xl opacity-0 group-hover/icon:opacity-30`}
+                        animate={{
+                          scale: [1, 1.3, 1],
+                        }}
+                        transition={{
+                          duration: 2,
+                          repeat: Infinity,
+                          ease: 'easeInOut',
+                        }}
+                      />
                     </motion.div>
                   </div>
 

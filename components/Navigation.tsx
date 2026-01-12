@@ -30,9 +30,9 @@ export default function Navigation() {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-slate-800'
+          ? 'bg-slate-900/95 backdrop-blur-xl shadow-2xl border-b border-primary-500/20'
           : 'bg-transparent'
       }`}
     >
@@ -40,9 +40,9 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
               whileTap={{ scale: 0.95 }}
-              className="text-2xl font-bold gradient-text"
+              className="text-2xl font-bold gradient-text glow-text"
             >
               Trenz Solutions
             </motion.div>
@@ -66,12 +66,19 @@ export default function Navigation() {
                 </Link>
               </motion.div>
             ))}
-            <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
+            <motion.div 
+              whileHover={{ scale: 1.05, y: -2 }} 
+              whileTap={{ scale: 0.95 }}
+            >
               <Link
                 href="/contact"
-                className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-primary-500/50 transition-all duration-300 glow-effect"
+                className="px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-semibold hover:shadow-2xl hover:shadow-primary-500/50 transition-all duration-300 glow-effect relative overflow-hidden group"
               >
-                Get a quote
+                <span className="relative z-10">Get a quote</span>
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-primary-500 to-purple-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  initial={false}
+                />
               </Link>
             </motion.div>
           </div>

@@ -48,9 +48,9 @@ export default function ContactPage() {
   ]
 
   return (
-    <div className="pt-20 min-h-screen bg-slate-900">
+    <div className="pt-20 min-h-screen bg-black">
       {/* Hero Section */}
-      <section className="section-padding bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 relative overflow-hidden">
+      <section className="section-padding bg-black relative overflow-hidden">
         <ParticleBackground />
         <div className="absolute inset-0 grid-pattern opacity-10" />
         
@@ -83,7 +83,7 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="section-padding bg-slate-900 relative overflow-hidden">
+      <section className="section-padding bg-black relative overflow-hidden">
         <div className="absolute inset-0 grid-pattern opacity-10" />
         <div className="container-custom relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
