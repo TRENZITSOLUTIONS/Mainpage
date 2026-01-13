@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
 import Image from 'next/image'
 
@@ -19,13 +19,17 @@ export default function Navigation() {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
-  const navLinks = [
-    { href: '/', label: 'Home' },
-    { href: '/about', label: 'About' },
-    { href: '/services', label: 'Service' },
-    { href: '/projects', label: 'Project' },
-    { href: '/contact', label: 'Contact' },
-  ]
+  const scrollToSection = (id: string) => {
+    if (id === 'home') {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    } else {
+      const element = document.getElementById(id)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    setIsMobileMenuOpen(false)
+  }
 
   return (
     <motion.nav
@@ -41,7 +45,6 @@ export default function Navigation() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-3">
-            {/* Logo - Place your logo.png or logo.svg in the /public folder */}
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -73,33 +76,19 @@ export default function Navigation() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            {navLinks.map((link, index) => (
-              <motion.div
-                key={link.href}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Link
-                href={link.href}
-                className="relative text-gray-300 hover:text-cyan-400 font-medium transition-colors duration-300 group"
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
-                </Link>
-              </motion.div>
-            ))}
-            <motion.div 
-              whileHover={{ scale: 1.02, y: -2 }} 
-              whileTap={{ scale: 0.98 }}
+            <button
+              onClick={() => scrollToSection('home')}
+              className="relative text-gray-300 hover:text-cyan-400 font-medium transition-colors duration-300 group"
             >
-              <Link
-                href="/contact"
-                className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg shadow-cyan-500/50"
-              >
-                Get a quote
-              </Link>
-            </motion.div>
+              Home
+              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg shadow-cyan-500/50 rounded-full"
+            >
+              Contact
+            </button>
           </div>
 
           {/* Mobile Menu Button */}
@@ -113,37 +102,29 @@ export default function Navigation() {
       </div>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
-        {isMobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-slate-900 border-t border-slate-800"
-          >
-            <div className="container-custom py-4 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="block py-2 text-gray-300 hover:text-primary-400 font-medium transition-colors"
-                >
-                  {link.label}
-                </Link>
-              ))}
-              <Link
-                href="/contact"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-primary-600 to-primary-500 text-white rounded-full font-semibold"
-              >
-                Get a quote
-              </Link>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {isMobileMenuOpen && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: 'auto' }}
+          exit={{ opacity: 0, height: 0 }}
+          className="md:hidden bg-black/95 backdrop-blur-xl border-t border-cyan-500/20"
+        >
+          <div className="container-custom py-4 space-y-4">
+            <button
+              onClick={() => scrollToSection('home')}
+              className="block w-full text-left py-2 text-gray-300 hover:text-cyan-400 font-medium transition-colors"
+            >
+              Home
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-full"
+            >
+              Contact
+            </button>
+          </div>
+        </motion.div>
+      )}
     </motion.nav>
   )
 }
-
