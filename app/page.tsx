@@ -230,7 +230,7 @@ export default function Home() {
              transition={{ delay: 1.5 }}
           >
              <MagneticButton href="#contact" className="hidden md:block">
-              Let's Talk
+              Let&apos;s Talk
             </MagneticButton>
           </motion.div>
         </nav>
@@ -266,7 +266,7 @@ export default function Home() {
               transition={{ delay: 1.8, duration: 1 }} 
               className="mt-12 text-sm md:text-xl uppercase tracking-[0.3em] text-neutral-400 max-w-xl leading-relaxed"
             >
-              We don't just write code. <br/><span className="text-white font-bold">We engineer dominance.</span>
+              We don&apos;t just write code. <br/><span className="text-white font-bold">We engineer dominance.</span>
             </motion.p>
           </motion.div>
           
@@ -360,7 +360,7 @@ export default function Home() {
                viewport={{ once: true }}
                className="text-[12vw] leading-[0.8] font-black text-white mb-10 tracking-tighter"
             >
-              LET'S BUILD<br/>
+              LET&apos;S BUILD<br/>
               <span className="text-transparent bg-clip-text bg-gradient-to-b from-cyan-400 to-transparent opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-default">THE FUTURE</span>
             </motion.h2>
 
