@@ -8,6 +8,11 @@ const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space
 export const metadata: Metadata = {
   title: 'Trenz Technologies - Digital Alchemy',
   description: "We don't just write code. We engineer dominance. High-impact digital infrastructure for businesses.",
+  icons: {
+    icon: '/logo.jpeg',
+    shortcut: '/logo.jpeg',
+    apple: '/logo.jpeg',
+  },
 }
 
 export default function RootLayout({
