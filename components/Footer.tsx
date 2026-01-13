@@ -41,7 +41,7 @@ export default function Footer() {
                 whileHover={{ scale: 1.05 }}
                 className="text-2xl font-bold gradient-text glow-text"
               >
-                Trenz Solutions
+                Trenz Technologies
               </motion.h3>
             </Link>
             <p className="text-gray-400 mb-4">

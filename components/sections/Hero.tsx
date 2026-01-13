@@ -136,7 +136,7 @@ export default function Hero() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1, delay: 0.3 }}
-            className="text-8xl md:text-9xl lg:text-[12rem] font-black leading-[0.85] mb-8 relative"
+            className="text-6xl sm:text-7xl md:text-9xl lg:text-[12rem] font-black leading-[0.9] mb-8 relative break-words"
           >
             <motion.span
               className="block text-white"
@@ -155,7 +155,7 @@ export default function Hero() {
               WE BUILD
             </motion.span>
             <motion.span
-              className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
+              className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent tracking-tight"
               animate={{
                 backgroundPosition: ['0%', '100%', '0%'],
               }}
@@ -166,18 +166,22 @@ export default function Hero() {
               }}
               style={{
                 backgroundSize: '200% 200%',
+                letterSpacing: '-0.02em',
               }}
             >
               DIGITAL
             </motion.span>
             <motion.span
-              className="block text-white/20"
+              className="block text-white/20 tracking-tight"
               animate={{
                 opacity: [0.1, 0.3, 0.1],
               }}
               transition={{
                 duration: 2,
                 repeat: Infinity,
+              }}
+              style={{
+                letterSpacing: '-0.02em',
               }}
             >
               EXPERIENCES

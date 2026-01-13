@@ -4,10 +4,12 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [logoError, setLogoError] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,13 +40,34 @@ export default function Navigation() {
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center space-x-2">
+          <Link href="/" className="flex items-center space-x-3">
+            {/* Logo - Place your logo.png or logo.svg in the /public folder */}
             <motion.div
-              whileHover={{ scale: 1.05, rotate: [0, -5, 5, 0] }}
+              whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="text-2xl font-bold gradient-text glow-text"
+              className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center"
             >
-              Trenz Solutions
+              {!logoError ? (
+                <Image
+                  src="/logo.png"
+                  alt="Trenz Technologies Logo"
+                  fill
+                  className="object-contain"
+                  priority
+                  onError={() => setLogoError(true)}
+                />
+              ) : (
+                <div className="text-lg md:text-xl font-bold gradient-text glow-text">
+                  TT
+                </div>
+              )}
+            </motion.div>
+            <motion.div
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="text-xl md:text-2xl font-bold gradient-text glow-text hidden sm:block"
+            >
+              Trenz Technologies
             </motion.div>
           </Link>
 
