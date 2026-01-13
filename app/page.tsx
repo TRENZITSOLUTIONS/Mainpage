@@ -3,7 +3,8 @@
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
-import { Code, Sparkles, Zap, Mail, Phone, Terminal, Cpu, Network, ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
+import { Code, Sparkles, Zap, Mail, Phone, Cpu, Network, ArrowUpRight } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
 
@@ -200,16 +201,27 @@ export default function Home() {
         </div>
 
         {/* Navigation */}
-        <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[100] mix-blend-difference text-white">
-          <motion.div 
+        <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[100] text-white">
+          <motion.a
+            href="#"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1 }}
-            className="flex items-center gap-2 group cursor-pointer"
+            className="flex items-center gap-3 group cursor-pointer relative z-10"
           >
-            <Terminal className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
-            <span className="tracking-[0.2em] text-sm font-black font-mono">TRENZ<span className="text-cyan-400">_</span>TECH</span>
-          </motion.div>
+            <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/20 backdrop-blur-sm rounded-lg p-1">
+              <Image
+                src="/logo.jpeg"
+                alt="Trenz Technologies Logo"
+                width={48}
+                height={48}
+                className="object-contain rounded"
+                priority
+                unoptimized
+              />
+            </div>
+            <span className="tracking-[0.2em] text-sm font-black font-mono hidden md:block mix-blend-difference">TRENZ<span className="text-cyan-400">_</span>TECH</span>
+          </motion.a>
           <div className="hidden md:flex gap-10 text-xs tracking-widest font-bold uppercase">
             {['Services', 'About', 'Work'].map((item, i) => (
               <motion.a 
