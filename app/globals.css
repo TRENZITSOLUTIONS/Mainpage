@@ -18,11 +18,18 @@ body {
   color: #ffffff;
   font-family: system-ui, -apple-system, sans-serif;
   overflow-x: hidden;
+  cursor: none;
+}
+
+@media (max-width: 768px) {
+  body {
+    cursor: auto;
+  }
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar-track {
@@ -30,10 +37,10 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(180deg, #00f5ff, #a855f7, #3b82f6);
-  border-radius: 5px;
+  background: linear-gradient(180deg, #06b6d4, #a855f7, #3b82f6);
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: linear-gradient(180deg, #00d4e6, #9333ea, #2563eb);
+  background: linear-gradient(180deg, #0891b2, #9333ea, #2563eb);
 }

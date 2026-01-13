@@ -6,7 +6,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Trenz Technologies - We Bridge Vision to Reality',
-  description: 'Unlock your business potential with innovative technology. We specialize in creating SaaS applications, websites, and software products.',
+  description: 'Where Code Meets Innovation. We specialize in creating SaaS applications, websites, and software products.',
 }
 
 export default function RootLayout({
