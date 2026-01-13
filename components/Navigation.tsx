@@ -4,12 +4,10 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
-import Image from 'next/image'
 
 export default function Navigation() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
-  const [logoError, setLogoError] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -38,37 +36,17 @@ export default function Navigation() {
       transition={{ duration: 0.5 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         isScrolled
-          ? 'bg-black/95 backdrop-blur-xl shadow-2xl border-b border-cyan-500/20'
+          ? 'bg-slate-950/95 backdrop-blur-xl shadow-2xl border-b border-slate-800'
           : 'bg-transparent'
       }`}
     >
-      <div className="container-custom">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center space-x-3">
             <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              className="relative w-10 h-10 md:w-12 md:h-12 flex-shrink-0 flex items-center justify-center"
-            >
-              {!logoError ? (
-                <Image
-                  src="/logo.png"
-                  alt="Trenz Technologies Logo"
-                  fill
-                  className="object-contain"
-                  priority
-                  onError={() => setLogoError(true)}
-                />
-              ) : (
-                <div className="text-lg md:text-xl font-bold gradient-text glow-text">
-                  TT
-                </div>
-              )}
-            </motion.div>
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="text-xl md:text-2xl font-bold gradient-text glow-text hidden sm:block"
+              className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent"
             >
               Trenz Technologies
             </motion.div>
@@ -78,22 +56,39 @@ export default function Navigation() {
           <div className="hidden md:flex items-center space-x-8">
             <button
               onClick={() => scrollToSection('home')}
-              className="relative text-gray-300 hover:text-cyan-400 font-medium transition-colors duration-300 group"
+              className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-300"
             >
               Home
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-cyan-400 transition-all duration-300 group-hover:w-full" />
+            </button>
+            <button
+              onClick={() => scrollToSection('services')}
+              className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-300"
+            >
+              Services
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-300"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="text-slate-300 hover:text-blue-400 font-medium transition-colors duration-300"
+            >
+              Projects
             </button>
             <button
               onClick={() => scrollToSection('contact')}
-              className="px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:from-cyan-400 hover:to-blue-400 transition-all duration-300 shadow-lg shadow-cyan-500/50 rounded-full"
+              className="px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold hover:from-blue-700 hover:to-purple-700 transition-all rounded-lg shadow-lg shadow-blue-500/25"
             >
-              Contact
+              Get a Quote
             </button>
           </div>
 
           {/* Mobile Menu Button */}
           <button
-            className="md:hidden p-2 text-gray-300"
+            className="md:hidden p-2 text-slate-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -107,20 +102,38 @@ export default function Navigation() {
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: 'auto' }}
           exit={{ opacity: 0, height: 0 }}
-          className="md:hidden bg-black/95 backdrop-blur-xl border-t border-cyan-500/20"
+          className="md:hidden bg-slate-950/95 backdrop-blur-xl border-t border-slate-800"
         >
-          <div className="container-custom py-4 space-y-4">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 space-y-4">
             <button
               onClick={() => scrollToSection('home')}
-              className="block w-full text-left py-2 text-gray-300 hover:text-cyan-400 font-medium transition-colors"
+              className="block w-full text-left py-2 text-slate-300 hover:text-blue-400 font-medium transition-colors"
             >
               Home
             </button>
             <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold rounded-full"
+              onClick={() => scrollToSection('services')}
+              className="block w-full text-left py-2 text-slate-300 hover:text-blue-400 font-medium transition-colors"
             >
-              Contact
+              Services
+            </button>
+            <button
+              onClick={() => scrollToSection('about')}
+              className="block w-full text-left py-2 text-slate-300 hover:text-blue-400 font-medium transition-colors"
+            >
+              About
+            </button>
+            <button
+              onClick={() => scrollToSection('projects')}
+              className="block w-full text-left py-2 text-slate-300 hover:text-blue-400 font-medium transition-colors"
+            >
+              Projects
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className="block w-full text-center px-6 py-2.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg"
+            >
+              Get a Quote
             </button>
           </div>
         </motion.div>

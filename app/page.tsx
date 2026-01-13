@@ -1,221 +1,196 @@
 'use client'
 
-import { motion, useScroll, useTransform } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
-import { Phone, Mail, Instagram, ArrowRight, Sparkles, Zap, Code, Cloud, Globe, Smartphone, Network, Package, Briefcase } from 'lucide-react'
+import { motion } from 'framer-motion'
+import { ArrowRight, Smartphone, Cloud, Globe, Code, CheckCircle, Mail, Phone, Instagram, Sparkles, Zap, Target, Users, Award } from 'lucide-react'
 import Link from 'next/link'
 
 export default function Home() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({ container: containerRef })
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ x: e.clientX / window.innerWidth, y: e.clientY / window.innerHeight })
-    }
-    window.addEventListener('mousemove', handleMouseMove)
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-  }, [])
-
   const services = [
-    { icon: Smartphone, name: 'App Development', color: 'cyan' },
-    { icon: Cloud, name: 'SaaS Solutions', color: 'purple' },
-    { icon: Globe, name: 'Website Development', color: 'blue' },
-    { icon: Code, name: 'Software Development', color: 'pink' },
-    { icon: Network, name: 'Blockchain', color: 'green' },
-    { icon: Package, name: 'Product Trials', color: 'orange' },
-    { icon: Briefcase, name: 'IT Consulting', color: 'indigo' },
+    {
+      number: '01',
+      title: 'App Development',
+      description: 'We design and develop mobile and web applications that are user-friendly, scalable, and tailored to your business goals. From idea to launch, we build apps that engage and deliver results.',
+      icon: Smartphone,
+      color: 'from-blue-500 to-cyan-500'
+    },
+    {
+      number: '02',
+      title: 'SaaS Solutions',
+      description: 'Our team creates powerful SaaS platforms that streamline workflows, automate processes, and provide scalable solutions for businesses of all sizes.',
+      icon: Cloud,
+      color: 'from-purple-500 to-pink-500'
+    },
+    {
+      number: '03',
+      title: 'Website Development',
+      description: 'We craft modern, responsive, and high-performance websites that not only showcase your brand but also drive conversions and customer engagement.',
+      icon: Globe,
+      color: 'from-indigo-500 to-blue-500'
+    }
   ]
 
   const projects = [
-    { name: 'DigiOcean', desc: 'Digital infrastructure management' },
-    { name: 'Jewellry', desc: 'E-commerce platform' },
-    { name: 'Gym App', desc: 'Fitness tracking solution' },
-    { name: 'Iedutrack', desc: 'Educational management system' },
+    { name: 'DigiOcean', description: 'Digital infrastructure management platform' },
+    { name: 'Jewellry', description: 'E-commerce platform for jewelry business' },
+    { name: 'Gym App', description: 'Fitness tracking and management solution' },
+    { name: 'Iedutrack', description: 'Educational management system' }
   ]
 
   const stats = [
-    { value: '50+', label: 'Team Members' },
-    { value: '100+', label: 'Projects' },
-    { value: '200+', label: 'Happy Clients' },
+    { icon: Users, value: '50+', label: 'Team Members' },
+    { icon: Code, value: '100+', label: 'Complete Projects' },
+    { icon: Award, value: '200+', label: 'Client Reviews' }
   ]
 
-  const contacts = [
-    { icon: Mail, value: 'contact@trenztechnologies.com', link: 'mailto:contact@trenztechnologies.com' },
-    { icon: Phone, value: '9944865057', link: 'tel:+919944865057' },
-    { icon: Instagram, value: '@trenztechnologies', link: 'https://www.instagram.com/trenztechnologies?utm_source=qr&igsh=Y3puczR4MnlyOHVz' },
+  const historyPoints = [
+    {
+      title: 'Visionary Beginnings',
+      description: 'Delivering end-to-end digital solutions that empower businesses with excellence, creativity, and cutting-edge technology.'
+    },
+    {
+      title: 'Expert Engineers',
+      description: 'Our team of skilled developers and innovators build scalable SaaS platforms, websites, and apps tailored to drive business growth and digital transformation.'
+    }
   ]
-
-  const y = useTransform(scrollYProgress, [0, 1], ['0%', '-50%'])
 
   return (
-    <div ref={containerRef} className="h-screen overflow-y-scroll bg-black">
-      {/* Fixed Background */}
-      <div className="fixed inset-0 pointer-events-none">
-        {[0, 1, 2].map((i) => (
-          <motion.div
-            key={i}
-            className="absolute rounded-full blur-3xl opacity-20"
-            style={{
-              width: `${400 + i * 300}px`,
-              height: `${400 + i * 300}px`,
-              background: i % 3 === 0 
-                ? 'radial-gradient(circle, #00f5ff, transparent)' 
-                : i % 3 === 1
-                ? 'radial-gradient(circle, #a855f7, transparent)'
-                : 'radial-gradient(circle, #3b82f6, transparent)',
-              x: mousePos.x * (400 + i * 200) - 200,
-              y: mousePos.y * (400 + i * 200) - 200,
-            }}
-            animate={{
-              scale: [1, 1.3, 1],
-              rotate: [0, 180, 360],
-            }}
-            transition={{
-              duration: 15 + i * 5,
-              repeat: Infinity,
-              ease: 'linear',
-            }}
-          />
-        ))}
-      </div>
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Animated Background */}
+        <div className="absolute inset-0">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(59,130,246,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(139,92,246,0.15),transparent_50%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(14,165,233,0.15),transparent_50%)]" />
+        </div>
 
-      {/* Hero Section - Full Screen */}
-      <section className="relative min-h-screen flex items-center justify-center px-4">
-        <div className="container-custom relative z-10 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="mb-8"
-          >
-            <motion.span
-              className="inline-block text-cyan-400 text-xs md:text-sm font-mono tracking-[0.3em] uppercase mb-6"
-              animate={{ opacity: [0.5, 1, 0.5] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              Digital Innovation Studio
-            </motion.span>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black leading-[0.9] mb-6">
-              <motion.span
-                className="block text-white mb-2"
-                animate={{
-                  textShadow: [
-                    '0 0 30px rgba(0, 245, 255, 0.5)',
-                    '0 0 60px rgba(0, 245, 255, 0.8)',
-                    '0 0 30px rgba(0, 245, 255, 0.5)',
-                  ],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                TRENZ
-              </motion.span>
-              <motion.span
-                className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent"
-                animate={{ backgroundPosition: ['0%', '100%', '0%'] }}
-                transition={{ duration: 5, repeat: Infinity, ease: 'linear' }}
-                style={{ backgroundSize: '200% 200%' }}
-              >
-                TECHNOLOGIES
-              </motion.span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12">
-              Transforming ideas into powerful digital solutions. We craft SaaS platforms, websites, and software that drive growth.
-            </p>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="max-w-5xl mx-auto text-center">
             <motion.div
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="mb-6"
+            >
+              <span className="inline-flex items-center gap-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-400 text-sm font-medium">
+                <Sparkles className="w-4 h-4" />
+                IT Solutions & Innovation
+              </span>
+            </motion.div>
+
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-6 leading-tight"
+            >
+              <span className="text-white">We Bridge</span>
+              <br />
+              <span className="bg-gradient-to-r from-blue-400 via-purple-400 to-cyan-400 bg-clip-text text-transparent">
+                Vision to Reality
+              </span>
+            </motion.h1>
+
+            <motion.p
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="text-xl sm:text-2xl text-slate-300 mb-12 max-w-3xl mx-auto leading-relaxed"
+            >
+              Unlock your business potential with us. We specialize in creating SaaS applications, websites, and software products tailored for businesses of all sizes.
+            </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.6 }}
+              className="flex flex-col sm:flex-row gap-4 justify-center items-center"
             >
               <Link
                 href="#contact"
-                className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold text-lg rounded-full hover:shadow-2xl hover:shadow-cyan-500/50 transition-all"
+                className="group inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold rounded-lg hover:from-blue-700 hover:to-purple-700 transition-all shadow-lg shadow-blue-500/25 hover:shadow-xl hover:shadow-blue-500/40 hover:scale-105"
               >
-                Start Your Project
-                <ArrowRight className="w-5 h-5" />
+                Get a Quote
+                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <Link
+                href="#about"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-slate-800/50 border border-slate-700 text-slate-300 font-semibold rounded-lg hover:bg-slate-800 hover:border-slate-600 transition-all"
+              >
+                Learn More
               </Link>
             </motion.div>
-          </motion.div>
-
-          {/* Stats - Floating */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="flex flex-wrap justify-center gap-8 md:gap-12 mt-20"
-          >
-            {stats.map((stat, i) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 + i * 0.2 }}
-                whileHover={{ scale: 1.1, y: -5 }}
-                className="text-center"
-              >
-                <div className="text-4xl md:text-5xl font-black text-cyan-400 mb-2">{stat.value}</div>
-                <div className="text-sm text-gray-400 uppercase tracking-wider">{stat.label}</div>
-              </motion.div>
-            ))}
-          </motion.div>
+          </div>
         </div>
 
         {/* Scroll Indicator */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 2 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+          transition={{ delay: 1 }}
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
         >
           <motion.div
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
             className="flex flex-col items-center gap-2"
           >
-            <span className="text-xs text-cyan-400 uppercase tracking-widest">Scroll</span>
-            <div className="w-px h-16 bg-gradient-to-b from-cyan-400 to-transparent" />
+            <span className="text-xs text-slate-400 uppercase tracking-wider">Scroll</span>
+            <div className="w-px h-12 bg-gradient-to-b from-blue-400 to-transparent" />
           </motion.div>
         </motion.div>
       </section>
 
-      {/* Services - Horizontal Scroll Section */}
-      <section className="relative min-h-screen flex items-center px-4 py-20">
-        <div className="container-custom relative z-10">
+      {/* Services Section */}
+      <section id="services" className="py-24 sm:py-32 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-4">
-              What We <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Build</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+              Our <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Services</span>
             </h2>
-            <p className="text-lg text-gray-400">Comprehensive digital solutions for your business</p>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Comprehensive digital solutions designed to drive your business forward
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {services.map((service, i) => {
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            {services.map((service, index) => {
               const Icon = service.icon
               return (
                 <motion.div
-                  key={service.name}
+                  key={service.title}
                   initial={{ opacity: 0, y: 50 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -8 }}
-                  className="group p-8 bg-gradient-to-br from-gray-900/60 to-gray-950/60 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-500/50 rounded-2xl transition-all"
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  whileHover={{ y: -8 }}
+                  className="group relative p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all hover:shadow-2xl hover:shadow-blue-500/10"
                 >
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center mb-6"
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <h3 className="text-2xl font-black text-white mb-3 group-hover:text-cyan-400 transition-colors">
-                    {service.name}
-                  </h3>
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-full blur-3xl" />
+                  
+                  <div className="relative z-10">
+                    <div className="flex items-start justify-between mb-6">
+                      <div className={`w-16 h-16 rounded-xl bg-gradient-to-br ${service.color} flex items-center justify-center shadow-lg`}>
+                        <Icon className="w-8 h-8 text-white" />
+                      </div>
+                      <span className="text-6xl font-black text-slate-800 group-hover:text-slate-700 transition-colors">
+                        {service.number}
+                      </span>
+                    </div>
+                    
+                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-blue-400 transition-colors">
+                      {service.title}
+                    </h3>
+                    <p className="text-slate-400 leading-relaxed">
+                      {service.description}
+                    </p>
+                  </div>
                 </motion.div>
               )
             })}
@@ -223,109 +198,208 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Projects - Showcase */}
-      <section className="relative min-h-screen flex items-center px-4 py-20">
-        <div className="container-custom relative z-10">
+      {/* About Section */}
+      <section id="about" className="py-24 sm:py-32 relative bg-slate-900/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-6xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-16"
+            >
+              <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+                Where Innovation Meets <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Excellence</span>
+              </h2>
+              <p className="text-xl text-slate-400 max-w-3xl mx-auto">
+                Founded with a vision to empower businesses through technology, Trenz Software IT Solutions has grown into a trusted partner for companies across industries.
+              </p>
+            </motion.div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+              {historyPoints.map((point, index) => (
+                <motion.div
+                  key={point.title}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0">
+                      <Target className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold text-white mb-3">{point.title}</h3>
+                      <p className="text-slate-400 leading-relaxed">{point.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="text-center"
+            >
+              <p className="text-lg text-slate-300 leading-relaxed max-w-4xl mx-auto">
+                From our early days of crafting simple web solutions to developing scalable SaaS platforms, mobile apps, and enterprise software, we have consistently focused on <span className="text-blue-400 font-semibold">innovation, quality, and client success</span>.
+              </p>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Section */}
+      <section className="py-24 sm:py-32 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {stats.map((stat, index) => {
+              const Icon = stat.icon
+              return (
+                <motion.div
+                  key={stat.label}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: index * 0.2 }}
+                  className="text-center p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all"
+                >
+                  <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                    <Icon className="w-8 h-8 text-white" />
+                  </div>
+                  <div className="text-5xl font-bold text-white mb-2">{stat.value}</div>
+                  <div className="text-slate-400 font-medium">{stat.label}</div>
+                </motion.div>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects Section */}
+      <section id="projects" className="py-24 sm:py-32 relative bg-slate-900/30">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12"
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-4">
-              Our <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">Work</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+              Complete <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">Projects</span>
             </h2>
-            <p className="text-lg text-gray-400">Showcasing innovation and excellence</p>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Showcasing our expertise through successful implementations
+            </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+            {projects.map((project, index) => (
               <motion.div
                 key={project.name}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.2 }}
-                whileHover={{ scale: 1.02, y: -5 }}
-                className="group p-10 bg-gradient-to-br from-gray-900/60 to-gray-950/60 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-500/50 rounded-2xl"
+                transition={{ duration: 0.6, delay: index * 0.1 }}
+                whileHover={{ y: -8 }}
+                className="group p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-slate-700 transition-all hover:shadow-2xl hover:shadow-blue-500/10"
               >
-                <div className="text-4xl md:text-5xl font-black text-white mb-4 group-hover:text-cyan-400 transition-colors">
-                  {project.name}
+                <div className="flex items-start justify-between mb-4">
+                  <h3 className="text-3xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                    {project.name}
+                  </h3>
+                  <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-blue-500/20 to-purple-500/20 flex items-center justify-center group-hover:from-blue-500/30 group-hover:to-purple-500/30 transition-all">
+                    <Zap className="w-6 h-6 text-blue-400" />
+                  </div>
                 </div>
-                <p className="text-gray-400 text-lg">{project.desc}</p>
+                <p className="text-slate-400 text-lg">{project.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About - Minimal */}
-      <section className="relative min-h-screen flex items-center px-4 py-20">
-        <div className="container-custom relative z-10">
+      {/* Contact Section */}
+      <section id="contact" className="py-24 sm:py-32 relative">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="max-w-4xl mx-auto text-center"
-          >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-8">
-              We Are <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">Trenz</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-6">
-              Founded in 2020, we specialize in creating SaaS applications, websites, and software products tailored for businesses of all sizes.
-            </p>
-            <p className="text-lg text-gray-400">
-              Our goal is to empower companies with innovative technology that drives growth, efficiency, and long-term success.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Contact - Final Section */}
-      <section id="contact" className="relative min-h-screen flex items-center px-4 py-20">
-        <div className="container-custom relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
             className="text-center mb-16"
           >
-            <h2 className="text-5xl md:text-7xl font-black text-white mb-6">
-              Let's <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">Connect</span>
+            <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-4">
+              Let's <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Connect</span>
             </h2>
-            <p className="text-lg text-gray-400">Ready to transform your ideas into reality?</p>
+            <p className="text-xl text-slate-400 max-w-2xl mx-auto">
+              Ready to transform your ideas into reality? Get in touch with us today.
+            </p>
           </motion.div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {contacts.map((contact, i) => {
-              const Icon = contact.icon
-              return (
-                <motion.a
-                  key={i}
-                  href={contact.link}
-                  target={contact.link.startsWith('http') ? '_blank' : undefined}
-                  rel={contact.link.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{ scale: 1.05, y: -8 }}
-                  className="group p-8 bg-gradient-to-br from-gray-900/60 to-gray-950/60 backdrop-blur-xl border border-cyan-500/20 hover:border-cyan-500/50 rounded-2xl text-center"
-                >
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 bg-gradient-to-br from-cyan-500 to-purple-500 rounded-xl flex items-center justify-center mx-auto mb-6"
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <div className="text-sm text-gray-400 mb-2 uppercase tracking-wider">Contact</div>
-                  <div className="text-lg font-bold text-white group-hover:text-cyan-400 transition-colors break-all">
-                    {contact.value}
-                  </div>
-                </motion.a>
-              )
-            })}
+            <motion.a
+              href="mailto:contact@trenztechnologies.com"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-blue-500/50 transition-all text-center"
+            >
+              <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Mail className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-sm text-slate-400 mb-2 uppercase tracking-wider">Email</div>
+              <div className="text-lg font-semibold text-white group-hover:text-blue-400 transition-colors break-all">
+                contact@trenztechnologies.com
+              </div>
+            </motion.a>
+
+            <motion.a
+              href="tel:+919944865057"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.1 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-purple-500/50 transition-all text-center"
+            >
+              <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Phone className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-sm text-slate-400 mb-2 uppercase tracking-wider">Phone</div>
+              <div className="text-lg font-semibold text-white group-hover:text-purple-400 transition-colors">
+                9944865057
+              </div>
+            </motion.a>
+
+            <motion.a
+              href="https://www.instagram.com/trenztechnologies?utm_source=qr&igsh=Y3puczR4MnlyOHVz"
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="group p-8 bg-slate-900/50 border border-slate-800 rounded-2xl hover:border-pink-500/50 transition-all text-center"
+            >
+              <div className="w-16 h-16 mx-auto mb-6 rounded-xl bg-gradient-to-br from-pink-500 to-rose-500 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <Instagram className="w-8 h-8 text-white" />
+              </div>
+              <div className="text-sm text-slate-400 mb-2 uppercase tracking-wider">Instagram</div>
+              <div className="text-lg font-semibold text-white group-hover:text-pink-400 transition-colors">
+                @trenztechnologies
+              </div>
+            </motion.a>
           </div>
         </div>
       </section>

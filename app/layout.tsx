@@ -7,8 +7,8 @@ import Footer from '@/components/Footer'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Trenz Software IT Solutions - We Bridge Vision to Reality',
-  description: 'Specializing in SaaS applications, websites, and software products tailored for businesses of all sizes.',
+  title: 'Trenz Technologies - We Bridge Vision to Reality',
+  description: 'Unlock your business potential with us. We specialize in creating SaaS applications, websites, and software products tailored for businesses of all sizes.',
 }
 
 export default function RootLayout({
