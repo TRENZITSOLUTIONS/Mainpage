@@ -1,508 +1,486 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { Code2, Zap, ArrowUpRight, Mail, Phone, Instagram, Menu, X, Sparkles, Terminal, Cpu, Globe, Layers } from 'lucide-react'
+import { useRef, useEffect, useState } from 'react'
+import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion'
+import Lenis from 'lenis'
+import { Code, Sparkles, Zap, Mail, Phone, Terminal, Cpu, Network, ArrowUpRight } from 'lucide-react'
+import { clsx, type ClassValue } from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
-export default function Home() {
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
-  const [menuOpen, setMenuOpen] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
+// --- Utility ---
+function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePos({ 
-        x: (e.clientX / globalThis.innerWidth - 0.5) * 100,
-        y: (e.clientY / globalThis.innerHeight - 0.5) * 100
-      })
-    }
-    globalThis.addEventListener('mousemove', handleMouseMove)
-    return () => globalThis.removeEventListener('mousemove', handleMouseMove)
-  }, [])
+// --- Components ---
 
-  const services = [
-    {
-      icon: Code2,
-      title: 'App Development',
-      desc: 'Mobile and web applications that are user-friendly, scalable, and tailored to your business goals.',
-      color: '#06b6d4',
-      delay: 0
-    },
-    {
-      icon: Cpu,
-      title: 'SaaS Solutions',
-      desc: 'Powerful SaaS platforms that streamline workflows, automate processes, and provide scalable solutions.',
-      color: '#a855f7',
-      delay: 0.1
-    },
-    {
-      icon: Globe,
-      title: 'Website Development',
-      desc: 'Modern, responsive, and high-performance websites that showcase your brand and drive conversions.',
-      color: '#3b82f6',
-      delay: 0.2
-    }
-  ]
-
-  const projects = [
-    { name: 'DigiOcean', tag: 'Platform' },
-    { name: 'Jewellry', tag: 'E-commerce' },
-    { name: 'Gym App', tag: 'Mobile' },
-    { name: 'Iedutrack', tag: 'Education' }
-  ]
-
-  const stats = [
-    { value: '50+', label: 'Team Members', icon: Layers },
-    { value: '100+', label: 'Projects', icon: Code2 },
-    { value: '200+', label: 'Happy Clients', icon: Sparkles }
-  ]
-
+// 1. The Preloader (Builds Anticipation)
+const Preloader = ({ setLoading }: { setLoading: (val: boolean) => void }) => {
   return (
-    <div ref={containerRef} className="relative min-h-screen bg-black text-white overflow-hidden">
-      {/* Animated Grid Background */}
-      <div className="fixed inset-0 opacity-20">
-        <div 
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `
-              linear-gradient(rgba(6, 182, 212, 0.1) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(6, 182, 212, 0.1) 1px, transparent 1px)
-            `,
-            backgroundSize: '50px 50px',
-            transform: `translate(${mousePos.x * 0.5}px, ${mousePos.y * 0.5}px)`
-          }}
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0, transition: { duration: 0.8, ease: "easeInOut" } }}
+      className="fixed inset-0 z-[99999] bg-black flex items-center justify-center"
+    >
+      <div className="flex flex-col items-center gap-4">
+        <div className="flex gap-2 items-center overflow-hidden h-16">
+          <motion.span 
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.2 }}
+            className="text-4xl md:text-6xl font-black text-white tracking-tighter"
+          >
+            TRENZ
+          </motion.span>
+          <motion.span 
+            initial={{ y: 100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1], delay: 0.3 }}
+            className="text-4xl md:text-6xl font-serif italic text-cyan-400"
+          >
+            technologies
+          </motion.span>
+        </div>
+        <motion.div 
+          initial={{ width: 0 }}
+          animate={{ width: 200 }}
+          transition={{ duration: 1.5, ease: "easeInOut", delay: 0.5 }}
+          onAnimationComplete={() => setLoading(false)}
+          className="h-[2px] bg-gradient-to-r from-cyan-500 to-purple-500"
         />
       </div>
+    </motion.div>
+  )
+}
 
-      {/* Floating Orbs */}
-      <div className="fixed inset-0 pointer-events-none">
-        {Array.from({ length: 6 }, (_, i) => {
-          const bgColors = [
-            'radial-gradient(circle, #06b6d4, transparent)',
-            'radial-gradient(circle, #a855f7, transparent)',
-            'radial-gradient(circle, #3b82f6, transparent)'
-          ]
-          return (
-            <motion.div
-              key={`orb-${i}`}
-              className="absolute rounded-full blur-3xl opacity-30"
-              style={{
-                width: `${200 + i * 100}px`,
-                height: `${200 + i * 100}px`,
-                background: bgColors[i % 3],
-                left: `${20 + i * 15}%`,
-                top: `${10 + i * 12}%`,
-              }}
-              animate={{
-                x: [0, mousePos.x * 2, 0],
-                y: [0, mousePos.y * 2, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{
-                duration: 10 + i * 2,
-                repeat: Infinity,
-                ease: 'easeInOut',
-              }}
-            />
-          )
-        })}
-      </div>
+// 2. Custom Cursor (The "fluid" feel)
+const CustomCursor = () => {
+  const cursorX = useMotionValue(-100)
+  const cursorY = useMotionValue(-100)
+  const springConfig = { damping: 20, stiffness: 400 } // Looser spring for "liquid" feel
+  const cursorXSpring = useSpring(cursorX, springConfig)
+  const cursorYSpring = useSpring(cursorY, springConfig)
 
-      {/* Navigation */}
-      <motion.nav
-        initial={{ y: -100 }}
-        animate={{ y: 0 }}
-        className="fixed top-0 left-0 right-0 z-50 p-6 md:p-8"
-      >
-        <div className="flex items-center justify-between">
-          <motion.div
-            whileHover={{ scale: 1.1, rotate: 5 }}
-            className="flex items-center gap-3"
+  useEffect(() => {
+    const moveCursor = (e: MouseEvent) => {
+      cursorX.set(e.clientX - 10)
+      cursorY.set(e.clientY - 10)
+    }
+    globalThis.addEventListener('mousemove', moveCursor)
+    return () => globalThis.removeEventListener('mousemove', moveCursor)
+  }, [cursorX, cursorY])
+
+  return (
+    <motion.div
+      className="fixed top-0 left-0 w-6 h-6 bg-cyan-400 rounded-full pointer-events-none z-[9999] mix-blend-difference hidden md:flex items-center justify-center blur-[2px]"
+      style={{ x: cursorXSpring, y: cursorYSpring }}
+    />
+  )
+}
+
+// 3. Magnetic Button (High interaction)
+const MagneticButton = ({ children, href, className = '' }: { children: React.ReactNode, href: string, className?: string }) => {
+  const ref = useRef<HTMLAnchorElement>(null)
+  const x = useMotionValue(0)
+  const y = useMotionValue(0)
+  
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!ref.current) return
+    const { clientX, clientY } = e
+    const { left, top, width, height } = ref.current.getBoundingClientRect()
+    const center = { x: left + width / 2, y: top + height / 2 }
+    x.set((clientX - center.x) * 0.35)
+    y.set((clientY - center.y) * 0.35)
+  }
+
+  const handleMouseLeave = () => {
+    x.set(0)
+    y.set(0)
+  }
+
+  return (
+    <motion.a
+      ref={ref}
+      href={href}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ x, y }}
+      className={cn(
+        "relative overflow-hidden px-8 py-4 border border-white/20 rounded-full uppercase tracking-widest text-xs font-bold transition-colors duration-300 group inline-block text-center backdrop-blur-sm",
+        className
+      )}
+    >
+      <span className="relative z-10 group-hover:text-black transition-colors duration-300 flex items-center justify-center gap-2">
+        {children}
+      </span>
+      <div className="absolute inset-0 bg-cyan-400 scale-y-0 group-hover:scale-y-100 transition-transform duration-300 ease-[0.19,1,0.22,1] origin-bottom z-0 rounded-full"></div>
+    </motion.a>
+  )
+}
+
+const SERVICES = [
+  {
+    id: 1,
+    title: 'App Engineering',
+    desc: 'Native and Cross-platform architectures that scale to millions.',
+    icon: Code,
+    gradient: 'from-cyan-400 to-blue-600'
+  },
+  {
+    id: 2,
+    title: 'SaaS Ecosystems',
+    desc: 'Enterprise-grade cloud solutions designed for massive data throughput.',
+    icon: Cpu,
+    gradient: 'from-purple-400 to-pink-600'
+  },
+  {
+    id: 3,
+    title: 'Digital Experience',
+    desc: 'Award-winning web interfaces that convert visitors into fanatics.',
+    icon: Network,
+    gradient: 'from-blue-400 to-cyan-400'
+  }
+]
+
+const PROJECTS = [
+  { name: 'DigiOcean', tag: 'Core Platform', color: 'cyan', year: '2025' },
+  { name: 'Jewellry', tag: 'E-commerce', color: 'purple', year: '2024' },
+  { name: 'Gym App', tag: 'Native Mobile', color: 'pink', year: '2024' },
+  { name: 'Iedutrack', tag: 'LMS System', color: 'blue', year: '2023' }
+]
+
+export default function Home() {
+  const [loading, setLoading] = useState(true)
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ['start start', 'end end'] })
+  const yHero = useTransform(scrollYProgress, [0, 0.2], [0, -300])
+  const opacityHero = useTransform(scrollYProgress, [0, 0.3], [1, 0])
+
+  useEffect(() => {
+    const lenis = new Lenis({
+      duration: 1.2,
+      easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+      orientation: 'vertical' as const,
+      gestureOrientation: 'vertical' as const,
+      smoothWheel: true,
+      wheelMultiplier: 1,
+      touchMultiplier: 2,
+      infinite: false,
+    })
+
+    function raf(time: number) {
+      lenis.raf(time)
+      requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+
+    return () => {
+      lenis.destroy()
+    }
+  }, [])
+
+  return (
+    <>
+      <AnimatePresence mode='wait'>
+        {loading && <Preloader setLoading={setLoading} />}
+      </AnimatePresence>
+
+      <div ref={containerRef} className="bg-black text-neutral-200 min-h-[400vh] selection:bg-cyan-500 selection:text-black font-sans overflow-x-hidden cursor-none">
+        <CustomCursor />
+        
+        {/* Cinematic Grain - Low opacity for texture */}
+        <div className="fixed inset-0 pointer-events-none z-[50] opacity-[0.07] mix-blend-overlay">
+          <svg className="w-full h-full">
+            <filter id="noise">
+              <feTurbulence type="fractalNoise" baseFrequency="0.65" numOctaves="3" stitchTiles="stitch" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#noise)" />
+          </svg>
+        </div>
+
+        {/* Navigation */}
+        <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[100] mix-blend-difference text-white">
+          <motion.div 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className="flex items-center gap-2 group cursor-pointer"
           >
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-cyan-400 to-purple-500 flex items-center justify-center">
-              <Terminal className="w-6 h-6 text-black" />
-            </div>
-            <span className="text-xl font-black tracking-tight">TRENZ</span>
+            <Terminal className="w-5 h-5 text-cyan-400 group-hover:rotate-12 transition-transform" />
+            <span className="tracking-[0.2em] text-sm font-black font-mono">TRENZ<span className="text-cyan-400">_</span>TECH</span>
           </motion.div>
-
-          <div className="hidden md:flex items-center gap-8">
-            {['Services', 'About', 'Projects', 'Contact'].map((item, i) => (
-              <motion.a
+          <div className="hidden md:flex gap-10 text-xs tracking-widest font-bold uppercase">
+            {['Services', 'About', 'Work'].map((item, i) => (
+              <motion.a 
                 key={item}
-                href={`#${item.toLowerCase()}`}
-                whileHover={{ y: -2 }}
-                className="text-sm font-medium hover:text-cyan-400 transition-colors cursor-pointer"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1 + (i * 0.1) }}
+                href={`#${item.toLowerCase()}`} 
+                className="hover:text-cyan-400 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:bottom-[-4px] after:left-0 after:bg-cyan-400 after:origin-right hover:after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300"
               >
                 {item}
               </motion.a>
             ))}
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-2 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full text-sm font-bold"
-            >
-              Get Quote
-            </motion.button>
           </div>
-
-          <button
-            onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden z-50"
-          >
-            {menuOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-
-        <AnimatePresence>
-          {menuOpen && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="md:hidden mt-6 space-y-4 bg-black/80 backdrop-blur-xl p-6 rounded-2xl border border-white/10"
-            >
-              {['Services', 'About', 'Projects', 'Contact'].map((item) => (
-                <a
-                  key={item}
-                  href={`#${item.toLowerCase()}`}
-                  className="block py-2 hover:text-cyan-400 transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item}
-                </a>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
-
-      {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center px-4 md:px-8">
-        <div className="max-w-7xl mx-auto text-center relative z-10">
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 1 }}
-            className="mb-8"
+             initial={{ opacity: 0, scale: 0.8 }}
+             animate={{ opacity: 1, scale: 1 }}
+             transition={{ delay: 1.5 }}
           >
-            <motion.span
-              className="inline-flex items-center gap-2 px-4 py-2 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 text-xs md:text-sm"
-              animate={{ scale: [1, 1.05, 1] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            >
-              <Sparkles className="w-4 h-4" />
-              Digital Innovation Studio
-            </motion.span>
+             <MagneticButton href="#contact" className="hidden md:block">
+              Let's Talk
+            </MagneticButton>
           </motion.div>
+        </nav>
 
-          <motion.h1
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, delay: 0.2 }}
-            className="text-6xl md:text-8xl lg:text-[10rem] font-black leading-[0.9] mb-6"
-            style={{
-              transform: `perspective(1000px) rotateX(${mousePos.y * 0.1}deg) rotateY(${mousePos.x * 0.1}deg)`
-            }}
+        {/* Hero Section */}
+        <section className="h-screen relative flex items-center justify-center overflow-hidden perspective-1000">
+          <motion.div 
+            style={{ y: yHero, opacity: opacityHero }} 
+            className="relative z-10 text-center px-4 w-full flex flex-col items-center"
           >
-            <span className="block text-white">WE BRIDGE</span>
-            <span className="block bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              VISION TO
-            </span>
-            <span className="block bg-gradient-to-r from-purple-400 via-pink-400 to-cyan-400 bg-clip-text text-transparent">
-              REALITY
-            </span>
-          </motion.h1>
+             <motion.div 
+                initial={{ opacity: 0 }} 
+                animate={{ opacity: 1 }} 
+                transition={{ delay: 1.2 }}
+                className="mb-6 flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md"
+              >
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-[10px] uppercase tracking-widest text-neutral-400">Available for new projects</span>
+              </motion.div>
 
-          <motion.p
+            <div className="relative">
+              <h1 className="text-[14vw] leading-[0.8] font-black tracking-tighter text-white mix-blend-difference z-10 relative">
+                DIGITAL
+              </h1>
+              <h1 className="text-[14vw] leading-[0.8] font-serif italic text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-purple-500 to-pink-500 z-10 relative">
+                ALCHEMY
+              </h1>
+            </div>
+            
+            <motion.p 
+              initial={{ opacity: 0, y: 20 }} 
+              animate={{ opacity: 1, y: 0 }} 
+              transition={{ delay: 1.8, duration: 1 }} 
+              className="mt-12 text-sm md:text-xl uppercase tracking-[0.3em] text-neutral-400 max-w-xl leading-relaxed"
+            >
+              We don't just write code. <br/><span className="text-white font-bold">We engineer dominance.</span>
+            </motion.p>
+          </motion.div>
+          
+          {/* Background Atmosphere */}
+          <div className="absolute inset-0 z-0">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-[120px] animate-pulse"></div>
+            <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-purple-600/10 rounded-full blur-[100px]" />
+            <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-pink-600/10 rounded-full blur-[100px]" />
+          </div>
+          
+          {/* Scroll Indicator */}
+          <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="text-lg md:text-2xl text-gray-400 mb-12 max-w-3xl mx-auto"
+            transition={{ delay: 2.5 }}
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
           >
-            Unlock your business potential with innovative technology that drives growth, efficiency, and long-term success.
-          </motion.p>
+            <div className="w-[1px] h-12 bg-gradient-to-b from-transparent via-cyan-400 to-transparent animate-bounce" />
+            <span className="text-[10px] uppercase tracking-widest opacity-50">Scroll</span>
+          </motion.div>
+        </section>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center items-center"
-          >
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.05, rotate: 2 }}
-              whileTap={{ scale: 0.95 }}
-              className="group relative px-8 py-4 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-full font-bold text-lg overflow-hidden"
+        {/* Infinite Marquee - Angled for aggression */}
+        <section className="py-20 bg-black relative z-20 overflow-hidden -skew-y-2 origin-left">
+          <div className="absolute inset-0 bg-cyan-900/10 blur-3xl"></div>
+          <div className="whitespace-nowrap flex overflow-hidden border-y border-white/10 bg-black/50 backdrop-blur-sm py-4">
+            <motion.div 
+              animate={{ x: ["0%", "-50%"] }} 
+              transition={{ repeat: Infinity, ease: 'linear', duration: 15 }} 
+              className="flex gap-20 items-center pr-20"
             >
-              <span className="relative z-10 flex items-center gap-2">
-                Get Started
-                <ArrowUpRight className="w-5 h-5 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />
-              </span>
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-purple-500 via-pink-500 to-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity"
-                animate={{
-                  backgroundPosition: ['0%', '100%', '0%'],
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-                style={{ backgroundSize: '200% 200%' }}
-              />
-            </motion.a>
-            <motion.a
-              href="#about"
-              whileHover={{ scale: 1.05, rotate: -2 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-8 py-4 border-2 border-cyan-500/30 rounded-full font-semibold text-lg hover:border-cyan-500/60 hover:bg-cyan-500/10 transition-all"
-            >
-              Learn More
-            </motion.a>
-          </motion.div>
-        </div>
-
-        {/* Scroll Indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          className="absolute bottom-12 left-1/2 -translate-x-1/2"
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="flex flex-col items-center gap-2"
-          >
-            <span className="text-xs text-cyan-400 uppercase tracking-wider">Scroll</span>
-            <div className="w-px h-12 bg-gradient-to-b from-cyan-400 to-transparent" />
-          </motion.div>
-        </motion.div>
-      </section>
-
-      {/* Services Section */}
-      <section id="services" className="relative py-32 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4">
-              OUR <span className="bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">SERVICES</span>
-            </h2>
-            <p className="text-xl text-gray-400">What we build for you</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {services.map((service, i) => {
-              const Icon = service.icon
-              return (
-                <motion.div
-                  key={service.title}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: service.delay }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="group relative p-8 bg-gradient-to-br from-black/40 to-black/20 border border-white/10 rounded-3xl backdrop-blur-xl hover:border-cyan-500/50 transition-all overflow-hidden"
-                >
-                  <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity"
-                    style={{
-                      background: `radial-gradient(circle, ${service.color}, transparent)`
-                    }}
-                  />
-                  <motion.div
-                    whileHover={{ rotate: 360, scale: 1.2 }}
-                    transition={{ duration: 0.6 }}
-                    className="relative z-10 w-16 h-16 mb-6 rounded-2xl flex items-center justify-center"
-                    style={{
-                      background: `linear-gradient(135deg, ${service.color}, ${service.color}dd)`
-                    }}
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <h3 className="relative z-10 text-2xl md:text-3xl font-bold mb-4 group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
-                    {service.title}
-                  </h3>
-                  <p className="relative z-10 text-gray-400 leading-relaxed">{service.desc}</p>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Section */}
-      <section className="relative py-20 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {stats.map((stat, i) => {
-              const Icon = stat.icon
-              return (
-                <motion.div
-                  key={stat.label}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.2, type: 'spring' }}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  className="text-center p-8 bg-gradient-to-br from-black/40 to-black/20 border border-white/10 rounded-3xl backdrop-blur-xl"
-                >
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center"
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <div className="text-5xl md:text-6xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent mb-2">
-                    {stat.value}
-                  </div>
-                  <div className="text-gray-400 text-lg">{stat.label}</div>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* About Section */}
-      <section id="about" className="relative py-32 px-4 md:px-8">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center"
-          >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8">
-              WHERE <span className="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">INNOVATION</span>
-            </h2>
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-8">
-              MEETS <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">EXCELLENCE</span>
-            </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-gray-300 leading-relaxed mb-6">
-              Founded with a vision to empower businesses through technology, Trenz Software IT Solutions has grown into a trusted partner for companies across industries.
-            </p>
-            <p className="text-base md:text-lg text-gray-400 leading-relaxed">
-              From our early days of crafting simple web solutions to developing scalable SaaS platforms, mobile apps, and enterprise software, we have consistently focused on <span className="text-cyan-400 font-semibold">innovation, quality, and client success</span>.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Projects Section */}
-      <section id="projects" className="relative py-32 px-4 md:px-8">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            className="mb-20"
-          >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-4">
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">PROJECTS</span>
-            </h2>
-            <p className="text-xl text-gray-400">Our work speaks for itself</p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {projects.map((project, i) => (
-              <motion.div
-                key={project.name}
-                initial={{ opacity: 0, y: 50, rotate: -5 }}
-                whileInView={{ opacity: 1, y: 0, rotate: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: i * 0.1, type: 'spring' }}
-                whileHover={{ scale: 1.02, rotate: i % 2 === 0 ? 2 : -2, y: -10 }}
-                className="group relative p-10 bg-gradient-to-br from-black/40 to-black/20 border border-white/10 rounded-3xl backdrop-blur-xl hover:border-cyan-500/50 transition-all overflow-hidden"
-              >
-                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/0 to-purple-500/0 group-hover:from-cyan-500/10 group-hover:to-purple-500/10 transition-all" />
-                <div className="relative z-10 flex items-start justify-between mb-6">
-                  <div>
-                    <span className="inline-block px-4 py-1 bg-cyan-500/20 border border-cyan-500/30 rounded-full text-cyan-300 text-sm mb-4">
-                      {project.tag}
-                    </span>
-                    <h3 className="text-4xl md:text-5xl lg:text-6xl font-black group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all">
-                      {project.name}
-                    </h3>
-                  </div>
-                  <motion.div
-                    whileHover={{ rotate: 90, scale: 1.2 }}
-                    className="w-12 h-12 rounded-xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center"
-                  >
-                    <Zap className="w-6 h-6 text-white" />
-                  </motion.div>
+              {Array.from({ length: 4 }, (_, i) => (
+                <div key={`marquee-${i}`} className="flex items-center gap-12 text-white/20">
+                  <span className="text-6xl md:text-8xl font-black uppercase">Redefining</span>
+                  <Zap className="w-8 h-8 md:w-12 md:h-12 text-cyan-500 animate-pulse" />
+                  <span className="text-6xl md:text-8xl font-serif italic">Possibility</span>
+                  <Sparkles className="w-8 h-8 md:w-12 md:h-12 text-purple-500" />
                 </div>
-              </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </section>
+
+        {/* Services Section */}
+        <section id="services" className="relative pt-32 pb-24 px-4 md:px-10 z-10 w-full overflow-hidden bg-black">
+          <div className="flex flex-col md:flex-row gap-20 mb-32">
+             <div className="flex-1">
+                <h2 className="text-6xl md:text-8xl font-black text-white mb-6">
+                  OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">ARSENAL</span>
+                </h2>
+                <div className="h-1 w-20 bg-cyan-500" />
+             </div>
+             <div className="flex-1 flex items-end">
+                <p className="text-xl md:text-2xl text-neutral-400 max-w-lg leading-relaxed">
+                   We specialize in high-impact digital infrastructure. Scalable, secure, and built to outperform your competition.
+                </p>
+             </div>
+          </div>
+
+          <div className="flex flex-col gap-8 md:gap-0">
+            {SERVICES.map((service, index) => (
+              <ServiceCard key={service.id} service={service} index={index} />
             ))}
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="relative py-32 px-4 md:px-8 min-h-screen flex items-center">
-        <div className="max-w-6xl mx-auto w-full">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-20"
-          >
-            <h2 className="text-5xl md:text-7xl lg:text-8xl font-black mb-6">
-              LET'S <span className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">CONNECT</span>
-            </h2>
-            <p className="text-xl md:text-2xl text-gray-400">Ready to transform your ideas into reality?</p>
-          </motion.div>
+        {/* Selected Work (The Vault) */}
+        <section id="work" className="relative py-32 bg-neutral-950">
+           <div className="container mx-auto px-4 md:px-10 mb-20 flex justify-between items-end">
+              <h2 className="text-5xl md:text-7xl font-serif italic text-white">Selected Works</h2>
+              <span className="text-xs font-mono text-cyan-400 border border-cyan-400/30 px-3 py-1 rounded-full">2023 - 2025</span>
+           </div>
+           
+           <div className="flex flex-col px-2 md:px-10">
+              {PROJECTS.map((project, idx) => (
+                 <ProjectRow key={project.name} project={project} index={idx} />
+              ))}
+           </div>
+        </section>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              { icon: Mail, label: 'Email', value: 'contact@trenztechnologies.com', href: 'mailto:contact@trenztechnologies.com' },
-              { icon: Phone, label: 'Phone', value: '9944865057', href: 'tel:+919944865057' },
-              { icon: Instagram, label: 'Instagram', value: '@trenztechnologies', href: 'https://www.instagram.com/trenztechnologies?utm_source=qr&igsh=Y3puczR4MnlyOHVz' }
-            ].map((contact, i) => {
-              const Icon = contact.icon
-              return (
-                <motion.a
-                  key={contact.label}
-                  href={contact.href}
-                  target={contact.href.startsWith('http') ? '_blank' : undefined}
-                  rel={contact.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: i * 0.15 }}
-                  whileHover={{ scale: 1.05, y: -10 }}
-                  className="group p-8 bg-gradient-to-br from-black/40 to-black/20 border border-white/10 rounded-3xl backdrop-blur-xl hover:border-cyan-500/50 transition-all text-center"
-                >
-                  <motion.div
-                    whileHover={{ rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                    className="w-16 h-16 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-cyan-500 to-purple-500 flex items-center justify-center"
-                  >
-                    <Icon className="w-8 h-8 text-white" />
-                  </motion.div>
-                  <div className="text-xs text-gray-400 mb-3 uppercase tracking-wider">{contact.label}</div>
-                  <div className="text-sm md:text-base font-bold group-hover:bg-gradient-to-r group-hover:from-cyan-400 group-hover:to-purple-400 group-hover:bg-clip-text group-hover:text-transparent transition-all break-all">
-                    {contact.value}
-                  </div>
-                </motion.a>
-              )
-            })}
+        {/* Contact Section */}
+        <section id="contact" className="min-h-screen relative flex flex-col items-center justify-center border-t border-white/10 bg-black py-24 md:py-32 overflow-hidden">
+          {/* Abstract BG */}
+          <div className="absolute top-0 w-full h-px bg-gradient-to-r from-transparent via-cyan-500 to-transparent" />
+          
+          <div className="relative z-10 w-full px-4 max-w-6xl mx-auto text-center">
+            
+            <motion.h2 
+               initial={{ opacity: 0, y: 50 }}
+               whileInView={{ opacity: 1, y: 0 }}
+               viewport={{ once: true }}
+               className="text-[12vw] leading-[0.8] font-black text-white mb-10 tracking-tighter"
+            >
+              LET'S BUILD<br/>
+              <span className="text-transparent bg-clip-text bg-gradient-to-b from-cyan-400 to-transparent opacity-50 hover:opacity-100 transition-opacity duration-500 cursor-default">THE FUTURE</span>
+            </motion.h2>
+
+            <div className="flex flex-wrap justify-center gap-6 mt-12">
+               <MagneticButton href="mailto:contact@trenztechnologies.com" className="bg-white text-black border-transparent hover:bg-cyan-400">
+                  <Mail className="w-4 h-4" /> Email Us
+               </MagneticButton>
+               <MagneticButton href="tel:+919944865057">
+                  <Phone className="w-4 h-4" /> Schedule Call
+               </MagneticButton>
+            </div>
+            
+            <div className="mt-24 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-white/10 pt-12 text-left">
+               <div>
+                  <h4 className="text-neutral-500 text-xs uppercase tracking-widest mb-4">Socials</h4>
+                  <ul className="space-y-2 text-sm text-neutral-300">
+                     <li>
+                       <a 
+                         href="https://www.instagram.com/trenztechnologies?utm_source=qr&igsh=Y3puczR4MnlyOHVz" 
+                         target="_blank" 
+                         rel="noopener noreferrer"
+                         className="hover:text-cyan-400 transition-colors"
+                       >
+                         Instagram
+                       </a>
+                     </li>
+                     <li><a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">LinkedIn</a></li>
+                     <li><a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Twitter / X</a></li>
+                  </ul>
+               </div>
+               <div>
+                  <h4 className="text-neutral-500 text-xs uppercase tracking-widest mb-4">Contact</h4>
+                  <ul className="space-y-2 text-sm text-neutral-300">
+                     <li>
+                       <a href="mailto:contact@trenztechnologies.com" className="hover:text-cyan-400 transition-colors">
+                         contact@trenztechnologies.com
+                       </a>
+                     </li>
+                     <li>
+                       <a href="tel:+919944865057" className="hover:text-cyan-400 transition-colors">
+                         9944865057
+                       </a>
+                     </li>
+                  </ul>
+               </div>
+               <div className="col-span-2 text-right">
+                  <h4 className="text-neutral-500 text-xs uppercase tracking-widest mb-4">Trenz Technologies</h4>
+                  <p className="text-sm text-neutral-600">© 2026 All Rights Reserved.</p>
+               </div>
+            </div>
           </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="relative py-12 px-4 md:px-8 border-t border-white/10">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-400">
-          <div>© 2025 Trenz Technologies. All rights reserved.</div>
-          <div className="flex gap-6">
-            <a href="mailto:contact@trenztechnologies.com" className="hover:text-cyan-400 transition-colors">Email</a>
-            <a href="tel:+919944865057" className="hover:text-cyan-400 transition-colors">Phone</a>
-            <a href="https://www.instagram.com/trenztechnologies?utm_source=qr&igsh=Y3puczR4MnlyOHVz" target="_blank" rel="noopener noreferrer" className="hover:text-cyan-400 transition-colors">Instagram</a>
-          </div>
-        </div>
-      </footer>
-    </div>
+        </section>
+      </div>
+    </>
   )
+}
+
+// --- Sub Components ---
+
+function ServiceCard({ service, index }: { readonly service: typeof SERVICES[0], readonly index: number }) {
+  const Icon = service.icon
+  return (
+    <motion.div 
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-50px" }}
+      transition={{ duration: 0.5, delay: index * 0.1 }}
+      className="group relative border-t border-white/10 py-16 md:py-24 hover:bg-white/5 transition-colors duration-500"
+    >
+      <div className="container mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-8 md:gap-0">
+         <div className="flex items-center gap-8 md:gap-16">
+            <span className="text-neutral-600 font-mono text-xl">0{service.id}</span>
+            <h3 className="text-4xl md:text-6xl font-bold text-neutral-300 group-hover:text-white group-hover:translate-x-4 transition-all duration-500">
+               {service.title}
+            </h3>
+         </div>
+         <div className="md:w-1/3 flex items-start gap-4">
+            <div className={`p-3 rounded-lg bg-gradient-to-br ${service.gradient} opacity-50 group-hover:opacity-100 transition-opacity`}>
+               <Icon className="w-6 h-6 text-white" />
+            </div>
+            <p className="text-neutral-400 text-sm md:text-base leading-relaxed group-hover:text-neutral-200 transition-colors">
+               {service.desc}
+            </p>
+         </div>
+      </div>
+    </motion.div>
+  )
+}
+
+function ProjectRow({ project, index }: { readonly project: typeof PROJECTS[0], readonly index: number }) {
+   const getGradientClass = () => {
+     if (project.color === 'cyan') return 'from-cyan-900/20'
+     if (project.color === 'purple') return 'from-purple-900/20'
+     if (project.color === 'pink') return 'from-pink-900/20'
+     return 'from-blue-900/20'
+   }
+
+   return (
+      <motion.div 
+         initial={{ opacity: 0, y: 20 }}
+         whileInView={{ opacity: 1, y: 0 }}
+         viewport={{ once: true }}
+         className="group relative border-b border-white/10 py-12 md:py-20 flex flex-col md:flex-row justify-between md:items-center cursor-pointer overflow-hidden"
+      >
+         {/* Hover Gradient Background */}
+         <div className={`absolute inset-0 bg-gradient-to-r ${getGradientClass()} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 translate-y-full group-hover:translate-y-0 ease-in-out`} />
+
+         <div className="relative z-10">
+            <h3 className="text-4xl md:text-7xl font-black text-white mix-blend-difference uppercase">
+               {project.name}
+            </h3>
+            <span className="text-neutral-500 font-mono text-sm mt-2 block">{project.tag}</span>
+         </div>
+
+         <div className="relative z-10 flex items-center gap-4 mt-6 md:mt-0">
+            <span className="text-neutral-500 font-mono">{project.year}</span>
+            <div className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:text-black transition-all duration-300">
+               <ArrowUpRight className="w-5 h-5 group-hover:rotate-45 transition-transform" />
+            </div>
+         </div>
+      </motion.div>
+   )
 }

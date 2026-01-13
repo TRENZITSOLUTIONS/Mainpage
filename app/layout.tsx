@@ -1,12 +1,13 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Syne, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin'] })
+const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
+const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
 
 export const metadata: Metadata = {
-  title: 'Trenz Technologies - We Bridge Vision to Reality',
-  description: 'Where Code Meets Innovation. We specialize in creating SaaS applications, websites, and software products.',
+  title: 'Trenz Technologies - Digital Alchemy',
+  description: "We don't just write code. We engineer dominance. High-impact digital infrastructure for businesses.",
 }
 
 export default function RootLayout({
@@ -15,8 +16,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
+    <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
+      <body>{children}</body>
     </html>
   )
 }
