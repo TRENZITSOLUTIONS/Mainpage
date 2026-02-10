@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, useSpring, useMotionValue, AnimatePresence } from 'framer-motion'
 import Lenis from 'lenis'
 import Image from 'next/image'
+import Link from 'next/link'
 import { Code, Sparkles, Zap, Mail, Phone, Cpu, Network, ArrowUpRight } from 'lucide-react'
 import { clsx, type ClassValue } from 'clsx'
 import { twMerge } from 'tailwind-merge'
@@ -200,53 +201,6 @@ export default function Home() {
           </svg>
         </div>
 
-        {/* Navigation */}
-        <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[100] text-white">
-          <motion.a
-            href="#"
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 1 }}
-            className="flex items-center gap-3 group cursor-pointer relative z-10"
-          >
-            <div className="relative w-10 h-10 md:w-12 md:h-12 flex items-center justify-center bg-black/20 backdrop-blur-sm rounded-lg p-1">
-              <Image
-                src="/logo.jpeg"
-                alt="Trenz Technologies Logo"
-                width={48}
-                height={48}
-                className="object-contain rounded"
-                priority
-                unoptimized
-              />
-            </div>
-            <span className="tracking-[0.2em] text-sm font-black font-mono hidden md:block mix-blend-difference">TRENZ<span className="text-cyan-400">_</span>TECH</span>
-          </motion.a>
-          <div className="hidden md:flex gap-10 text-xs tracking-widest font-bold uppercase">
-            {['Services', 'About', 'Work'].map((item, i) => (
-              <motion.a 
-                key={item}
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1 + (i * 0.1) }}
-                href={`#${item.toLowerCase()}`} 
-                className="hover:text-cyan-400 transition-colors relative after:content-[''] after:absolute after:w-full after:scale-x-0 after:h-[1px] after:bottom-[-4px] after:left-0 after:bg-cyan-400 after:origin-right hover:after:origin-left hover:after:scale-x-100 after:transition-transform after:duration-300"
-              >
-                {item}
-              </motion.a>
-            ))}
-          </div>
-          <motion.div
-             initial={{ opacity: 0, scale: 0.8 }}
-             animate={{ opacity: 1, scale: 1 }}
-             transition={{ delay: 1.5 }}
-          >
-             <MagneticButton href="#contact" className="hidden md:block">
-              Let&apos;s Talk
-            </MagneticButton>
-          </motion.div>
-        </nav>
-
         {/* Hero Section */}
         <section className="h-screen relative flex items-center justify-center overflow-hidden perspective-1000">
           <motion.div 
@@ -336,6 +290,18 @@ export default function Home() {
                    We specialize in high-impact digital infrastructure. Scalable, secure, and built to outperform your competition.
                 </p>
              </div>
+          </div>
+          <div className="text-center mt-12">
+            <Link href="/services">
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="inline-flex items-center px-8 py-4 bg-gradient-to-r from-cyan-600 to-blue-600 text-white rounded-full font-semibold hover:shadow-lg hover:shadow-cyan-500/50 transition-all cursor-pointer"
+              >
+                View All Services
+                <ArrowUpRight className="ml-2 w-5 h-5" />
+              </motion.div>
+            </Link>
           </div>
 
           <div className="flex flex-col gap-8 md:gap-0">

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Syne, Space_Grotesk } from 'next/font/google'
 import './globals.css'
+import Navigation from '@/components/Navigation'
 
 const syne = Syne({ subsets: ['latin'], variable: '--font-syne' })
 const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], variable: '--font-space-grotesk' })
@@ -22,7 +23,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
-      <body>{children}</body>
+      <body>
+        <Navigation />
+        {children}
+      </body>
     </html>
   )
 }
