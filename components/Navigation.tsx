@@ -18,6 +18,7 @@ export default function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
 
   const navItems = [
+    { label: 'Home', href: '/' },
     { label: 'Services', href: '/services' },
     { label: 'Products', href: '/products' },
     { label: 'Portfolio', href: '/portfolio' },
@@ -27,7 +28,7 @@ export default function Navigation() {
 
   return (
     <>
-      <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[100] text-white">
+      <nav className="fixed top-0 left-0 w-full p-6 md:p-10 flex justify-between items-center z-[110] text-white">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
