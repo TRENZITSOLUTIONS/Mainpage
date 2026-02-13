@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, HeadphonesIcon, Lightbulb, Users, Clock } from 'lucide-react'
+import { ArrowLeft, HeadphonesIcon, Lightbulb, Users } from 'lucide-react'
 
 export default function ITConsultingPage() {
   return (
@@ -35,29 +35,32 @@ export default function ITConsultingPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/it-consulting/technology-strategy"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
+            >
               <Lightbulb className="w-8 h-8 text-green-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Technology Strategy & Advisory</h3>
               <p className="text-gray-400">Expert guidance on technology decisions, architecture, and digital roadmap.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/it-consulting/dedicated-teams"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
+            >
               <Users className="w-8 h-8 text-green-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Dedicated Development Teams</h3>
               <p className="text-gray-400">Extended teams of skilled developers working exclusively on your projects.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/it-consulting/managed-services"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
+            >
               <HeadphonesIcon className="w-8 h-8 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Managed Services</h3>
-              <p className="text-gray-400">Complete IT infrastructure management and support.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <Clock className="w-8 h-8 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">24/7 Support</h3>
-              <p className="text-gray-400">Round-the-clock monitoring, maintenance, and incident response.</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2">Managed Services & 24/7 Support</h3>
+              <p className="text-gray-400">Complete IT infrastructure management and round-the-clock support.</p>
+            </Link>
           </div>
 
           <div className="p-8 bg-gradient-to-br from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30">

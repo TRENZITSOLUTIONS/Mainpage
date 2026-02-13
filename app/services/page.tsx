@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowRight, Code, Smartphone, Cloud, Zap, HeadphonesIcon } from 'lucide-react'
+import { ArrowRight, Code, Smartphone, Cloud, Zap, HeadphonesIcon, ShoppingCart } from 'lucide-react'
 
 const services = [
   {
@@ -67,7 +67,21 @@ const services = [
       'Dedicated development teams',
       'Managed services & 24/7 support'
     ]
-  }
+  },
+{
+  slug: 'trenz-pos',
+  title: 'Trenz POS',
+  description: 'Custom point-of-sale solutions for retail businesses with integrated inventory management and reporting.',
+  icon: ShoppingCart, // change this import
+  gradient: 'from-green-400 to-emerald-600',
+  features: [
+    'Retail billing system',
+    'Inventory management',
+    'Sales analytics & reporting',
+    'Multi-store support'
+  ]
+}
+
 ]
 
 export default function ServicesPage() {

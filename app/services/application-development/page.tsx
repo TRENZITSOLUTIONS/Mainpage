@@ -35,29 +35,41 @@ export default function ApplicationDevelopmentPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/application-development/web-app-development"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
+            >
               <Globe className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Web App Development</h3>
               <p className="text-gray-400">Responsive, fast, and scalable web applications built with modern frameworks.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/application-development/mobile-apps"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
+            >
               <Smartphone className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Mobile Apps Development</h3>
               <p className="text-gray-400">Native iOS, Android, and cross-platform mobile solutions.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/application-development/api-development"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
+            >
               <Code className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">API Development & Integrations</h3>
               <p className="text-gray-400">RESTful APIs, GraphQL, and seamless third-party integrations.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/application-development/maintenance-support"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
+            >
               <Wrench className="w-8 h-8 text-purple-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Ongoing Maintenance & Support</h3>
               <p className="text-gray-400">Continuous updates, bug fixes, and feature enhancements.</p>
-            </div>
+            </Link>
           </div>
 
           <div className="p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-500/30">

@@ -35,29 +35,32 @@ export default function DigitalTransformationPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/process-automation"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
+            >
               <RefreshCw className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Process Automation</h3>
               <p className="text-gray-400">Streamline workflows and eliminate manual processes with intelligent automation.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/data-analytics"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
+            >
               <BarChart3 className="w-8 h-8 text-orange-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Data & Analytics Solutions</h3>
               <p className="text-gray-400">Turn data into actionable insights with advanced analytics and visualization.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/ai-modernization"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
+            >
               <Bot className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">AI-Driven Systems</h3>
+              <h3 className="text-xl font-bold text-white mb-2">AI-Driven Systems & Modernization</h3>
               <p className="text-gray-400">Leverage machine learning and AI to enhance decision-making and operations.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <Zap className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Modernization</h3>
-              <p className="text-gray-400">Upgrade legacy systems to modern, scalable architectures.</p>
-            </div>
+            </Link>
           </div>
 
           <div className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-xl border border-orange-500/30">

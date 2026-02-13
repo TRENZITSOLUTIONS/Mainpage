@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Cloud, Server, Shield, DollarSign } from 'lucide-react'
+import { ArrowLeft, Cloud, Server, Shield } from 'lucide-react'
 
 export default function CloudSolutionsPage() {
   return (
@@ -35,29 +35,41 @@ export default function CloudSolutionsPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/cloud-architecture"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-blue-400 transition-colors"
+            >
               <Cloud className="w-8 h-8 text-blue-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Cloud Architecture & Migration</h3>
               <p className="text-gray-400">Seamless migration strategies and scalable cloud architectures.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/multi-cloud"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-blue-400 transition-colors"
+            >
               <Server className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Multi-Cloud Support</h3>
-              <p className="text-gray-400">AWS, Azure, and Google Cloud expertise for optimal platform selection.</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2">AWS, Azure & Google Cloud</h3>
+              <p className="text-gray-400">Multi-cloud expertise for optimal platform selection and integration.</p>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/cloud-solutions/security-optimization"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-blue-400 transition-colors"
+            >
               <Shield className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Security & Optimization</h3>
-              <p className="text-gray-400">Enterprise-grade security and performance optimization.</p>
-            </div>
+              <h3 className="text-xl font-bold text-white mb-2">Security, Optimization & Cost Control</h3>
+              <p className="text-gray-400">Enterprise security and cost-effective resource management.</p>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <DollarSign className="w-8 h-8 text-blue-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Cost Control</h3>
-              <p className="text-gray-400">Server provisioning, management, and maintenance with cost optimization.</p>
-            </div>
+            <Link
+              href="/services/cloud-solutions/server-provisioning"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-blue-400 transition-colors"
+            >
+              <Server className="w-8 h-8 text-blue-400 mb-4" />
+              <h3 className="text-xl font-bold text-white mb-2">Server Provisioning & Management</h3>
+              <p className="text-gray-400">Infrastructure setup, scaling, and lifecycle management.</p>
+            </Link>
           </div>
 
           <div className="p-8 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-500/30">

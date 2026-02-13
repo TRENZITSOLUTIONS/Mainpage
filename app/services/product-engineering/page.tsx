@@ -35,29 +35,41 @@ export default function ProductEngineeringPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/product-engineering/custom-software"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
+            >
               <Code className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Custom Software & SaaS</h3>
               <p className="text-gray-400">Tailored solutions designed specifically for your business needs and workflows.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/product-engineering/enterprise-systems"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
+            >
               <Database className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Enterprise Systems</h3>
               <p className="text-gray-400">ERP, CRM, POS systems built for scale, security, and performance.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/product-engineering/scalable-architectures"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
+            >
               <Shield className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Scalable Architectures</h3>
               <p className="text-gray-400">Secure, scalable infrastructure that grows with your business.</p>
-            </div>
+            </Link>
 
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
+            <Link
+              href="/services/product-engineering/government-projects"
+              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
+            >
               <Building2 className="w-8 h-8 text-cyan-400 mb-4" />
               <h3 className="text-xl font-bold text-white mb-2">Government Projects</h3>
               <p className="text-gray-400">E-governance, public systems & services, and ongoing maintenance.</p>
-            </div>
+            </Link>
           </div>
 
           <div className="p-8 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-500/30">
