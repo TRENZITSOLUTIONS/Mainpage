@@ -1,86 +1,94 @@
-"use client"
+import { Metadata } from 'next'
+import CustomSoftwareContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft, Code } from 'lucide-react'
+export const metadata: Metadata = {
+  title: 'Custom Software & SaaS Products | Business Solutions',
+  description: 'Trenz Technologies delivers custom software and SaaS product development focused on innovation, scalability, security, and long-term business growth success.',
+  keywords: 'Custom software development company in Chennai, SaaS product development, cloud software solutions, enterprise and startup applications, end-to-end development',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/custom-software',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'Custom Software & SaaS Development in Chennai – Trenz',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software',
+    description: 'Trenz Technologies builds custom software and SaaS solutions for web and mobile apps, cloud systems, API integrations, automation tools, and enterprise platforms.',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: '',
+  },
+  twitter: {
+    card: 'summary',
+    site: ' ',
+    title: 'Trenz Technologies – Custom Software & SaaS Services',
+    description: 'Trenz Technologies delivers custom software and SaaS products including web and mobile apps, cloud platforms, APIs, automation tools, and enterprise solutions..',
+    creator: '',
+    images: [' '],
+  },
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software',
+    contact: '',
+  },
+}
 
-export default function CustomSoftwarePage() {
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
+
   return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
-        <Link
-          href="/services/product-engineering"
-          className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Product Engineering
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Code className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">Custom Software & SaaS</h1>
-          </div>
-
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            We are a leading custom software development company specializing in scalable SaaS application development, cloud-based platforms, and enterprise software solutions.
-          </p>
-           <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            From product discovery to deployment and long-term support, we design and build secure, high-performance digital products tailored to complex business workflows.
-          </p>
-
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Software Discovery & Product Strategy</h3>
-              <p className="text-gray-400">Successful software starts with clarity. Our product discovery phase ensures your solution is technically feasible, commercially viable, and aligned with business goals.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Software Architecture & Security Engineering</h3>
-              <p className="text-gray-400">We design cloud-native, microservices-based architectures with DevOps, CI/CD, and security-first development practices.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">SaaS Platform Development</h3>
-              <p className="text-gray-400">We build multi-tenant SaaS platforms with subscription billing, role-based access control, onboarding automation, and analytics dashboards.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">API Integration & Scalable System Development</h3>
-              <p className="text-gray-400">Modern software must integrate seamlessly. We develop API-driven systems with secure third-party integrations and horizontal scaling strategies.</p>
-            </div>
-          </div>
-
-          <div className="p-8 bg-gradient-to-br from-cyan-900/10 to-blue-900/10 rounded-xl border border-cyan-500/20">
-            <h2 className="text-2xl font-bold text-white mb-4">Why Choose Our Custom Software Development Services?</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">1.</span>
-                <span>Scalable cloud architecture</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">2.</span>
-                <span>Secure and compliance-ready solutions</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">3.</span>
-                <span>Dedicated development teams</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">4.</span>
-                <span>Long-term technical support</span>
-              </li>
-            </ul>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <CustomSoftwareContent />
+    </>
   )
 }

@@ -1,70 +1,94 @@
-'use client'
+import { Metadata } from 'next'
+import WebAppDevelopmentContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft, Code } from 'lucide-react'
+export const metadata: Metadata = {
+  title: 'Website Development Services | Digital Solutions',
+  description: 'Trenz Technologies delivers scalable website development services with secure architecture responsive design high performance and business focused digital growth',
+  keywords: 'Website development company delivering custom web design, responsive development, ecommerce, CMS solutions, SEO-friendly architecture, and scalable digital platforms.',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'Website Development Solutions in Chennai – Trenz',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    description: 'Trenz Technologies builds website solutions including UI UX design custom web applications ecommerce platforms system integrations scalability and performance',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: '',
+  },
+  twitter: {
+    card: 'summary',
+    site: ' ',
+    title: 'Trenz Technologies – Website Development Solutions',
+    description: 'Trenz Technologies offers website development services including UI UX design, custom web apps, ecommerce solutions, API integration, support and maintenance',
+    creator: '',
+    images: [' '],
+  },
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    contact: '',
+  },
+}
 
-export default function WebAppDevelopmentPage() {
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
+
   return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
-        <Link
-          href="/services/application-development"
-          className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Application Development
-        </Link>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Code className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">Web App Development</h1>
-          </div>
-
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            We are a specialized web application development company building modern, scalable, and high-performance web solutions for startups and enterprises. Our expertise spans React, Next.js, Vue, and modern web frameworks.
-          </p>
-
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            From concept to launch, we develop responsive web applications with exceptional user experience, SEO optimization, and production-ready code architecture.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">React & Next.js Development</h3>
-              <p className="text-gray-400">We build component-driven web applications with React and Next.js, featuring server-side rendering (SSR), static site generation (SSG), and API routes for full-stack development in a single framework.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Responsive & Accessible Design</h3>
-              <p className="text-gray-400">Mobile-first, WCAG-compliant interfaces that deliver seamless user experience across all devices. We optimize for accessibility, ensuring your web app reaches all users effectively.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">TypeScript & Quality Assurance</h3>
-              <p className="text-gray-400">Type-safe development with comprehensive testing coverage including unit tests, integration tests, and end-to-end tests for maximum reliability and reduced bugs.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Performance & SEO Optimization</h3>
-              <p className="text-gray-400">We optimize for Core Web Vitals, implement lazy loading, code splitting, and caching strategies. Our SEO-friendly architecture ensures better search engine rankings and organic visibility.</p>
-            </div>
-          </div>
-
-          <div className="p-8 bg-gradient-to-br from-cyan-900/10 to-blue-900/10 rounded-xl border border-cyan-500/20">
-            <h2 className="text-2xl font-bold text-white mb-4">Tech Stack</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Frontend: React, Next.js, Vue.js, TailwindCSS, Framer Motion</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>State management: Redux, Zustand, Context API</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Testing: Jest, React Testing Library, Cypress</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Build tools: Vite, Webpack, TypeScript</span></li>
-            </ul>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <WebAppDevelopmentContent />
+    </>
   )
 }

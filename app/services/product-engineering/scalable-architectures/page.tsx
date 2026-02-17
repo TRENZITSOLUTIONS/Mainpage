@@ -1,68 +1,94 @@
-"use client"
+import { Metadata } from 'next'
+import ScalableArchitecturesContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft, Shield } from 'lucide-react'
+export const metadata: Metadata = {
+  title: 'Secure Cloud & System Architectures | Digital Solutions',
+  description: 'Trenz Technologies designs scalable secure architectures for enterprise software delivering high performance reliability data security and future ready growth',
+  keywords: 'Architecture services company delivering scalable secure system design, cloud and multi cloud solutions, DevOps frameworks, zero trust security, and enterprise platforms .',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'Scalable & Secure Architecture Services in Chennai – Trenz',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    description: 'Trenz Technologies builds scalable secure architectures delivering cloud platforms DevOps automation API integration data systems performance and enterprise readiness',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: '',
+  },
+  twitter: {
+    card: 'summary',
+    site: ' ',
+    title: 'Trenz Technologies – Scalable Secure Architecture Services',
+    description: 'Trenz Technologies delivers scalable secure architectures with cloud solutions DevOps automation API development data platforms system integration and business',
+    creator: '',
+    images: [' '],
+  },
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    contact: '',
+  },
+}
 
-export default function ScalableArchitecturesPage() {
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
+
   return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
-        <Link
-          href="/services/product-engineering"
-          className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Product Engineering
-        </Link>
-
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">Scalable Cloud Architecture & Infrastructure Solutions</h1>
-          </div>
-
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-           We design scalable cloud architectures that support rapid growth, high traffic, and mission-critical operations. Our infrastructure solutions focus on elasticity, uptime, cost optimization, and long-term maintainability.
-          </p>
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-          From microservices to multi-region deployment, we build systems that scale efficiently without compromising performance or security.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Cloud-Native Architecture Design</h3>
-              <p className="text-gray-400">We implement microservices, containerized deployments, and serverless architectures to enable elastic scalability and faster release cycles. Our cloud-native solutions are optimized for AWS, Azure, and GCP environments, ensuring high availability and fault tolerance.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Observability & Monitoring</h3>
-              <p className="text-gray-400">We establish full-stack observability using centralized logging, distributed tracing, and real-time metrics monitoring. This allows proactive issue detection, performance optimization, and improved system reliability under heavy workloads..</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Infrastructure Cost Optimization</h3>
-              <p className="text-gray-400">We design right-sized cloud infrastructure with autoscaling policies, workload balancing, and performance tuning to reduce unnecessary cloud spend. Our approach ensures maximum resource utilization while maintaining performance stability.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Disaster Recovery & Business Continuity</h3>
-              <p className="text-gray-400">We build resilient systems with multi-region deployment strategies, automated backups, failover mechanisms, and recovery runbooks. This ensures minimal downtime and rapid restoration during outages or infrastructure failures.</p>
-            </div>
-          </div>
-
-          <div className="p-8 bg-gradient-to-br from-cyan-900/10 to-blue-900/10 rounded-xl border border-cyan-500/20">
-            <h2 className="text-2xl font-bold text-white mb-4">Deliverables</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>CI/CD pipeline configuration and DevOps setup</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Load testing and chaos engineering reports</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Monitoring dashboards and alerting systems</span></li>
-            </ul>
-          </div>
-        </motion.div>
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ScalableArchitecturesContent />
+    </>
   )
 }
