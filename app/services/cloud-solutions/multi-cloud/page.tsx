@@ -29,7 +29,7 @@ export default function MultiCloudPage() {
           </p>
 
           <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            Whether you're standardizing on a single platform, distributing workloads across multiple clouds, or maintaining hybrid environments, we provide architecture guidance, implementation support, and optimization to maximize cloud value.
+            Whether you&apos;re standardizing on a single platform, distributing workloads across multiple clouds, or maintaining hybrid environments, we provide architecture guidance, implementation support, and optimization to maximize cloud value.
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -45,12 +45,12 @@ export default function MultiCloudPage() {
 
             <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
               <h3 className="text-lg font-bold text-white mb-2">Google Cloud Data & AI/ML</h3>
-              <p className="text-gray-400">We leverage Google Cloud's strengths in BigQuery for data warehousing, Cloud Run for containerized workloads, Vertex AI for machine learning, and real-time analytics. Ideal for data-driven applications and AI initiatives.</p>
+              <p className="text-gray-400">We leverage Google Cloud&apos;s strengths in BigQuery for data warehousing, Cloud Run for containerized workloads, Vertex AI for machine learning, and real-time analytics. Ideal for data-driven applications and AI initiatives.</p>
             </div>
 
             <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
               <h3 className="text-lg font-bold text-white mb-2">Multi-Cloud Architecture & FinOps</h3>
-              <p className="text-gray-400">We design distributed, multi-cloud architectures that leverage each provider's strengths while avoiding lock-in. Cost governance through FinOps practices, chargeback models, and continuous optimization ensures cloud investments deliver ROI.</p>
+              <p className="text-gray-400">We design distributed, multi-cloud architectures that leverage each provider&apos;s strengths while avoiding lock-in. Cost governance through FinOps practices, chargeback models, and continuous optimization ensures cloud investments deliver ROI.</p>
             </div>
           </div>
 
