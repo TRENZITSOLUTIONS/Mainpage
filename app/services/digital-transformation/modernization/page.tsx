@@ -4,61 +4,62 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Shield,
-  Lock,
-  Gauge,
-  FileCheck,
+  Zap,
+  Search,
+  Server,
+  Code2,
+  Database,
+  Plug,
   CheckCircle2,
   ArrowRight,
-  Eye,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Shield,
-    title: 'Security Audits & Threat Assessment',
+    icon: Search,
+    title: 'Legacy Assessment & Strategy',
     description:
-      'Comprehensive security audits that identify vulnerabilities, misconfigurations, and potential attack vectors across your entire cloud infrastructure, with prioritized remediation plans.',
+      'Conduct a thorough assessment of your existing systems to evaluate technical debt, risk, and modernization options. We deliver a prioritized roadmap with clear milestones and ROI projections.',
   },
   {
-    icon: FileCheck,
-    title: 'Compliance Management',
+    icon: Server,
+    title: 'Re-Platforming & Cloud Migration',
     description:
-      'Navigate complex regulatory requirements with confidence. We implement and maintain compliance frameworks for SOC2, HIPAA, GDPR, PCI-DSS, and industry-specific standards.',
+      'Move legacy applications from outdated infrastructure to modern cloud platforms while preserving business logic, data integrity, and operational continuity.',
   },
   {
-    icon: Lock,
-    title: 'Encryption & DDoS Protection',
+    icon: Code2,
+    title: 'Code Refactoring & Architecture Redesign',
     description:
-      'End-to-end encryption for data at rest and in transit, combined with robust DDoS mitigation, WAF configuration, and network security controls to protect your applications.',
+      'Restructure monolithic codebases into clean, maintainable architectures using microservices, modular design patterns, and modern frameworks that enable faster development cycles.',
   },
   {
-    icon: Gauge,
-    title: 'Performance Tuning & Auto-Scaling',
+    icon: Plug,
+    title: 'API-First Modernization',
     description:
-      'Optimize resource allocation, reduce latency, and configure intelligent auto-scaling policies that ensure peak performance under any load while controlling costs.',
+      'Wrap legacy systems with modern APIs to unlock integrations, enable new digital channels, and create an interoperable architecture without a full rewrite.',
   },
 ]
 
 const deliverables = [
-  'Detailed security audit reports with risk ratings and remediation steps',
-  'Compliance documentation and evidence collection for SOC2, HIPAA, and GDPR',
-  'Encryption implementation across all data stores and communication channels',
-  'DDoS protection and web application firewall configurations',
-  'Performance benchmarking reports with optimization recommendations',
-  'Auto-scaling policies and load balancing configurations for high availability',
+  'Comprehensive legacy system assessment with risk and cost analysis',
+  'Phased modernization roadmap with incremental delivery milestones',
+  'Re-platformed applications running on modern cloud infrastructure',
+  'Refactored codebases with improved test coverage and documentation',
+  'Database migration with full data validation and zero data loss',
+  'API layers enabling seamless integration with modern systems and partners',
 ]
 
-export default function SecurityOptimizationPage() {
+export default function ModernizationPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
         <Link
-          href="/services/cloud-solutions"
+          href="/services/digital-transformation"
           className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Cloud Solutions
+          Back to Digital Transformation
         </Link>
 
         <motion.div
@@ -68,28 +69,29 @@ export default function SecurityOptimizationPage() {
         >
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-600 rounded-xl flex items-center justify-center">
+              <Zap className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Cloud Security & Performance Optimization
+              Legacy System Modernization Services
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            Security and performance are not afterthoughts -- they are
-            foundational pillars of any successful cloud deployment. We deliver
-            enterprise-grade protection and fine-tuned performance to keep your
-            infrastructure secure, compliant, and lightning-fast.
+            Aging systems slow your business down, increase maintenance costs,
+            and create security vulnerabilities. Our legacy modernization
+            services upgrade your outdated technology to modern, scalable
+            architectures -- without disrupting the operations your business
+            depends on.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From penetration testing and vulnerability assessments to
-            auto-scaling configurations and latency optimization, our team
-            addresses every layer of your cloud stack. We help you meet
-            regulatory requirements, defend against evolving threats, and
-            ensure your applications deliver exceptional user experiences under
-            any load conditions.
+            We take a pragmatic, incremental approach to modernization. Whether
+            you need to re-platform a mainframe application, refactor a
+            monolithic codebase, migrate databases, or expose legacy
+            functionality through modern APIs, we build a strategy that
+            balances speed, risk, and cost. The outcome is a system that is
+            easier to maintain, faster to enhance, and ready for the future.
           </p>
 
           {/* Features Grid */}
@@ -105,7 +107,7 @@ export default function SecurityOptimizationPage() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="p-6 bg-slate-900/50 rounded-xl border border-slate-800"
               >
-                <feature.icon className="w-8 h-8 text-blue-400 mb-4" />
+                <feature.icon className="w-8 h-8 text-orange-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {feature.title}
                 </h3>
@@ -119,7 +121,7 @@ export default function SecurityOptimizationPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-xl border border-blue-500/30 mb-12"
+            className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-xl border border-orange-500/30 mb-12"
           >
             <h2 className="text-2xl font-bold text-white mb-4">
               What We Deliver
@@ -127,7 +129,7 @@ export default function SecurityOptimizationPage() {
             <ul className="space-y-3 text-gray-300">
               {deliverables.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-blue-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -146,31 +148,31 @@ export default function SecurityOptimizationPage() {
             </h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Security-first mindset with deep expertise in cloud-native
-                  threat detection and prevention
+                  Proven track record modernizing enterprise systems across
+                  finance, healthcare, and government sectors
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Hands-on compliance experience with SOC2, HIPAA, GDPR, and
-                  PCI-DSS frameworks
+                  Incremental modernization strategies that minimize risk and
+                  deliver value at every stage
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Performance engineering that delivers measurable improvements
-                  in latency and throughput
+                  Deep expertise in both legacy technologies and modern
+                  frameworks, bridging old and new
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-blue-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Continuous monitoring and proactive alerting to catch issues
-                  before they impact users
+                  Comprehensive testing and validation ensuring zero data loss
+                  and business continuity
                 </span>
               </li>
             </ul>
@@ -181,19 +183,19 @@ export default function SecurityOptimizationPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center p-10 bg-gradient-to-br from-blue-600/20 to-cyan-700/20 rounded-xl border border-blue-500/20"
+            className="text-center p-10 bg-gradient-to-br from-orange-600/20 to-red-700/20 rounded-xl border border-orange-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Secure and Optimize Your Cloud?
+              Ready to Modernize Your Legacy Systems?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Protect your infrastructure and unlock peak performance. Get in
-              touch to discuss a security audit or optimization assessment for
-              your cloud environment.
+              Let us help you transform aging technology into a modern,
+              competitive advantage. Get in touch to discuss your modernization
+              roadmap.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-semibold px-8 py-3 rounded-lg hover:from-blue-400 hover:to-cyan-400 transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-orange-400 hover:to-red-500 transition-all"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />

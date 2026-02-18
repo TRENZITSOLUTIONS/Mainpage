@@ -4,53 +4,53 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Shield,
-  Boxes,
-  Container,
-  GitBranch,
-  Activity,
-  Scale,
+  Code,
+  Layers,
+  Paintbrush,
+  Cloud,
+  CreditCard,
+  Users,
   CheckCircle2,
   ArrowRight,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Boxes,
-    title: 'Microservices Architecture',
+    icon: Layers,
+    title: 'Requirements Analysis & Planning',
     description:
-      'Decompose monoliths into loosely coupled, independently deployable services that scale horizontally and accelerate development velocity.',
+      'We work closely with stakeholders to gather, document, and validate requirements, ensuring the final product aligns perfectly with your business goals.',
   },
   {
-    icon: Container,
-    title: 'Containerization & Orchestration',
+    icon: Paintbrush,
+    title: 'UI/UX Design',
     description:
-      'Docker and Kubernetes-based deployments that ensure consistency across environments, simplify scaling, and streamline DevOps workflows.',
+      'Intuitive, user-centered interfaces crafted through research, wireframing, and iterative prototyping for an exceptional user experience.',
   },
   {
-    icon: GitBranch,
-    title: 'CI/CD Pipelines',
+    icon: Code,
+    title: 'Full-Stack Development',
     description:
-      'Automated build, test, and deployment pipelines that deliver code to production faster with fewer defects and greater confidence.',
+      'End-to-end engineering across frontend, backend, databases, and APIs using modern frameworks and industry best practices.',
   },
   {
-    icon: Shield,
-    title: 'Security Audits & Hardening',
+    icon: Cloud,
+    title: 'Scalable Cloud Deployment',
     description:
-      'Comprehensive security assessments, penetration testing, and infrastructure hardening to protect against threats and ensure compliance.',
+      'Cloud-native deployments on AWS, Azure, or GCP with auto-scaling, high availability, and cost-optimized infrastructure.',
   },
 ]
 
 const deliverables = [
-  'Architecture blueprints and technical design documents',
-  'Microservices decomposition with API gateway configuration',
-  'Containerized deployments with Kubernetes orchestration',
-  'Fully automated CI/CD pipelines with staging and production environments',
-  'Load balancing and auto-scaling configurations for peak traffic',
-  'Real-time performance monitoring, alerting, and observability dashboards',
+  'Custom-built web and mobile applications tailored to your workflows',
+  'Multi-tenant SaaS platforms with role-based access control',
+  'Subscription and billing management systems',
+  'Seamless third-party integrations and API ecosystems',
+  'Comprehensive documentation and knowledge transfer',
+  'Post-launch support, monitoring, and iterative improvements',
 ]
 
-export default function ScalableArchitecturesPage() {
+export default function CustomSoftwareSaasPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
@@ -70,32 +70,32 @@ export default function ScalableArchitecturesPage() {
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+              <Code className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Scalable & Secure Software Architectures
+              Custom Software & SaaS Development
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            A great product starts with a great architecture. We design and
-            implement system architectures that are built to handle growth,
-            withstand failures gracefully, and defend against evolving security
-            threats -- without sacrificing developer productivity.
+            Every business is unique, and off-the-shelf software rarely fits
+            perfectly. We design and build custom software solutions and SaaS
+            platforms from the ground up, precisely tailored to your operational
+            needs and growth ambitions.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From microservices decomposition and container orchestration to
-            automated CI/CD pipelines and comprehensive security audits, our
-            architecture practice ensures your systems are resilient,
-            observable, and ready for whatever comes next. We work alongside
-            your team to establish patterns and practices that pay dividends
-            for years.
+            Whether you need a standalone enterprise application or a
+            multi-tenant SaaS product with subscription billing, our team
+            handles the full lifecycle -- from discovery and UX design through
+            development, testing, deployment, and ongoing support. We leverage
+            modern tech stacks and cloud-native architectures to ensure your
+            product is fast, reliable, and ready to scale.
           </p>
 
           {/* Features Grid */}
           <h2 className="text-2xl font-bold text-white mb-6">
-            Architecture Capabilities
+            Key Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {features.map((feature, index) => (
@@ -149,28 +149,28 @@ export default function ScalableArchitecturesPage() {
               <li className="flex items-start gap-3">
                 <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>
-                  Architects with hands-on experience scaling systems to
-                  millions of users
+                  Proven track record delivering custom SaaS products across
+                  industries
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>
-                  Cloud-agnostic expertise across AWS, Azure, and Google Cloud
+                  Agile methodology with transparent sprints and continuous
+                  delivery
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>
-                  Security-first mindset with compliance awareness (SOC 2, ISO
-                  27001, GDPR)
+                  Modern tech stack: React, Next.js, Node.js, Python, and more
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>
-                  Knowledge transfer and team enablement so your developers can
-                  maintain and evolve the architecture
+                  Dedicated support team for post-launch maintenance and
+                  enhancements
                 </span>
               </li>
             </ul>
@@ -184,11 +184,11 @@ export default function ScalableArchitecturesPage() {
             className="text-center p-10 bg-gradient-to-br from-cyan-600/20 to-blue-700/20 rounded-xl border border-cyan-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Architect for the Future
+              Ready to Build Your Custom Solution?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Build systems that scale effortlessly and stay secure. Reach out
-              to discuss your architecture needs with our experts.
+              Let us turn your vision into a powerful, scalable software product.
+              Get in touch to discuss your project requirements.
             </p>
             <Link
               href="/contact"

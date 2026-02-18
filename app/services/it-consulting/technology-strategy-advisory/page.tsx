@@ -4,52 +4,52 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Server,
-  Network,
-  Cloud,
-  Headphones,
+  Compass,
+  Map,
+  Layers,
+  ShieldCheck,
   CheckCircle2,
   ArrowRight,
-  Package,
+  BarChart3,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Server,
-    title: 'Infrastructure Management',
+    icon: Compass,
+    title: 'Technology Assessment',
     description:
-      'End-to-end management of your IT infrastructure including servers, storage, and networking. We monitor, maintain, and optimize your environment to ensure peak performance and reliability around the clock.',
+      'We conduct in-depth evaluations of your current technology landscape, identifying strengths, gaps, and opportunities for improvement. Our assessments provide a clear picture of where you stand and where you need to go.',
   },
   {
-    icon: Network,
-    title: 'Network Administration',
+    icon: Map,
+    title: 'Digital Roadmap Planning',
     description:
-      'Proactive network management covering configuration, monitoring, security patching, and troubleshooting. We keep your network fast, secure, and available so your teams can stay productive.',
+      'We create actionable, phased roadmaps that align technology investments with your business goals. Every initiative is prioritized by impact, feasibility, and strategic value to ensure measurable progress.',
   },
   {
-    icon: Cloud,
-    title: 'Cloud Management',
+    icon: Layers,
+    title: 'Architecture Advisory',
     description:
-      'Comprehensive management of your cloud environments across AWS, Azure, and Google Cloud. We handle provisioning, scaling, cost optimization, and security to maximize the value of your cloud investment.',
+      'Our architects design scalable, resilient system architectures that support long-term growth. We evaluate microservices, event-driven, and serverless patterns to recommend the best fit for your needs.',
   },
   {
-    icon: Headphones,
-    title: 'Helpdesk & Vendor Management',
+    icon: BarChart3,
+    title: 'IT Governance & Risk Assessment',
     description:
-      'Responsive helpdesk services for your end users combined with strategic vendor management. We coordinate with your technology partners, manage contracts, and ensure SLAs are consistently met.',
+      'We establish governance frameworks and risk mitigation strategies that protect your technology investments. From compliance alignment to security audits, we ensure your IT operations meet industry standards.',
   },
 ]
 
 const deliverables = [
-  'Fully managed infrastructure with proactive monitoring and alerting',
-  'Network administration with security patching and performance tuning',
-  'Cloud environment management with cost optimization reports',
-  'Tiered helpdesk support with defined response and resolution times',
-  'Vendor coordination, contract management, and SLA tracking',
-  'IT asset inventory management and lifecycle planning',
+  'Comprehensive technology landscape assessment reports',
+  'Multi-year digital transformation roadmaps with milestone tracking',
+  'Architecture blueprints and technology stack recommendations',
+  'IT governance frameworks aligned with industry best practices',
+  'Risk assessment matrices with mitigation strategies',
+  'Vendor evaluation and technology selection guidance',
 ]
 
-export default function ManagedServicesPage() {
+export default function TechnologyStrategyAdvisoryPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
@@ -69,29 +69,28 @@ export default function ManagedServicesPage() {
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
-              <Package className="w-8 h-8 text-white" />
+              <Compass className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Managed IT Services
+              Technology Strategy & Advisory Services
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            Managing complex IT infrastructure demands constant attention,
-            specialized expertise, and significant resources. Our Managed IT
-            Services take the burden off your internal teams by providing
-            complete infrastructure management and support, so you can focus
-            on what matters most -- growing your business.
+            Making the right technology decisions is critical to staying
+            competitive in a rapidly evolving digital landscape. Our Technology
+            Strategy & Advisory services provide expert guidance on architecture,
+            technology selection, and digital roadmap planning to ensure every
+            investment drives real business value.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From servers and networks to cloud environments and end-user
-            support, we operate as your outsourced IT department. Our team
-            monitors your systems around the clock, resolves issues before
-            they impact operations, manages vendor relationships, and
-            continuously optimizes your technology stack for performance and
-            cost efficiency. With clearly defined SLAs and transparent
-            reporting, you always know exactly how your IT is performing.
+            We work closely with your leadership and technical teams to assess
+            your current capabilities, identify gaps, and build a clear path
+            forward. From evaluating emerging technologies and selecting the
+            right stack to establishing governance frameworks and managing risk,
+            our advisors bring the strategic insight needed to transform your IT
+            from a cost center into a competitive advantage.
           </p>
 
           {/* Features Grid */}
@@ -150,29 +149,29 @@ export default function ManagedServicesPage() {
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Predictable monthly costs that replace unpredictable
-                  break-fix expenses
+                  Seasoned technology advisors with cross-industry experience in
+                  digital transformation
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Proactive monitoring that catches and resolves issues before
-                  they impact your business
+                  Vendor-agnostic recommendations focused solely on what is best
+                  for your business
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Certified engineers experienced across on-premises, hybrid,
-                  and multi-cloud environments
+                  Actionable roadmaps with clear milestones, not theoretical
+                  reports that gather dust
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Transparent SLA-backed service with regular performance
-                  reports and review meetings
+                  Ongoing advisory support to adapt strategies as your business
+                  and the market evolve
                 </span>
               </li>
             </ul>
@@ -186,12 +185,12 @@ export default function ManagedServicesPage() {
             className="text-center p-10 bg-gradient-to-br from-green-600/20 to-emerald-700/20 rounded-xl border border-green-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Simplify Your IT Operations?
+              Ready to Define Your Technology Strategy?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Let us manage your IT infrastructure so you can concentrate on
-              driving business growth. Get in touch to learn how our managed
-              services can reduce complexity and costs.
+              Let our experts help you chart a clear technology path that aligns
+              with your business vision. Get in touch to discuss your strategic
+              goals and technology challenges.
             </p>
             <Link
               href="/contact"

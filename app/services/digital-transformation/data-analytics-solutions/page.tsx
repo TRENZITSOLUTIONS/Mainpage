@@ -4,62 +4,62 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Shield,
-  Boxes,
-  Container,
-  GitBranch,
+  BarChart3,
+  Database,
+  TrendingUp,
+  PieChart,
   Activity,
-  Scale,
+  LayoutDashboard,
   CheckCircle2,
   ArrowRight,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Boxes,
-    title: 'Microservices Architecture',
+    icon: Database,
+    title: 'Data Warehousing & ETL Pipelines',
     description:
-      'Decompose monoliths into loosely coupled, independently deployable services that scale horizontally and accelerate development velocity.',
+      'Build centralized data warehouses with robust ETL pipelines that extract, transform, and load data from multiple sources into a single source of truth for your organization.',
   },
   {
-    icon: Container,
-    title: 'Containerization & Orchestration',
+    icon: LayoutDashboard,
+    title: 'Business Intelligence Dashboards',
     description:
-      'Docker and Kubernetes-based deployments that ensure consistency across environments, simplify scaling, and streamline DevOps workflows.',
+      'Design interactive, self-service BI dashboards that empower stakeholders to explore metrics, track KPIs, and make confident data-driven decisions in real time.',
   },
   {
-    icon: GitBranch,
-    title: 'CI/CD Pipelines',
+    icon: TrendingUp,
+    title: 'Predictive Analytics',
     description:
-      'Automated build, test, and deployment pipelines that deliver code to production faster with fewer defects and greater confidence.',
+      'Apply statistical modeling and machine learning to forecast trends, anticipate customer behavior, optimize inventory, and identify risks before they materialize.',
   },
   {
-    icon: Shield,
-    title: 'Security Audits & Hardening',
+    icon: Activity,
+    title: 'Real-Time Analytics & Visualization',
     description:
-      'Comprehensive security assessments, penetration testing, and infrastructure hardening to protect against threats and ensure compliance.',
+      'Stream and analyze data as it arrives with real-time processing engines. Visualize live metrics, anomalies, and operational health through intuitive dashboards and alerts.',
   },
 ]
 
 const deliverables = [
-  'Architecture blueprints and technical design documents',
-  'Microservices decomposition with API gateway configuration',
-  'Containerized deployments with Kubernetes orchestration',
-  'Fully automated CI/CD pipelines with staging and production environments',
-  'Load balancing and auto-scaling configurations for peak traffic',
-  'Real-time performance monitoring, alerting, and observability dashboards',
+  'Scalable data warehouse architecture on cloud or on-premises infrastructure',
+  'Automated ETL/ELT pipelines for reliable, scheduled data ingestion',
+  'Custom BI dashboards with drill-down, filtering, and export capabilities',
+  'Predictive models for forecasting, segmentation, and risk scoring',
+  'Real-time streaming analytics with alerting and anomaly detection',
+  'Data governance frameworks with quality monitoring and lineage tracking',
 ]
 
-export default function ScalableArchitecturesPage() {
+export default function DataAnalyticsSolutionsPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
         <Link
-          href="/services/product-engineering"
+          href="/services/digital-transformation"
           className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Product Engineering
+          Back to Digital Transformation
         </Link>
 
         <motion.div
@@ -69,33 +69,34 @@ export default function ScalableArchitecturesPage() {
         >
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-600 rounded-xl flex items-center justify-center">
+              <BarChart3 className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Scalable & Secure Software Architectures
+              Data & Analytics Solutions
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            A great product starts with a great architecture. We design and
-            implement system architectures that are built to handle growth,
-            withstand failures gracefully, and defend against evolving security
-            threats -- without sacrificing developer productivity.
+            Data is your most valuable strategic asset, but only when it is
+            accessible, reliable, and actionable. We help organizations harness
+            the full potential of their data through modern warehousing,
+            advanced analytics, and compelling visualizations that reveal the
+            insights hiding in your numbers.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From microservices decomposition and container orchestration to
-            automated CI/CD pipelines and comprehensive security audits, our
-            architecture practice ensures your systems are resilient,
-            observable, and ready for whatever comes next. We work alongside
-            your team to establish patterns and practices that pay dividends
-            for years.
+            Whether you need to consolidate scattered data sources, build
+            executive dashboards, or deploy predictive models that forecast
+            demand and identify risks, our analytics team delivers end-to-end
+            solutions. We handle everything from data pipeline engineering and
+            quality assurance to interactive reporting and real-time streaming
+            analytics.
           </p>
 
           {/* Features Grid */}
           <h2 className="text-2xl font-bold text-white mb-6">
-            Architecture Capabilities
+            Key Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {features.map((feature, index) => (
@@ -106,7 +107,7 @@ export default function ScalableArchitecturesPage() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="p-6 bg-slate-900/50 rounded-xl border border-slate-800"
               >
-                <feature.icon className="w-8 h-8 text-cyan-400 mb-4" />
+                <feature.icon className="w-8 h-8 text-orange-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {feature.title}
                 </h3>
@@ -120,7 +121,7 @@ export default function ScalableArchitecturesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-500/30 mb-12"
+            className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-xl border border-orange-500/30 mb-12"
           >
             <h2 className="text-2xl font-bold text-white mb-4">
               What We Deliver
@@ -128,7 +129,7 @@ export default function ScalableArchitecturesPage() {
             <ul className="space-y-3 text-gray-300">
               {deliverables.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-orange-400 mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -147,30 +148,31 @@ export default function ScalableArchitecturesPage() {
             </h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Architects with hands-on experience scaling systems to
-                  millions of users
+                  Expertise across leading platforms including Snowflake,
+                  Databricks, BigQuery, and Power BI
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Cloud-agnostic expertise across AWS, Azure, and Google Cloud
+                  End-to-end data solutions from ingestion and transformation
+                  to visualization and insights
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Security-first mindset with compliance awareness (SOC 2, ISO
-                  27001, GDPR)
+                  Strong focus on data quality, governance, and security
+                  compliance
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>
-                  Knowledge transfer and team enablement so your developers can
-                  maintain and evolve the architecture
+                  Scalable architectures that grow with your data volume and
+                  analytical complexity
                 </span>
               </li>
             </ul>
@@ -181,18 +183,18 @@ export default function ScalableArchitecturesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center p-10 bg-gradient-to-br from-cyan-600/20 to-blue-700/20 rounded-xl border border-cyan-500/20"
+            className="text-center p-10 bg-gradient-to-br from-orange-600/20 to-red-700/20 rounded-xl border border-orange-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Architect for the Future
+              Ready to Unlock the Power of Your Data?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Build systems that scale effortlessly and stay secure. Reach out
-              to discuss your architecture needs with our experts.
+              Let us build the analytics foundation that turns your raw data
+              into strategic advantage. Get in touch to discuss your data goals.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-orange-500 to-red-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-orange-400 hover:to-red-500 transition-all"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />

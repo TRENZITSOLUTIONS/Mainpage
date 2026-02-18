@@ -2,7 +2,34 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Zap, Bot, BarChart3, RefreshCw } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Zap, Bot, BarChart3, RefreshCw } from 'lucide-react'
+
+const subServices = [
+  {
+    title: 'Process Automation',
+    desc: 'Streamline workflows and eliminate manual processes with intelligent automation.',
+    icon: RefreshCw,
+    href: '/services/digital-transformation/process-automation',
+  },
+  {
+    title: 'Data & Analytics Solutions',
+    desc: 'Turn data into actionable insights with advanced analytics and visualization.',
+    icon: BarChart3,
+    href: '/services/digital-transformation/data-analytics-solutions',
+  },
+  {
+    title: 'AI-Driven Systems',
+    desc: 'Leverage machine learning and AI to enhance decision-making and operations.',
+    icon: Bot,
+    href: '/services/digital-transformation/ai-driven-systems',
+  },
+  {
+    title: 'Modernization',
+    desc: 'Upgrade legacy systems to modern, scalable architectures.',
+    icon: Zap,
+    href: '/services/digital-transformation/modernization',
+  },
+]
 
 export default function DigitalTransformationPage() {
   return (
@@ -35,51 +62,47 @@ export default function DigitalTransformationPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Link
-              href="/services/cloud-solutions/process-automation"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <RefreshCw className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Process Automation</h3>
-              <p className="text-gray-400">Streamline workflows and eliminate manual processes with intelligent automation.</p>
-            </Link>
-
-            <Link
-              href="/services/cloud-solutions/data-analytics"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <BarChart3 className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Data & Analytics Solutions</h3>
-              <p className="text-gray-400">Turn data into actionable insights with advanced analytics and visualization.</p>
-            </Link>
-
-            <Link
-              href="/services/cloud-solutions/ai-modernization"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <Bot className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">AI-Driven Systems & Modernization</h3>
-              <p className="text-gray-400">Leverage machine learning and AI to enhance decision-making and operations.</p>
-            </Link>
+            {subServices.map((service, i) => {
+              const Icon = service.icon
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  <Link href={service.href} className="block group">
+                    <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-500/50 transition-all duration-300 h-full">
+                      <Icon className="w-8 h-8 text-orange-400 mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-orange-400 transition-colors flex items-center gap-2">
+                        {service.title}
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      </h3>
+                      <p className="text-gray-400">{service.desc}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            })}
           </div>
 
           <div className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-xl border border-orange-500/30">
             <h2 className="text-2xl font-bold text-white mb-4">Transformation Benefits</h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>Increased operational efficiency</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>Real-time data-driven decisions</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>Reduced costs and improved ROI</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
+                <span className="text-orange-400 mt-1">&#10003;</span>
                 <span>Competitive advantage through innovation</span>
               </li>
             </ul>
@@ -89,4 +112,3 @@ export default function DigitalTransformationPage() {
     </div>
   )
 }
-

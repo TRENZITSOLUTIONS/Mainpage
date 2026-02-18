@@ -4,52 +4,52 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Server,
-  Network,
-  Cloud,
-  Headphones,
+  Clock,
+  AlertTriangle,
+  FileCheck,
+  Wrench,
   CheckCircle2,
   ArrowRight,
-  Package,
+  BarChart3,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Server,
-    title: 'Infrastructure Management',
+    icon: Clock,
+    title: '24/7 Monitoring',
     description:
-      'End-to-end management of your IT infrastructure including servers, storage, and networking. We monitor, maintain, and optimize your environment to ensure peak performance and reliability around the clock.',
+      'Continuous, round-the-clock monitoring of your servers, applications, networks, and cloud infrastructure. Our systems detect anomalies in real time, ensuring issues are identified and addressed before they escalate.',
   },
   {
-    icon: Network,
-    title: 'Network Administration',
+    icon: AlertTriangle,
+    title: 'Incident Response',
     description:
-      'Proactive network management covering configuration, monitoring, security patching, and troubleshooting. We keep your network fast, secure, and available so your teams can stay productive.',
+      'Rapid incident detection, triage, and resolution by experienced engineers. We follow structured incident management processes to minimize downtime and restore services as quickly as possible.',
   },
   {
-    icon: Cloud,
-    title: 'Cloud Management',
+    icon: FileCheck,
+    title: 'SLA & Escalation Management',
     description:
-      'Comprehensive management of your cloud environments across AWS, Azure, and Google Cloud. We handle provisioning, scaling, cost optimization, and security to maximize the value of your cloud investment.',
+      'Clearly defined service level agreements with guaranteed response and resolution times. Our multi-tier escalation framework ensures critical issues reach senior engineers immediately.',
   },
   {
-    icon: Headphones,
-    title: 'Helpdesk & Vendor Management',
+    icon: Wrench,
+    title: 'Proactive Maintenance',
     description:
-      'Responsive helpdesk services for your end users combined with strategic vendor management. We coordinate with your technology partners, manage contracts, and ensure SLAs are consistently met.',
+      'Scheduled maintenance windows for patching, updates, and performance tuning. We proactively address vulnerabilities and optimize system health to prevent incidents before they occur.',
   },
 ]
 
 const deliverables = [
-  'Fully managed infrastructure with proactive monitoring and alerting',
-  'Network administration with security patching and performance tuning',
-  'Cloud environment management with cost optimization reports',
-  'Tiered helpdesk support with defined response and resolution times',
-  'Vendor coordination, contract management, and SLA tracking',
-  'IT asset inventory management and lifecycle planning',
+  'Round-the-clock infrastructure and application monitoring',
+  'Defined incident response procedures with severity classification',
+  'SLA-backed response and resolution times for every ticket',
+  'Proactive patch management and scheduled maintenance cycles',
+  'Real-time performance dashboards and monthly health reports',
+  'Multi-tier escalation management with on-call engineer rotation',
 ]
 
-export default function ManagedServicesPage() {
+export default function Support24x7Page() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
@@ -69,29 +69,30 @@ export default function ManagedServicesPage() {
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
-              <Package className="w-8 h-8 text-white" />
+              <Clock className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Managed IT Services
+              24/7 Technical Support & Monitoring
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            Managing complex IT infrastructure demands constant attention,
-            specialized expertise, and significant resources. Our Managed IT
-            Services take the burden off your internal teams by providing
-            complete infrastructure management and support, so you can focus
-            on what matters most -- growing your business.
+            Downtime costs more than money -- it erodes customer trust and
+            disrupts business operations. Our 24/7 Technical Support &
+            Monitoring service provides round-the-clock surveillance of your
+            systems, rapid incident response, and proactive maintenance to
+            keep your infrastructure running at peak performance every hour of
+            every day.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From servers and networks to cloud environments and end-user
-            support, we operate as your outsourced IT department. Our team
-            monitors your systems around the clock, resolves issues before
-            they impact operations, manages vendor relationships, and
-            continuously optimizes your technology stack for performance and
-            cost efficiency. With clearly defined SLAs and transparent
-            reporting, you always know exactly how your IT is performing.
+            Our dedicated support engineers work in shifts to ensure there is
+            always an expert available when you need one. From real-time
+            monitoring dashboards and automated alerting to structured
+            escalation procedures and SLA-backed resolution times, we provide
+            the safety net your business needs. We do not just react to
+            problems -- we anticipate them through proactive maintenance,
+            trend analysis, and capacity planning.
           </p>
 
           {/* Features Grid */}
@@ -150,29 +151,29 @@ export default function ManagedServicesPage() {
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Predictable monthly costs that replace unpredictable
-                  break-fix expenses
+                  True 24/7/365 coverage with dedicated shift-based engineering
+                  teams -- not just on-call pagers
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Proactive monitoring that catches and resolves issues before
-                  they impact your business
+                  SLA-backed response times with financial penalties if we fall
+                  short of our commitments
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Certified engineers experienced across on-premises, hybrid,
-                  and multi-cloud environments
+                  Proactive approach that reduces incidents over time through
+                  root cause analysis and trend monitoring
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Transparent SLA-backed service with regular performance
-                  reports and review meetings
+                  Real-time dashboards giving you full visibility into system
+                  health, incidents, and resolution metrics
                 </span>
               </li>
             </ul>
@@ -186,12 +187,12 @@ export default function ManagedServicesPage() {
             className="text-center p-10 bg-gradient-to-br from-green-600/20 to-emerald-700/20 rounded-xl border border-green-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Simplify Your IT Operations?
+              Ready for Round-the-Clock Peace of Mind?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Let us manage your IT infrastructure so you can concentrate on
-              driving business growth. Get in touch to learn how our managed
-              services can reduce complexity and costs.
+              Stop worrying about system outages and after-hours incidents.
+              Get in touch to learn how our 24/7 support and monitoring
+              services can protect your business operations.
             </p>
             <Link
               href="/contact"

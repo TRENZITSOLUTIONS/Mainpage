@@ -4,52 +4,52 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Server,
-  Network,
-  Cloud,
-  Headphones,
+  Users,
+  Code2,
+  TestTube2,
+  Settings,
   CheckCircle2,
   ArrowRight,
-  Package,
+  UserPlus,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Server,
-    title: 'Infrastructure Management',
+    icon: UserPlus,
+    title: 'Team Augmentation',
     description:
-      'End-to-end management of your IT infrastructure including servers, storage, and networking. We monitor, maintain, and optimize your environment to ensure peak performance and reliability around the clock.',
+      'Scale your engineering capacity on demand with skilled professionals who integrate seamlessly into your existing workflows. We match talent to your specific technology stack and domain requirements.',
   },
   {
-    icon: Network,
-    title: 'Network Administration',
+    icon: Code2,
+    title: 'Full-Stack Developers',
     description:
-      'Proactive network management covering configuration, monitoring, security patching, and troubleshooting. We keep your network fast, secure, and available so your teams can stay productive.',
+      'Access experienced full-stack developers proficient in modern frameworks and languages. From React and Next.js to Node.js, Python, and beyond, our developers deliver production-quality code from day one.',
   },
   {
-    icon: Cloud,
-    title: 'Cloud Management',
+    icon: TestTube2,
+    title: 'QA Engineers',
     description:
-      'Comprehensive management of your cloud environments across AWS, Azure, and Google Cloud. We handle provisioning, scaling, cost optimization, and security to maximize the value of your cloud investment.',
+      'Dedicated quality assurance engineers who build comprehensive test strategies, automate regression suites, and ensure every release meets the highest standards of reliability and performance.',
   },
   {
-    icon: Headphones,
-    title: 'Helpdesk & Vendor Management',
+    icon: Settings,
+    title: 'DevOps Specialists',
     description:
-      'Responsive helpdesk services for your end users combined with strategic vendor management. We coordinate with your technology partners, manage contracts, and ensure SLAs are consistently met.',
+      'Expert DevOps engineers who design and maintain your CI/CD pipelines, infrastructure as code, containerization, and cloud deployments to accelerate your release cycles and improve system stability.',
   },
 ]
 
 const deliverables = [
-  'Fully managed infrastructure with proactive monitoring and alerting',
-  'Network administration with security patching and performance tuning',
-  'Cloud environment management with cost optimization reports',
-  'Tiered helpdesk support with defined response and resolution times',
-  'Vendor coordination, contract management, and SLA tracking',
-  'IT asset inventory management and lifecycle planning',
+  'Carefully vetted developers matched to your technology stack',
+  'Dedicated project-based teams with defined roles and responsibilities',
+  'Seamless integration with your existing development workflows',
+  'Transparent reporting and regular progress updates',
+  'Flexible engagement models -- scale up or down as needed',
+  'Knowledge transfer and documentation throughout the engagement',
 ]
 
-export default function ManagedServicesPage() {
+export default function DedicatedDevelopmentTeamsPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
@@ -69,29 +69,28 @@ export default function ManagedServicesPage() {
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
-              <Package className="w-8 h-8 text-white" />
+              <Users className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Managed IT Services
+              Dedicated Development Teams
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            Managing complex IT infrastructure demands constant attention,
-            specialized expertise, and significant resources. Our Managed IT
-            Services take the burden off your internal teams by providing
-            complete infrastructure management and support, so you can focus
-            on what matters most -- growing your business.
+            Building great software requires great people. Our Dedicated
+            Development Teams service provides you with extended teams of
+            skilled developers, QA engineers, and DevOps specialists who work
+            exclusively on your projects as a natural extension of your
+            in-house team.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From servers and networks to cloud environments and end-user
-            support, we operate as your outsourced IT department. Our team
-            monitors your systems around the clock, resolves issues before
-            they impact operations, manages vendor relationships, and
-            continuously optimizes your technology stack for performance and
-            cost efficiency. With clearly defined SLAs and transparent
-            reporting, you always know exactly how your IT is performing.
+            Whether you need to accelerate a product launch, tackle a backlog
+            of features, or build an entirely new platform, we assemble the
+            right mix of talent for your requirements. Our developers follow
+            your processes, attend your standups, and commit to your
+            repositories -- giving you full visibility and control while we
+            handle recruitment, onboarding, and retention.
           </p>
 
           {/* Features Grid */}
@@ -150,29 +149,29 @@ export default function ManagedServicesPage() {
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Predictable monthly costs that replace unpredictable
-                  break-fix expenses
+                  Rigorously vetted developers with proven track records on
+                  production-grade projects
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Proactive monitoring that catches and resolves issues before
-                  they impact your business
+                  Flexible engagement models that let you scale teams up or
+                  down without long-term commitments
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Certified engineers experienced across on-premises, hybrid,
-                  and multi-cloud environments
+                  Full alignment with your tools, workflows, and communication
+                  channels for seamless collaboration
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-green-400 mt-1">&#10003;</span>
                 <span>
-                  Transparent SLA-backed service with regular performance
-                  reports and review meetings
+                  Dedicated account management to ensure team performance and
+                  client satisfaction
                 </span>
               </li>
             </ul>
@@ -186,12 +185,12 @@ export default function ManagedServicesPage() {
             className="text-center p-10 bg-gradient-to-br from-green-600/20 to-emerald-700/20 rounded-xl border border-green-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Simplify Your IT Operations?
+              Ready to Build Your Dedicated Team?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Let us manage your IT infrastructure so you can concentrate on
-              driving business growth. Get in touch to learn how our managed
-              services can reduce complexity and costs.
+              Tell us about your project requirements and technology stack. We
+              will assemble the perfect team to accelerate your development
+              and deliver results.
             </p>
             <Link
               href="/contact"

@@ -2,7 +2,53 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Shield } from 'lucide-react'
+import {
+  ArrowLeft,
+  Wrench,
+  Bug,
+  Activity,
+  Sparkles,
+  ShieldCheck,
+  Database,
+  CheckCircle2,
+  ArrowRight,
+} from 'lucide-react'
+
+const features = [
+  {
+    icon: Bug,
+    title: 'Bug Fixing & Patches',
+    description:
+      'Rapid identification and resolution of software defects with thorough root-cause analysis, regression testing, and hotfix deployment to minimize downtime.',
+  },
+  {
+    icon: Activity,
+    title: 'Performance Monitoring',
+    description:
+      'Real-time application performance monitoring with alerting dashboards, latency tracking, and proactive bottleneck identification to keep your systems fast.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Feature Enhancements',
+    description:
+      'Continuous improvement of your application with new features, UI refinements, and workflow optimizations based on user feedback and evolving business needs.',
+  },
+  {
+    icon: ShieldCheck,
+    title: 'Security Updates',
+    description:
+      'Regular security audits, vulnerability patching, dependency updates, and compliance checks to protect your application and user data against emerging threats.',
+  },
+]
+
+const benefits = [
+  'Database optimization including query tuning, indexing, and cleanup',
+  '24/7 uptime monitoring with instant alert notifications',
+  'Scheduled maintenance windows to minimize business disruption',
+  'Detailed monthly health reports with performance metrics and recommendations',
+  'Version upgrades for frameworks, libraries, and runtime environments',
+  'Disaster recovery planning and backup management',
+]
 
 export default function MaintenanceSupportPage() {
   return (
@@ -10,59 +56,145 @@ export default function MaintenanceSupportPage() {
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
         <Link
           href="/services/application-development"
-          className="inline-flex items-center text-purple-400 hover:text-purple-300 mb-8 transition-colors"
+          className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
           Back to Application Development
         </Link>
 
-        <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl flex items-center justify-center">
+              <Wrench className="w-8 h-8 text-white" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-black text-white">Ongoing Maintenance & Support</h1>
+            <h1 className="text-4xl md:text-6xl font-black text-white">
+              Application Maintenance & Support Services
+            </h1>
           </div>
 
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            We provide comprehensive application maintenance and support services that keep your systems running reliably, securely, and efficiently. Our proactive monitoring, rapid incident response, and regular updates ensure minimal downtime and optimal performance.
+          {/* Detailed Description */}
+          <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
+            Launching your application is just the beginning. We provide
+            comprehensive maintenance and support services to ensure your
+            software stays secure, performant, and up-to-date -- so you can
+            focus on your core business while we handle the technology.
+          </p>
+          <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
+            Our dedicated support team offers 24/7 monitoring, rapid bug fixes,
+            scheduled feature enhancements, and proactive security updates.
+            Whether you need ongoing maintenance for a legacy system or
+            continuous improvement of a modern application, we tailor our
+            support plans to match your operational requirements and budget.
           </p>
 
-          <p className="text-xl text-neutral-400 mb-8 leading-relaxed">
-            From security patches and performance tuning to database optimization and infrastructure scaling, our devoted support team handles the technical details so your business can focus on growth and innovation.
-          </p>
-
+          {/* Features Grid */}
+          <h2 className="text-2xl font-bold text-white mb-6">
+            Key Capabilities
+          </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">24/7 Proactive Monitoring</h3>
-              <p className="text-gray-400">Continuous system monitoring with automated alerts, health checks, and log aggregation. We detect and resolve issues before they impact your users, ensuring maximum uptime and reliability.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Security & Compliance Updates</h3>
-              <p className="text-gray-400">Regular patching of dependencies and frameworks, OS security updates, vulnerability assessments, and compliance audits. We stay ahead of security threats to protect your data and users.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Performance & Optimization</h3>
-              <p className="text-gray-400">Continuous database query optimization, caching strategy refinement, infrastructure scaling, and load testing. We ensure your application performs efficiently even as traffic and data grow.</p>
-            </div>
-
-            <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800">
-              <h3 className="text-lg font-bold text-white mb-2">Incident Response & Resolution</h3>
-              <p className="text-gray-400">Rapid response to critical issues with guaranteed SLAs, root cause analysis, and preventive measures. Our team works quickly to minimize impact and prevent recurrence.</p>
-            </div>
+            {features.map((feature, index) => (
+              <motion.div
+                key={feature.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.1 * index }}
+                className="p-6 bg-slate-900/50 rounded-xl border border-slate-800"
+              >
+                <feature.icon className="w-8 h-8 text-purple-400 mb-4" />
+                <h3 className="text-xl font-bold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400">{feature.description}</p>
+              </motion.div>
+            ))}
           </div>
 
-          <div className="p-8 bg-gradient-to-br from-cyan-900/10 to-blue-900/10 rounded-xl border border-cyan-500/20">
-            <h2 className="text-2xl font-bold text-white mb-4">Support Plans</h2>
+          {/* What We Deliver */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-500/30 mb-12"
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">
+              What We Deliver
+            </h2>
             <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Standard: Business hours support with regular check-ins</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Premium: 24/7 support with guaranteed response times</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Enterprise: Dedicated support team with custom SLAs</span></li>
-              <li className="flex items-start gap-3"><span className="text-cyan-400 mt-1">•</span><span>Monthly reports: Performance analytics and recommendations</span></li>
+              {benefits.map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
+                  <span>{item}</span>
+                </li>
+              ))}
             </ul>
-          </div>
+          </motion.div>
+
+          {/* Why Choose Us */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
+            className="p-8 bg-slate-900/50 rounded-xl border border-slate-800 mb-12"
+          >
+            <h2 className="text-2xl font-bold text-white mb-4">
+              Why Choose Us
+            </h2>
+            <ul className="space-y-3 text-gray-300">
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">&#10003;</span>
+                <span>
+                  24/7 technical support with guaranteed response time SLAs
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">&#10003;</span>
+                <span>
+                  Proactive monitoring that catches issues before users are affected
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">&#10003;</span>
+                <span>
+                  Flexible support plans from basic maintenance to fully managed services
+                </span>
+              </li>
+              <li className="flex items-start gap-3">
+                <span className="text-purple-400 mt-1">&#10003;</span>
+                <span>
+                  Experienced team capable of maintaining diverse tech stacks and legacy systems
+                </span>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* CTA Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
+            className="text-center p-10 bg-gradient-to-br from-purple-600/20 to-pink-700/20 rounded-xl border border-purple-500/20"
+          >
+            <h2 className="text-3xl font-bold text-white mb-4">
+              Need Reliable Application Support?
+            </h2>
+            <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
+              Keep your software running at peak performance with our
+              maintenance and support services. Get in touch to explore
+              a support plan tailored to your needs.
+            </p>
+            <Link
+              href="/contact"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-purple-400 hover:to-pink-500 transition-all"
+            >
+              Contact Us
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+          </motion.div>
         </motion.div>
       </div>
     </div>

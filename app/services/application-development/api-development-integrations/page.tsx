@@ -4,62 +4,62 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Shield,
-  Boxes,
-  Container,
-  GitBranch,
-  Activity,
-  Scale,
+  Code,
+  Network,
+  FileText,
+  Webhook,
+  CreditCard,
+  Blocks,
   CheckCircle2,
   ArrowRight,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Boxes,
-    title: 'Microservices Architecture',
+    icon: Code,
+    title: 'REST API Design',
     description:
-      'Decompose monoliths into loosely coupled, independently deployable services that scale horizontally and accelerate development velocity.',
+      'Well-structured, versioned RESTful APIs following OpenAPI standards with consistent endpoint naming, proper HTTP methods, and comprehensive error handling.',
   },
   {
-    icon: Container,
-    title: 'Containerization & Orchestration',
+    icon: Network,
+    title: 'GraphQL APIs',
     description:
-      'Docker and Kubernetes-based deployments that ensure consistency across environments, simplify scaling, and streamline DevOps workflows.',
+      'Flexible, efficient GraphQL endpoints that let clients request exactly the data they need -- reducing over-fetching and improving performance for complex data relationships.',
   },
   {
-    icon: GitBranch,
-    title: 'CI/CD Pipelines',
+    icon: CreditCard,
+    title: 'Third-Party Integrations',
     description:
-      'Automated build, test, and deployment pipelines that deliver code to production faster with fewer defects and greater confidence.',
+      'Seamless connections with payment gateways (Stripe, PayPal), CRMs (Salesforce, HubSpot), ERPs (SAP, Oracle), and hundreds of other platforms.',
   },
   {
-    icon: Shield,
-    title: 'Security Audits & Hardening',
+    icon: Blocks,
+    title: 'Microservices Communication',
     description:
-      'Comprehensive security assessments, penetration testing, and infrastructure hardening to protect against threats and ensure compliance.',
+      'Event-driven and message-based communication patterns using RabbitMQ, Kafka, or AWS SQS for reliable, decoupled microservice architectures.',
   },
 ]
 
-const deliverables = [
-  'Architecture blueprints and technical design documents',
-  'Microservices decomposition with API gateway configuration',
-  'Containerized deployments with Kubernetes orchestration',
-  'Fully automated CI/CD pipelines with staging and production environments',
-  'Load balancing and auto-scaling configurations for peak traffic',
-  'Real-time performance monitoring, alerting, and observability dashboards',
+const benefits = [
+  'Comprehensive API documentation with interactive Swagger/OpenAPI specs',
+  'Webhook systems for real-time event notifications and automation',
+  'OAuth 2.0, JWT, and API key authentication and authorization',
+  'Rate limiting, throttling, and caching for optimal performance',
+  'API versioning strategies for backward-compatible evolution',
+  'Automated testing suites ensuring reliability and data integrity',
 ]
 
-export default function ScalableArchitecturesPage() {
+export default function ApiDevelopmentIntegrationsPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
         <Link
-          href="/services/product-engineering"
+          href="/services/application-development"
           className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
         >
           <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Product Engineering
+          Back to Application Development
         </Link>
 
         <motion.div
@@ -69,33 +69,32 @@ export default function ScalableArchitecturesPage() {
         >
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-blue-600 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+            <div className="w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl flex items-center justify-center">
+              <Code className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Scalable & Secure Software Architectures
+              API Development & Third-Party Integrations
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            A great product starts with a great architecture. We design and
-            implement system architectures that are built to handle growth,
-            withstand failures gracefully, and defend against evolving security
-            threats -- without sacrificing developer productivity.
+            APIs are the backbone of modern software ecosystems. We design,
+            build, and maintain robust RESTful APIs and GraphQL endpoints that
+            connect your applications, services, and data seamlessly -- enabling
+            powerful integrations and scalable architectures.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From microservices decomposition and container orchestration to
-            automated CI/CD pipelines and comprehensive security audits, our
-            architecture practice ensures your systems are resilient,
-            observable, and ready for whatever comes next. We work alongside
-            your team to establish patterns and practices that pay dividends
-            for years.
+            From connecting your platform to payment gateways and CRMs to
+            building internal microservices communication layers, our API
+            engineering ensures reliable data flow, strong security, and
+            developer-friendly documentation. We follow industry standards so
+            your APIs are easy to consume, maintain, and extend.
           </p>
 
           {/* Features Grid */}
           <h2 className="text-2xl font-bold text-white mb-6">
-            Architecture Capabilities
+            Key Capabilities
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
             {features.map((feature, index) => (
@@ -106,7 +105,7 @@ export default function ScalableArchitecturesPage() {
                 transition={{ duration: 0.5, delay: 0.1 * index }}
                 className="p-6 bg-slate-900/50 rounded-xl border border-slate-800"
               >
-                <feature.icon className="w-8 h-8 text-cyan-400 mb-4" />
+                <feature.icon className="w-8 h-8 text-purple-400 mb-4" />
                 <h3 className="text-xl font-bold text-white mb-2">
                   {feature.title}
                 </h3>
@@ -120,15 +119,15 @@ export default function ScalableArchitecturesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="p-8 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-500/30 mb-12"
+            className="p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-500/30 mb-12"
           >
             <h2 className="text-2xl font-bold text-white mb-4">
               What We Deliver
             </h2>
             <ul className="space-y-3 text-gray-300">
-              {deliverables.map((item) => (
+              {benefits.map((item) => (
                 <li key={item} className="flex items-start gap-3">
-                  <CheckCircle2 className="w-5 h-5 text-cyan-400 mt-0.5 flex-shrink-0" />
+                  <CheckCircle2 className="w-5 h-5 text-purple-400 mt-0.5 flex-shrink-0" />
                   <span>{item}</span>
                 </li>
               ))}
@@ -147,30 +146,27 @@ export default function ScalableArchitecturesPage() {
             </h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>
-                  Architects with hands-on experience scaling systems to
-                  millions of users
+                  Battle-tested experience integrating with 100+ third-party platforms
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>
-                  Cloud-agnostic expertise across AWS, Azure, and Google Cloud
+                  Security-first approach with OAuth 2.0, encryption, and input validation
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>
-                  Security-first mindset with compliance awareness (SOC 2, ISO
-                  27001, GDPR)
+                  Thorough documentation ensuring your team and partners can integrate effortlessly
                 </span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">&#10003;</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>
-                  Knowledge transfer and team enablement so your developers can
-                  maintain and evolve the architecture
+                  Scalable architecture designed for high throughput and low latency
                 </span>
               </li>
             </ul>
@@ -181,18 +177,18 @@ export default function ScalableArchitecturesPage() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="text-center p-10 bg-gradient-to-br from-cyan-600/20 to-blue-700/20 rounded-xl border border-cyan-500/20"
+            className="text-center p-10 bg-gradient-to-br from-purple-600/20 to-pink-700/20 rounded-xl border border-purple-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Architect for the Future
+              Ready to Connect Your Systems?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Build systems that scale effortlessly and stay secure. Reach out
-              to discuss your architecture needs with our experts.
+              Let us build the APIs and integrations that power your digital
+              ecosystem. Get in touch to discuss your integration needs.
             </p>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-cyan-400 hover:to-blue-500 transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-500 to-pink-600 text-white font-semibold px-8 py-3 rounded-lg hover:from-purple-400 hover:to-pink-500 transition-all"
             >
               Contact Us
               <ArrowRight className="w-4 h-4" />

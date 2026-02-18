@@ -4,52 +4,52 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 import {
   ArrowLeft,
-  Shield,
-  Lock,
-  Gauge,
-  FileCheck,
+  HardDrive,
+  Code2,
+  Activity,
+  Archive,
   CheckCircle2,
   ArrowRight,
-  Eye,
+  Settings,
 } from 'lucide-react'
 
 const features = [
   {
-    icon: Shield,
-    title: 'Security Audits & Threat Assessment',
+    icon: HardDrive,
+    title: 'Server Provisioning & Setup',
     description:
-      'Comprehensive security audits that identify vulnerabilities, misconfigurations, and potential attack vectors across your entire cloud infrastructure, with prioritized remediation plans.',
+      'Rapid, repeatable server provisioning across cloud and on-premises environments. We configure compute, storage, and networking resources to exact specifications with automated deployment pipelines.',
   },
   {
-    icon: FileCheck,
-    title: 'Compliance Management',
+    icon: Code2,
+    title: 'Infrastructure as Code',
     description:
-      'Navigate complex regulatory requirements with confidence. We implement and maintain compliance frameworks for SOC2, HIPAA, GDPR, PCI-DSS, and industry-specific standards.',
+      'Manage your entire infrastructure through version-controlled code using Terraform, Ansible, CloudFormation, and Pulumi. Achieve consistent, auditable, and reproducible environments every time.',
   },
   {
-    icon: Lock,
-    title: 'Encryption & DDoS Protection',
+    icon: Activity,
+    title: 'Monitoring & Alerting',
     description:
-      'End-to-end encryption for data at rest and in transit, combined with robust DDoS mitigation, WAF configuration, and network security controls to protect your applications.',
+      'Comprehensive monitoring with real-time dashboards, intelligent alerting, and anomaly detection. We integrate tools like Prometheus, Grafana, CloudWatch, and Datadog for full-stack visibility.',
   },
   {
-    icon: Gauge,
-    title: 'Performance Tuning & Auto-Scaling',
+    icon: Archive,
+    title: 'Backup, Recovery & Patch Management',
     description:
-      'Optimize resource allocation, reduce latency, and configure intelligent auto-scaling policies that ensure peak performance under any load while controlling costs.',
+      'Automated backup schedules with tested recovery procedures, plus systematic patch management to keep your servers secure, up-to-date, and protected against known vulnerabilities.',
   },
 ]
 
 const deliverables = [
-  'Detailed security audit reports with risk ratings and remediation steps',
-  'Compliance documentation and evidence collection for SOC2, HIPAA, and GDPR',
-  'Encryption implementation across all data stores and communication channels',
-  'DDoS protection and web application firewall configurations',
-  'Performance benchmarking reports with optimization recommendations',
-  'Auto-scaling policies and load balancing configurations for high availability',
+  'Automated server provisioning pipelines for rapid, consistent deployments',
+  'Infrastructure-as-code repositories with full version control and documentation',
+  'Real-time monitoring dashboards with custom alerting rules and escalation policies',
+  'Patch management schedules and automated update workflows',
+  'Backup and disaster recovery procedures with regular testing and validation',
+  'Capacity planning reports with growth projections and scaling recommendations',
 ]
 
-export default function SecurityOptimizationPage() {
+export default function ServerProvisioningManagementPage() {
   return (
     <div className="bg-black text-neutral-200 min-h-screen pt-24">
       <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
@@ -69,27 +69,27 @@ export default function SecurityOptimizationPage() {
           {/* Hero Section */}
           <div className="flex items-center gap-4 mb-8">
             <div className="w-16 h-16 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-xl flex items-center justify-center">
-              <Shield className="w-8 h-8 text-white" />
+              <HardDrive className="w-8 h-8 text-white" />
             </div>
             <h1 className="text-4xl md:text-6xl font-black text-white">
-              Cloud Security & Performance Optimization
+              Server Provisioning, Management & Maintenance
             </h1>
           </div>
 
           {/* Detailed Description */}
           <p className="text-xl text-neutral-400 mb-6 leading-relaxed">
-            Security and performance are not afterthoughts -- they are
-            foundational pillars of any successful cloud deployment. We deliver
-            enterprise-grade protection and fine-tuned performance to keep your
-            infrastructure secure, compliant, and lightning-fast.
+            Reliable infrastructure is the backbone of every digital operation.
+            We handle the full lifecycle of your servers -- from initial
+            provisioning and configuration to ongoing management, monitoring,
+            and maintenance -- so you can focus on your core business.
           </p>
           <p className="text-lg text-neutral-500 mb-12 leading-relaxed">
-            From penetration testing and vulnerability assessments to
-            auto-scaling configurations and latency optimization, our team
-            addresses every layer of your cloud stack. We help you meet
-            regulatory requirements, defend against evolving threats, and
-            ensure your applications deliver exceptional user experiences under
-            any load conditions.
+            Our infrastructure team combines infrastructure-as-code best
+            practices with proactive monitoring and systematic patch management
+            to ensure your servers are always secure, performant, and
+            available. Whether you run on cloud, on-premises, or hybrid
+            environments, we deliver the operational excellence your business
+            demands, with capacity planning that scales alongside your growth.
           </p>
 
           {/* Features Grid */}
@@ -148,29 +148,29 @@ export default function SecurityOptimizationPage() {
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">&#10003;</span>
                 <span>
-                  Security-first mindset with deep expertise in cloud-native
-                  threat detection and prevention
+                  Infrastructure-as-code expertise ensuring repeatable,
+                  auditable deployments every time
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">&#10003;</span>
                 <span>
-                  Hands-on compliance experience with SOC2, HIPAA, GDPR, and
-                  PCI-DSS frameworks
+                  24/7 monitoring with intelligent alerting and rapid incident
+                  response
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">&#10003;</span>
                 <span>
-                  Performance engineering that delivers measurable improvements
-                  in latency and throughput
+                  Proactive patch management and security hardening to prevent
+                  vulnerabilities
                 </span>
               </li>
               <li className="flex items-start gap-3">
                 <span className="text-blue-400 mt-1">&#10003;</span>
                 <span>
-                  Continuous monitoring and proactive alerting to catch issues
-                  before they impact users
+                  Data-driven capacity planning that scales your infrastructure
+                  ahead of demand
                 </span>
               </li>
             </ul>
@@ -184,12 +184,12 @@ export default function SecurityOptimizationPage() {
             className="text-center p-10 bg-gradient-to-br from-blue-600/20 to-cyan-700/20 rounded-xl border border-blue-500/20"
           >
             <h2 className="text-3xl font-bold text-white mb-4">
-              Ready to Secure and Optimize Your Cloud?
+              Ready to Streamline Your Infrastructure?
             </h2>
             <p className="text-neutral-400 mb-6 max-w-2xl mx-auto">
-              Protect your infrastructure and unlock peak performance. Get in
-              touch to discuss a security audit or optimization assessment for
-              your cloud environment.
+              Let us take the burden of server management off your shoulders.
+              Get in touch to discuss how we can provision, manage, and
+              maintain your infrastructure for peak reliability.
             </p>
             <Link
               href="/contact"

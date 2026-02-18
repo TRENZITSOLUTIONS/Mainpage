@@ -2,7 +2,34 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Code, Database, Shield, Building2 } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Code, Database, Shield, Building2 } from 'lucide-react'
+
+const subServices = [
+  {
+    title: 'Custom Software & SaaS',
+    desc: 'Tailored solutions designed specifically for your business needs and workflows.',
+    icon: Code,
+    href: '/services/product-engineering/custom-software-saas',
+  },
+  {
+    title: 'Enterprise Systems',
+    desc: 'ERP, CRM, POS systems built for scale, security, and performance.',
+    icon: Database,
+    href: '/services/product-engineering/enterprise-systems',
+  },
+  {
+    title: 'Scalable Architectures',
+    desc: 'Secure, scalable infrastructure that grows with your business.',
+    icon: Shield,
+    href: '/services/product-engineering/scalable-architectures',
+  },
+  {
+    title: 'Government Projects',
+    desc: 'E-governance, public systems & services, and ongoing maintenance.',
+    icon: Building2,
+    href: '/services/product-engineering/government-projects',
+  },
+]
 
 export default function ProductEngineeringPage() {
   return (
@@ -35,60 +62,47 @@ export default function ProductEngineeringPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Link
-              href="/services/product-engineering/custom-software"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
-            >
-              <Code className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Custom Software & SaaS</h3>
-              <p className="text-gray-400">Tailored solutions designed specifically for your business needs and workflows.</p>
-            </Link>
-
-            <Link
-              href="/services/product-engineering/enterprise-systems"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
-            >
-              <Database className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Enterprise Systems</h3>
-              <p className="text-gray-400">ERP, CRM, POS systems built for scale, security, and performance.</p>
-            </Link>
-
-            <Link
-              href="/services/product-engineering/scalable-architectures"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
-            >
-              <Shield className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Scalable Architectures</h3>
-              <p className="text-gray-400">Secure, scalable infrastructure that grows with your business.</p>
-            </Link>
-
-            <Link
-              href="/services/product-engineering/government-projects"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-400 transition-colors"
-            >
-              <Building2 className="w-8 h-8 text-cyan-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Government Projects</h3>
-              <p className="text-gray-400">E-governance, public systems & services, and ongoing maintenance.</p>
-            </Link>
+            {subServices.map((service, i) => {
+              const Icon = service.icon
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  <Link href={service.href} className="block group">
+                    <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-cyan-500/50 transition-all duration-300 h-full">
+                      <Icon className="w-8 h-8 text-cyan-400 mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan-400 transition-colors flex items-center gap-2">
+                        {service.title}
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      </h3>
+                      <p className="text-gray-400">{service.desc}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            })}
           </div>
 
           <div className="p-8 bg-gradient-to-br from-cyan-900/20 to-blue-900/20 rounded-xl border border-cyan-500/30">
             <h2 className="text-2xl font-bold text-white mb-4">Why Choose Our Product Engineering?</h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>End-to-end development from concept to deployment</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>Modern tech stack and best practices</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>Agile methodology with continuous delivery</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-cyan-400 mt-1">✓</span>
+                <span className="text-cyan-400 mt-1">&#10003;</span>
                 <span>Dedicated support and maintenance</span>
               </li>
             </ul>
@@ -98,4 +112,3 @@ export default function ProductEngineeringPage() {
     </div>
   )
 }
-

@@ -2,7 +2,34 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowLeft, Smartphone, Globe, Code, Wrench } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Smartphone, Globe, Code, Wrench } from 'lucide-react'
+
+const subServices = [
+  {
+    title: 'Web App Development',
+    desc: 'Responsive, fast, and scalable web applications built with modern frameworks.',
+    icon: Globe,
+    href: '/services/application-development/web-app-development',
+  },
+  {
+    title: 'Mobile Apps Development',
+    desc: 'Native iOS, Android, and cross-platform mobile solutions.',
+    icon: Smartphone,
+    href: '/services/application-development/mobile-apps-development',
+  },
+  {
+    title: 'API Development & Integrations',
+    desc: 'RESTful APIs, GraphQL, and seamless third-party integrations.',
+    icon: Code,
+    href: '/services/application-development/api-development-integrations',
+  },
+  {
+    title: 'Ongoing Maintenance & Support',
+    desc: 'Continuous updates, bug fixes, and feature enhancements.',
+    icon: Wrench,
+    href: '/services/application-development/maintenance-support',
+  },
+]
 
 export default function ApplicationDevelopmentPage() {
   return (
@@ -35,60 +62,47 @@ export default function ApplicationDevelopmentPage() {
           </p>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Link
-              href="/services/application-development/web-app-development"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
-            >
-              <Globe className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Web App Development</h3>
-              <p className="text-gray-400">Responsive, fast, and scalable web applications built with modern frameworks.</p>
-            </Link>
-
-            <Link
-              href="/services/application-development/mobile-apps"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
-            >
-              <Smartphone className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Mobile Apps Development</h3>
-              <p className="text-gray-400">Native iOS, Android, and cross-platform mobile solutions.</p>
-            </Link>
-
-            <Link
-              href="/services/application-development/api-development"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
-            >
-              <Code className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">API Development & Integrations</h3>
-              <p className="text-gray-400">RESTful APIs, GraphQL, and seamless third-party integrations.</p>
-            </Link>
-
-            <Link
-              href="/services/application-development/maintenance-support"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-400 transition-colors"
-            >
-              <Wrench className="w-8 h-8 text-purple-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Ongoing Maintenance & Support</h3>
-              <p className="text-gray-400">Continuous updates, bug fixes, and feature enhancements.</p>
-            </Link>
+            {subServices.map((service, i) => {
+              const Icon = service.icon
+              return (
+                <motion.div
+                  key={service.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: i * 0.1, duration: 0.5 }}
+                >
+                  <Link href={service.href} className="block group">
+                    <div className="p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-purple-500/50 transition-all duration-300 h-full">
+                      <Icon className="w-8 h-8 text-purple-400 mb-4" />
+                      <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-400 transition-colors flex items-center gap-2">
+                        {service.title}
+                        <ArrowRight className="w-4 h-4 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all" />
+                      </h3>
+                      <p className="text-gray-400">{service.desc}</p>
+                    </div>
+                  </Link>
+                </motion.div>
+              )
+            })}
           </div>
 
           <div className="p-8 bg-gradient-to-br from-purple-900/20 to-pink-900/20 rounded-xl border border-purple-500/30">
             <h2 className="text-2xl font-bold text-white mb-4">Our Development Process</h2>
             <ul className="space-y-3 text-gray-300">
               <li className="flex items-start gap-3">
-                <span className="text-purple-400 mt-1">✓</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>User-centric design and development</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-purple-400 mt-1">✓</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>Cross-platform compatibility</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-purple-400 mt-1">✓</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>Performance optimization</span>
               </li>
               <li className="flex items-start gap-3">
-                <span className="text-purple-400 mt-1">✓</span>
+                <span className="text-purple-400 mt-1">&#10003;</span>
                 <span>24/7 monitoring and support</span>
               </li>
             </ul>
@@ -98,4 +112,3 @@ export default function ApplicationDevelopmentPage() {
     </div>
   )
 }
-
