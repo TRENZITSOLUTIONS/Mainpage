@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Proactive 24/7 technical support and infrastructure monitoring services by Trenz Technologies. Guaranteed SLAs, rapid incident response, and round-the-clock maintenance.',
   keywords: '24/7 technical support, infrastructure monitoring, incident response, SLA-backed support, proactive maintenance, IT support Chennai, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/it-consulting/support-24x7',
+    canonical: 'https://www.trenztechnologies.com/services/it-consulting/24-7-it-support-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: '24/7 Technical Support & Monitoring – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/support-24x7',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/24-7-it-support-services',
     description: 'Round-the-clock surveillance and support for your business-critical infrastructure. Rapid resolution and proactive monitoring.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/support-24x7',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/24-7-it-support-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/support-24x7',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/24-7-it-support-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Support 24/7',
-        'item': 'https://www.trenztechnologies.com/services/it-consulting/support-24x7',
+        'item': 'https://www.trenztechnologies.com/services/it-consulting/24-7-it-support-services',
       },
     ],
   }

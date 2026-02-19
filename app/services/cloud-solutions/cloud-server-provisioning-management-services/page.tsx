@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides expert server provisioning, management, and maintenance services. Automate your infrastructure with IaC, monitoring, and proactive security.',
   keywords: 'server provisioning, server management, infrastructure as code, cloud maintenance, server monitoring, backup and recovery, patch management, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/server-provisioning-management',
+    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-server-provisioning-management-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Server Provisioning & Management Services – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/server-provisioning-management',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-server-provisioning-management-services',
     description: 'Reliable server provisioning, management, and maintenance for your digital operations. Focus on your business while we handle your infrastructure.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/server-provisioning-management',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-server-provisioning-management-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function ServerProvisioningManagementPage() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/server-provisioning-management',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-server-provisioning-management-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function ServerProvisioningManagementPage() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Server Provisioning & Management',
-        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/server-provisioning-management',
+        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-server-provisioning-management-services',
       },
     ],
   }

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides expert managed IT services and 24/7 support. Proactive monitoring, infrastructure management, and rapid issue resolution.',
   keywords: 'managed IT services, IT support, 24/7 support, infrastructure management, cloud management, network administration, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/it-consulting/managed-services',
+    canonical: 'https://www.trenztechnologies.com/services/it-consulting/it-managed-services-company',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Managed IT Services & 24/7 Support – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/managed-services',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/it-managed-services-company',
     description: 'Expert managed IT services and 24/7 support. Reliable infrastructure management for your business.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/managed-services',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/it-managed-services-company',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/managed-services',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/it-managed-services-company',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Managed Services',
-        'item': 'https://www.trenztechnologies.com/services/it-consulting/managed-services',
+        'item': 'https://www.trenztechnologies.com/services/it-consulting/it-managed-services-company',
       },
     ],
   }

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies delivers ERP, CRM, and POS enterprise systems built for scalability, security, and automation to improve efficiency and business growth.',
   keywords: 'enterprise systems, ERP solutions, CRM software, POS systems, process automation, system integration, scalable business software, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-systems',
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-application-integration',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Enterprise ERP, CRM & POS Solutions – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-systems',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-application-integration',
     description: 'Enterprise-grade systems engineered for reliability, scalability, and seamless cross-departmental collaboration.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-systems',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-application-integration',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-systems',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/enterprise-application-integration',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Enterprise Systems',
-        'item': 'https://www.trenztechnologies.com/services/product-engineering/enterprise-systems',
+        'item': 'https://www.trenztechnologies.com/services/product-engineering/enterprise-application-integration',
       },
     ],
   }

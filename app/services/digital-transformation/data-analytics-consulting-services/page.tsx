@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies offers comprehensive data and analytics solutions, including data warehousing, ETL pipelines, BI dashboards, and predictive analytics.',
   keywords: 'data analytics, business intelligence, data warehousing, ETL pipelines, predictive analytics, real-time analytics, data visualization, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-solutions',
+    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-consulting-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Data & Analytics Solutions – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-solutions',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-consulting-services',
     description: 'Turn data into actionable insights with advanced analytics and visualization services.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-solutions',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-consulting-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-solutions',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-consulting-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Data Analytics Solutions',
-        'item': 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-solutions',
+        'item': 'https://www.trenztechnologies.com/services/digital-transformation/data-analytics-consulting-services',
       },
     ],
   }

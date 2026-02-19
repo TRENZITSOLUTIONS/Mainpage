@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Expert custom software and SaaS development services by Trenz Technologies. We build scalable, secure, and user-centered software solutions tailored to your business.',
   keywords: 'custom software development, SaaS development, business software solutions, enterprise applications, UI/UX design, full-stack development, cloud deployment, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-saas',
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-development',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Custom Software & SaaS Development – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-saas',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-development',
     description: 'Design and build powerful custom software and SaaS platforms from the ground up.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-saas',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-development',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-saas',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/custom-software-development',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Custom Software & SaaS Development',
-        'item': 'https://www.trenztechnologies.com/services/product-engineering/custom-software-saas',
+        'item': 'https://www.trenztechnologies.com/services/product-engineering/custom-software-development',
       },
     ],
   }

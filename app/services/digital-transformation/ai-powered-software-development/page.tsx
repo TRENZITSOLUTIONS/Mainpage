@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides expert AI and machine learning solutions. We build custom ML models, NLP engines, and computer vision systems for business automation.',
   keywords: 'AI systems, machine learning solutions, natural language processing, computer vision, chatbots, predictive modeling, MLOps, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/ai-driven-systems',
+    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/ai-powered-software-development',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AI-Driven Systems & Machine Learning Solutions – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-driven-systems',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-powered-software-development',
     description: 'Leverage machine learning and AI to enhance decision-making and operations with our custom AI solutions.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-driven-systems',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-powered-software-development',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-driven-systems',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/ai-powered-software-development',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'AI-Driven Systems',
-        'item': 'https://www.trenztechnologies.com/services/digital-transformation/ai-driven-systems',
+        'item': 'https://www.trenztechnologies.com/services/digital-transformation/ai-powered-software-development',
       },
     ],
   }

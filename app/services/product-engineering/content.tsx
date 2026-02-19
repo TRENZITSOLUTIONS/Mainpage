@@ -9,25 +9,25 @@ const subServices = [
         title: 'Custom Software & SaaS',
         desc: 'Tailored solutions designed specifically for your business needs and workflows.',
         icon: Code,
-        href: '/services/product-engineering/custom-software-saas',
+        href: '/services/product-engineering/custom-software-development',
     },
     {
         title: 'Enterprise Systems',
         desc: 'ERP, CRM, POS systems built for scale, security, and performance.',
         icon: Database,
-        href: '/services/product-engineering/enterprise-systems',
+        href: '/services/product-engineering/enterprise-application-integration',
     },
     {
         title: 'Scalable Architectures',
         desc: 'Secure, scalable infrastructure that grows with your business.',
         icon: Shield,
-        href: '/services/product-engineering/scalable-architectures',
+        href: '/services/product-engineering/scalable-software-architecture',
     },
     {
         title: 'Government Projects',
         desc: 'E-governance, public systems & services, and ongoing maintenance.',
         icon: Building2,
-        href: '/services/product-engineering/government-projects',
+        href: '/services/product-engineering/government-digital-transformation',
     },
 ]
 

@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies delivers secure e-governance platforms, public service systems, and government IT maintenance solutions. Scalable, compliant, and citizen-focused digital infrastructure.',
   keywords: 'e-governance, government IT projects, public service systems, digital government, citizen portals, government software, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/product-engineering/government-projects',
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/government-digital-transformation',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'E-Governance & Government IT Solutions – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/government-projects',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/government-digital-transformation',
     description: 'Secure and scalable e-governance platforms and public service portals for government institutions.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/government-projects',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/government-digital-transformation',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/government-projects',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/government-digital-transformation',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Government Projects',
-        'item': 'https://www.trenztechnologies.com/services/product-engineering/government-projects',
+        'item': 'https://www.trenztechnologies.com/services/product-engineering/government-digital-transformation',
       },
     ],
   }

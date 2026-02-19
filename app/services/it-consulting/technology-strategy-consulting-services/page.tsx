@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Expert technology strategy and advisory services by Trenz Technologies. We provide technology assessment, digital roadmap planning, architecture advisory, and IT governance.',
   keywords: 'technology strategy, IT advisory, digital roadmap, architecture advisory, IT governance, technology assessment, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-advisory',
+    canonical: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-consulting-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Technology Strategy & Advisory Services – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-advisory',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-consulting-services',
     description: 'Expert technology strategy and advisory services. Align your technology investments with your business goals.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-advisory',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-consulting-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-advisory',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-consulting-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Technology Strategy & Advisory',
-        'item': 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-advisory',
+        'item': 'https://www.trenztechnologies.com/services/it-consulting/technology-strategy-consulting-services',
       },
     ],
   }

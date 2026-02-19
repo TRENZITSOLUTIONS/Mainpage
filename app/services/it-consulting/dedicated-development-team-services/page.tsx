@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Hire dedicated development teams of skilled developers, QA engineers, and DevOps specialists. Scale your engineering capacity on demand with Trenz Technologies.',
   keywords: 'dedicated development teams, team augmentation, hire developers, QA engineers, DevOps specialists, full-stack developers, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-teams',
+    canonical: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-team-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Dedicated Development Teams – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-teams',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-team-services',
     description: 'Scale your engineering capacity with dedicated teams. Skilled professionals matching your technology stack.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-teams',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-team-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-teams',
+    url: 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-team-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Dedicated Development Teams',
-        'item': 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-teams',
+        'item': 'https://www.trenztechnologies.com/services/it-consulting/dedicated-development-team-services',
       },
     ],
   }

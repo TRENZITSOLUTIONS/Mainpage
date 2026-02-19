@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides comprehensive cloud security, performance, and cost optimization services that protect your infrastructure while maximizing efficiency and ROI.',
   keywords: 'cloud security services, performance optimization, cost optimization, FinOps, zero-trust security, cloud compliance, infrastructure monitoring, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/security-optimization',
+    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-security-optimization-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Cloud Security & Optimization Services – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/security-optimization',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-security-optimization-services',
     description: 'Enterprise-grade security and performance optimization for your cloud infrastructure. Protect your assets and maximize ROI.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/security-optimization',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-security-optimization-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/security-optimization',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-security-optimization-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Security & Optimization',
-        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/security-optimization',
+        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/cloud-security-optimization-services',
       },
     ],
   }

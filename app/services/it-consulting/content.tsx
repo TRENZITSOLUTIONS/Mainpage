@@ -9,25 +9,25 @@ const subServices = [
         title: 'Technology Strategy & Advisory',
         desc: 'Expert guidance on technology decisions, architecture, and digital roadmap.',
         icon: Lightbulb,
-        href: '/services/it-consulting/technology-strategy-advisory',
+        href: '/services/it-consulting/technology-strategy-consulting-services',
     },
     {
         title: 'Dedicated Development Teams',
         desc: 'Extended teams of skilled developers working exclusively on your projects.',
         icon: Users,
-        href: '/services/it-consulting/dedicated-development-teams',
+        href: '/services/it-consulting/dedicated-development-team-services',
     },
     {
         title: 'Managed Services',
         desc: 'Complete IT infrastructure management and support.',
         icon: HeadphonesIcon,
-        href: '/services/it-consulting/managed-services',
+        href: '/services/it-consulting/it-managed-services-company',
     },
     {
         title: '24/7 Support',
         desc: 'Round-the-clock monitoring, maintenance, and incident response.',
         icon: Clock,
-        href: '/services/it-consulting/support-24x7',
+        href: '/services/it-consulting/24-7-it-support-services',
     },
 ]
 

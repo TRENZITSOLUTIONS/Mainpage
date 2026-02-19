@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies designs and implements scalable, secure, and resilient system architectures built for growth and high performance.',
   keywords: 'scalable architecture, secure software architecture, microservices, containerization, Kubernetes, CI/CD, DevOps, security auditing, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    canonical: 'https://www.trenztechnologies.com/services/product-engineering/scalable-software-architecture',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Scalable & Secure Software Architectures – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-software-architecture',
     description: 'Build systems that scale effortlessly and stay secure. Expert architecture design for enterprise-grade growth.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-software-architecture',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+    url: 'https://www.trenztechnologies.com/services/product-engineering/scalable-software-architecture',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Scalable Architectures',
-        'item': 'https://www.trenztechnologies.com/services/product-engineering/scalable-architectures',
+        'item': 'https://www.trenztechnologies.com/services/product-engineering/scalable-software-architecture',
       },
     ],
   }

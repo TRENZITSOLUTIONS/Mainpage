@@ -9,25 +9,25 @@ const subServices = [
         title: 'Cloud Architecture & Migration',
         desc: 'Seamless migration strategies and scalable cloud architectures.',
         icon: Cloud,
-        href: '/services/cloud-solutions/cloud-architecture-migration',
+        href: '/services/cloud-solutions/cloud-architecture-design-migration-services',
     },
     {
         title: 'Multi-Cloud Support',
         desc: 'AWS, Azure, and Google Cloud expertise for optimal platform selection.',
         icon: Server,
-        href: '/services/cloud-solutions/multi-cloud-support',
+        href: '/services/cloud-solutions/multi-cloud-management-services',
     },
     {
         title: 'Security & Optimization',
         desc: 'Enterprise-grade security and performance optimization.',
         icon: Shield,
-        href: '/services/cloud-solutions/security-optimization',
+        href: '/services/cloud-solutions/cloud-security-optimization-services',
     },
     {
         title: 'Server Provisioning & Management',
         desc: 'Server provisioning, management, and maintenance with cost optimization.',
         icon: DollarSign,
-        href: '/services/cloud-solutions/server-provisioning-management',
+        href: '/services/cloud-solutions/cloud-server-provisioning-management-services',
     },
 ]
 

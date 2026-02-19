@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides expert legacy system modernization services. We upgrade outdated technology to modern, scalable architectures for better performance and security.',
   keywords: 'legacy modernization, system refactoring, cloud migration, API-first modernization, technical debt reduction, software modernization, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/modernization',
+    canonical: 'https://www.trenztechnologies.com/services/digital-transformation/legacy-application-modernization-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Legacy System Modernization Services – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/modernization',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/legacy-application-modernization-services',
     description: 'Transform aging technology into a competitive advantage with our pragmatic modernization approach.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/modernization',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/legacy-application-modernization-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/digital-transformation/modernization',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation/legacy-application-modernization-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Modernization',
-        'item': 'https://www.trenztechnologies.com/services/digital-transformation/modernization',
+        'item': 'https://www.trenztechnologies.com/services/digital-transformation/legacy-application-modernization-services',
       },
     ],
   }

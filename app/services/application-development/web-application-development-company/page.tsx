@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies provides expert web application development services using modern frameworks like React, Next.js, Angular, and Vue. Scalable, fast, and SEO-friendly web solutions.',
   keywords: 'web application development, full-stack development, React development, Next.js, Angular, Vue, responsive web design, PWAs, performance optimization, Trenz Technologies',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    canonical: 'https://www.trenztechnologies.com/services/application-development/web-application-development-company',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Web Application Development – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-application-development-company',
     description: 'Transform your ideas into high-performance web applications. Expert full-stack engineering for modern business needs.',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-application-development-company',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+    url: 'https://www.trenztechnologies.com/services/application-development/web-application-development-company',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Web App Development',
-        'item': 'https://www.trenztechnologies.com/services/application-development/web-app-development',
+        'item': 'https://www.trenztechnologies.com/services/application-development/web-application-development-company',
       },
     ],
   }

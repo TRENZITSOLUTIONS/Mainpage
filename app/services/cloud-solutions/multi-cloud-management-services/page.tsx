@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   description: 'Trenz Technologies delivers AWS, Azure, and Google Cloud services enabling secure cloud infrastructure, optimized performance, and reliable enterprise operations.',
   keywords: 'AWS Azure Google Cloud services chennai, multi cloud services near me, offshore cloud services chennai, cloud services company, enterprise cloud services chennai, multi-cloud support',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-support',
+    canonical: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-management-services',
   },
   robots: {
     index: true,
@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'AWS, Azure & Google Cloud Services in Chennai – Trenz Technologies',
     type: 'website',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-support',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-management-services',
     description: 'Best AWS services chennai, best Azure cloud services chennai, best Google Cloud services chennai, top enterprise cloud provider',
     images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
     siteName: 'Trenz Technologies',
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     distribution: 'global',
     rating: 'general',
     copyright: 'by https://www.trenztechnologies.com/',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-support',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-management-services',
     contact: 'contact@trenztechnologies.com',
   },
 }
@@ -48,7 +48,7 @@ export default function Page() {
     name: 'Trenz Technologies',
     image: 'https://www.trenztechnologies.com/logo.jpeg',
     '@id': '',
-    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-support',
+    url: 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-management-services',
     telephone: '+91 9944865057',
     address: {
       '@type': 'PostalAddress',
@@ -96,7 +96,7 @@ export default function Page() {
         '@type': 'ListItem',
         'position': 2,
         'name': 'Multi-Cloud Support',
-        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-support',
+        'item': 'https://www.trenztechnologies.com/services/cloud-solutions/multi-cloud-management-services',
       },
     ],
   }

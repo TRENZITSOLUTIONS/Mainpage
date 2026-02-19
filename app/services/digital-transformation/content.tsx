@@ -9,25 +9,25 @@ const subServices = [
         title: 'Process Automation',
         desc: 'Streamline workflows and eliminate manual processes with intelligent automation.',
         icon: RefreshCw,
-        href: '/services/digital-transformation/process-automation',
+        href: '/services/digital-transformation/business-process-automation-services',
     },
     {
         title: 'Data & Analytics Solutions',
         desc: 'Turn data into actionable insights with advanced analytics and visualization.',
         icon: BarChart3,
-        href: '/services/digital-transformation/data-analytics-solutions',
+        href: '/services/digital-transformation/data-analytics-consulting-services',
     },
     {
         title: 'AI-Driven Systems',
         desc: 'Leverage machine learning and AI to enhance decision-making and operations.',
         icon: Bot,
-        href: '/services/digital-transformation/ai-driven-systems',
+        href: '/services/digital-transformation/ai-powered-software-development',
     },
     {
         title: 'Modernization',
         desc: 'Upgrade legacy systems to modern, scalable architectures.',
         icon: Zap,
-        href: '/services/digital-transformation/modernization',
+        href: '/services/digital-transformation/legacy-application-modernization-services',
     },
 ]
 

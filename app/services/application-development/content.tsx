@@ -9,25 +9,25 @@ const subServices = [
         title: 'Web App Development',
         desc: 'Responsive, fast, and scalable web applications built with modern frameworks.',
         icon: Globe,
-        href: '/services/application-development/web-app-development',
+        href: '/services/application-development/web-application-development-company',
     },
     {
         title: 'Mobile Apps Development',
         desc: 'Native iOS, Android, and cross-platform mobile solutions.',
         icon: Smartphone,
-        href: '/services/application-development/mobile-apps-development',
+        href: '/services/application-development/mobile-app-development-company',
     },
     {
         title: 'API Development & Integrations',
         desc: 'RESTful APIs, GraphQL, and seamless third-party integrations.',
         icon: Code,
-        href: '/services/application-development/api-development-integrations',
+        href: '/services/application-development/api-development-integration-services',
     },
     {
         title: 'Ongoing Maintenance & Support',
         desc: 'Continuous updates, bug fixes, and feature enhancements.',
         icon: Wrench,
-        href: '/services/application-development/maintenance-support',
+        href: '/services/application-development/application-maintenance-support-services',
     },
 ]
 
