@@ -27,8 +27,9 @@ export const metadata: Metadata = {
     shortcut: '/logo.jpeg',
     apple: '/logo.jpeg',
   },
+  // ✅ Google Search Console verification
   verification: {
-    google: 'a4XcQkAeOx7rjQGClWXwKDo1K1TwA-tC1V2FhPsloCo',
+    google: "Kgxk3Yn0k-y0N8YT19u9ieCpWayYvrAGjXSsAWt7mzY",
   },
 }
 
