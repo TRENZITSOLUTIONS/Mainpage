@@ -1,92 +1,117 @@
-'use client'
+import { Metadata } from 'next'
+import DigitalTransformationContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft, Zap, Bot, BarChart3, RefreshCw } from 'lucide-react'
-
-export default function DigitalTransformationPage() {
-  return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
-        <Link
-          href="/services"
-          className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Services
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-orange-400 to-red-600 rounded-xl flex items-center justify-center">
-              <Zap className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white">
-              Digital Transformation
-            </h1>
-          </div>
-
-          <p className="text-xl text-neutral-400 mb-12 leading-relaxed">
-            Transform your business with intelligent automation, data-driven insights, and AI-powered systems. We modernize legacy systems and unlock new capabilities.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Link
-              href="/services/cloud-solutions/process-automation"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <RefreshCw className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Process Automation</h3>
-              <p className="text-gray-400">Streamline workflows and eliminate manual processes with intelligent automation.</p>
-            </Link>
-
-            <Link
-              href="/services/cloud-solutions/data-analytics"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <BarChart3 className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Data & Analytics Solutions</h3>
-              <p className="text-gray-400">Turn data into actionable insights with advanced analytics and visualization.</p>
-            </Link>
-
-            <Link
-              href="/services/cloud-solutions/ai-modernization"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-orange-400 transition-colors"
-            >
-              <Bot className="w-8 h-8 text-orange-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">AI-Driven Systems & Modernization</h3>
-              <p className="text-gray-400">Leverage machine learning and AI to enhance decision-making and operations.</p>
-            </Link>
-          </div>
-
-          <div className="p-8 bg-gradient-to-br from-orange-900/20 to-red-900/20 rounded-xl border border-orange-500/30">
-            <h2 className="text-2xl font-bold text-white mb-4">Transformation Benefits</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
-                <span>Increased operational efficiency</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
-                <span>Real-time data-driven decisions</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
-                <span>Reduced costs and improved ROI</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-orange-400 mt-1">✓</span>
-                <span>Competitive advantage through innovation</span>
-              </li>
-            </ul>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  )
+export const metadata: Metadata = {
+  title: 'Digital Transformation Services | Trenz Technologies',
+  description: 'Trenz Technologies helps businesses undergo digital transformation with process automation, data analytics, AI-driven systems, and modernization of legacy software.',
+  keywords: 'digital transformation, process automation, data analytics, AI systems, legacy modernization, business transformation, Trenz Technologies',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services/digital-transformation',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'Digital Transformation Services – Trenz Technologies',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation',
+    description: 'Transform your business with intelligent automation, data-driven insights, and AI-powered systems.',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: 'Trenz Technologies',
+  },
+  twitter: {
+    card: 'summary',
+    site: '@trenztech',
+    title: 'Digital Transformation Services – Trenz Technologies',
+    description: 'Modernize legacy systems and unlock new capabilities with our digital transformation expertise.',
+    creator: '@trenztech',
+    images: ['https://www.trenztechnologies.com/logo.jpeg'],
+  },
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation',
+    contact: 'contact@trenztechnologies.com',
+  },
 }
 
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services/digital-transformation',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.trenztechnologies.com/',
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Digital Transformation',
+        'item': 'https://www.trenztechnologies.com/services/digital-transformation',
+      },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <DigitalTransformationContent />
+    </>
+  )
+}

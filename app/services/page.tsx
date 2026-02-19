@@ -1,179 +1,117 @@
-'use client'
+import { Metadata } from 'next'
+import ServicesContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowRight, Code, Smartphone, Cloud, Zap, HeadphonesIcon, ShoppingCart } from 'lucide-react'
-
-const services = [
-  {
-    slug: 'product-engineering',
-    title: 'Product Engineering',
-    description: 'Custom software & SaaS products, Enterprise systems (ERP, CRM, POS), Scalable, secure architectures',
-    icon: Code,
-    gradient: 'from-cyan-400 to-blue-600',
-    features: [
-      'Custom software & SaaS products',
-      'Enterprise systems (ERP, CRM, POS)',
-      'Scalable, secure architectures',
-      'Government Projects (e-governance, public systems & services and maintenance)'
-    ]
+export const metadata: Metadata = {
+  title: 'All Services | Trenz Technologies',
+  description: 'Explore the full range of digital services offered by Trenz Technologies, including product engineering, application development, cloud solutions, and digital transformation.',
+  keywords: 'software services, cloud computing, digital transformation, product engineering, application development, IT consulting, Trenz Technologies',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services',
   },
-  {
-    slug: 'application-development',
-    title: 'Application Development',
-    description: 'Web app development, Mobile apps development, API development & integrations, Ongoing maintenance & support',
-    icon: Smartphone,
-    gradient: 'from-purple-400 to-pink-600',
-    features: [
-      'Web app development',
-      'Mobile apps development',
-      'API development & integrations',
-      'Ongoing maintenance & support'
-    ]
+  robots: {
+    index: true,
+    follow: true,
   },
-  {
-    slug: 'cloud-solutions',
-    title: 'Cloud Solutions',
-    description: 'Cloud architecture & migration, AWS, Azure & Google Cloud, Security, optimization & cost control',
-    icon: Cloud,
-    gradient: 'from-blue-400 to-cyan-400',
-    features: [
-      'Cloud architecture & migration',
-      'AWS, Azure & Google Cloud',
-      'Security, optimization & cost control',
-      'Server provisioning & management and maintenance'
-    ]
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'Expert Digital Services – Trenz Technologies',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services',
+    description: 'We specialize in high-impact digital infrastructure. Scalable, secure, and built to outperform.',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: 'Trenz Technologies',
   },
-  {
-    slug: 'digital-transformation',
-    title: 'Digital Transformation',
-    description: 'Process automation, Data & analytics solutions, AI-driven systems & modernization',
-    icon: Zap,
-    gradient: 'from-orange-400 to-red-600',
-    features: [
-      'Process automation',
-      'Data & analytics solutions',
-      'AI-driven systems & modernization'
-    ]
+  twitter: {
+    card: 'summary',
+    site: '@trenztech',
+    title: 'Expert Digital Services – Trenz Technologies',
+    description: 'Scalable and secure digital infrastructure for modern businesses.',
+    creator: '@trenztech',
+    images: ['https://www.trenztechnologies.com/logo.jpeg'],
   },
-  {
-    slug: 'it-consulting',
-    title: 'IT Consulting',
-    description: 'Technology strategy & advisory, Dedicated development teams, Managed services & 24/7 support',
-    icon: HeadphonesIcon,
-    gradient: 'from-green-400 to-emerald-600',
-    features: [
-      'Technology strategy & advisory',
-      'Dedicated development teams',
-      'Managed services & 24/7 support'
-    ]
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services',
+    contact: 'contact@trenztechnologies.com',
   },
-{
-  slug: 'trenz-pos',
-  title: 'Trenz POS',
-  description: 'Custom point-of-sale solutions for retail businesses with integrated inventory management and reporting.',
-  icon: ShoppingCart, // change this import
-  gradient: 'from-green-400 to-emerald-600',
-  features: [
-    'Retail billing system',
-    'Inventory management',
-    'Sales analytics & reporting',
-    'Multi-store support'
-  ]
 }
 
-]
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
 
-export default function ServicesPage() {
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.trenztechnologies.com/',
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'Services',
+        'item': 'https://www.trenztechnologies.com/services',
+      },
+    ],
+  }
+
   return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      {/* Hero Section */}
-      <section className="relative py-32 px-4 md:px-10 overflow-hidden">
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-600/20 rounded-full blur-[120px]"></div>
-        </div>
-        
-        <div className="container mx-auto max-w-6xl relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-center"
-          >
-            <motion.span
-              className="inline-flex items-center px-4 py-2 rounded-full bg-primary-500/20 backdrop-blur-sm border border-primary-500/30 text-primary-400 text-sm font-semibold mb-6"
-            >
-              Our Services
-            </motion.span>
-            <h1 className="text-5xl md:text-7xl font-black text-white mb-6 tracking-tighter">
-              OUR <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">ARSENAL</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-              We specialize in high-impact digital infrastructure. Scalable, secure, and built to outperform your competition.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Services Grid */}
-      <section className="py-20 px-4 md:px-10">
-        <div className="container mx-auto max-w-7xl">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {services.map((service, index) => {
-              const Icon = service.icon
-              return (
-                <motion.div
-                  key={service.slug}
-                  initial={{ opacity: 0, y: 50 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, delay: index * 0.1 }}
-                  whileHover={{ y: -10, scale: 1.02 }}
-                  className="group relative p-8 bg-slate-900/50 backdrop-blur-sm rounded-2xl border border-slate-800/50 hover:border-cyan-500/50 transition-all duration-300 overflow-hidden"
-                >
-                  {/* Gradient Background on Hover */}
-                  <div className={`absolute inset-0 bg-gradient-to-br ${service.gradient} opacity-0 group-hover:opacity-10 transition-opacity duration-300`} />
-
-                  <div className="relative z-10">
-                    <motion.div
-                      whileHover={{ rotate: 360, scale: 1.1 }}
-                      transition={{ duration: 0.6 }}
-                      className={`w-16 h-16 bg-gradient-to-br ${service.gradient} rounded-xl flex items-center justify-center mb-6 shadow-lg`}
-                    >
-                      <Icon className="w-8 h-8 text-white" />
-                    </motion.div>
-
-                    <h3 className="text-2xl font-bold text-white mb-4 group-hover:text-cyan-400 transition-colors">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-300 leading-relaxed mb-6">
-                      {service.description}
-                    </p>
-
-                    <ul className="space-y-2 mb-6">
-                      {service.features.map((feature, i) => (
-                        <li key={i} className="text-sm text-gray-400 flex items-start gap-2">
-                          <span className="text-cyan-400 mt-1">•</span>
-                          <span>{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
-
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center text-cyan-400 font-semibold hover:text-cyan-300 transition-colors group-hover:translate-x-2 transition-transform"
-                    >
-                      Learn More
-                      <ArrowRight className="ml-2 w-4 h-4" />
-                    </Link>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ServicesContent />
+    </>
   )
 }
-

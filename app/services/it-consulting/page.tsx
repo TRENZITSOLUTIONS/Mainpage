@@ -1,92 +1,117 @@
-'use client'
+import { Metadata } from 'next'
+import ITConsultingContent from './content'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft, HeadphonesIcon, Lightbulb, Users } from 'lucide-react'
-
-export default function ITConsultingPage() {
-  return (
-    <div className="bg-black text-neutral-200 min-h-screen pt-24">
-      <div className="container mx-auto max-w-5xl px-4 md:px-10 py-20">
-        <Link
-          href="/services"
-          className="inline-flex items-center text-cyan-400 hover:text-cyan-300 mb-8 transition-colors"
-        >
-          <ArrowLeft className="mr-2 w-4 h-4" />
-          Back to Services
-        </Link>
-
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <div className="flex items-center gap-4 mb-8">
-            <div className="w-16 h-16 bg-gradient-to-br from-green-400 to-emerald-600 rounded-xl flex items-center justify-center">
-              <HeadphonesIcon className="w-8 h-8 text-white" />
-            </div>
-            <h1 className="text-4xl md:text-6xl font-black text-white">
-              IT Consulting
-            </h1>
-          </div>
-
-          <p className="text-xl text-neutral-400 mb-12 leading-relaxed">
-            Strategic technology guidance to help you make the right decisions. From technology strategy to dedicated teams and managed services, we&apos;re your trusted IT partner.
-          </p>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-            <Link
-              href="/services/it-consulting/technology-strategy"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
-            >
-              <Lightbulb className="w-8 h-8 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Technology Strategy & Advisory</h3>
-              <p className="text-gray-400">Expert guidance on technology decisions, architecture, and digital roadmap.</p>
-            </Link>
-
-            <Link
-              href="/services/it-consulting/dedicated-teams"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
-            >
-              <Users className="w-8 h-8 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Dedicated Development Teams</h3>
-              <p className="text-gray-400">Extended teams of skilled developers working exclusively on your projects.</p>
-            </Link>
-
-            <Link
-              href="/services/it-consulting/managed-services"
-              className="block p-6 bg-slate-900/50 rounded-xl border border-slate-800 hover:border-green-400 transition-colors"
-            >
-              <HeadphonesIcon className="w-8 h-8 text-green-400 mb-4" />
-              <h3 className="text-xl font-bold text-white mb-2">Managed Services & 24/7 Support</h3>
-              <p className="text-gray-400">Complete IT infrastructure management and round-the-clock support.</p>
-            </Link>
-          </div>
-
-          <div className="p-8 bg-gradient-to-br from-green-900/20 to-emerald-900/20 rounded-xl border border-green-500/30">
-            <h2 className="text-2xl font-bold text-white mb-4">Why Choose Our IT Consulting?</h2>
-            <ul className="space-y-3 text-gray-300">
-              <li className="flex items-start gap-3">
-                <span className="text-green-400 mt-1">✓</span>
-                <span>Proven track record across industries</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-green-400 mt-1">✓</span>
-                <span>Flexible engagement models</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-green-400 mt-1">✓</span>
-                <span>Transparent communication and reporting</span>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="text-green-400 mt-1">✓</span>
-                <span>Cost-effective solutions tailored to your needs</span>
-              </li>
-            </ul>
-          </div>
-        </motion.div>
-      </div>
-    </div>
-  )
+export const metadata: Metadata = {
+  title: 'IT Consulting & Strategic Advisory | Trenz Technologies',
+  description: 'Trenz Technologies offers expert IT consulting services, technology strategy, dedicated development teams, and managed services to drive your digital transformation.',
+  keywords: 'IT consulting, technology strategy, IT advisory, dedicated development teams, managed IT services, 24/7 support, Trenz Technologies',
+  alternates: {
+    canonical: 'https://www.trenztechnologies.com/services/it-consulting',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+  authors: [{ name: 'Trenz Technologies' }],
+  openGraph: {
+    title: 'IT Consulting & Strategic Advisory – Trenz Technologies',
+    type: 'website',
+    url: 'https://www.trenztechnologies.com/services/it-consulting',
+    description: 'Strategic technology guidance to help you make the right decisions. Expert advisors for your digital roadmap.',
+    images: ['https://www.facebook.com/photo/?fbid=122100082047232013&set=pb.61586960408843.-2207520000'],
+    siteName: 'Trenz Technologies',
+  },
+  twitter: {
+    card: 'summary',
+    site: '@trenztech',
+    title: 'IT Consulting & Strategic Advisory – Trenz Technologies',
+    description: 'Expert IT consulting and managed services. Grow your business with our strategic technology guidance.',
+    creator: '@trenztech',
+    images: ['https://www.trenztechnologies.com/logo.jpeg'],
+  },
+  other: {
+    audience: 'all',
+    'revisit-after': '3 days',
+    language: 'english',
+    distribution: 'global',
+    rating: 'general',
+    copyright: 'by https://www.trenztechnologies.com/',
+    url: 'https://www.trenztechnologies.com/services/it-consulting',
+    contact: 'contact@trenztechnologies.com',
+  },
 }
 
+export default function Page() {
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Trenz Technologies',
+    image: 'https://www.trenztechnologies.com/logo.jpeg',
+    '@id': '',
+    url: 'https://www.trenztechnologies.com/services/it-consulting',
+    telephone: '+91 9944865057',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Karambakkam, Buddhar Colony, Porur,',
+      addressLocality: 'Chennai',
+      postalCode: '600125',
+      addressCountry: 'IN',
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: 13.038419536577639,
+      longitude: 80.15654609485881,
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday',
+      ],
+      opens: '00:00',
+      closes: '23:59',
+    },
+    sameAs: [
+      'https://www.facebook.com/profile.php?id=61586960408843',
+      'https://www.instagram.com/trenztechnologies/',
+    ],
+  }
+
+  const breadcrumbJsonLd = {
+    '@context': 'https://schema.org/',
+    '@type': 'BreadcrumbList',
+    'itemListElement': [
+      {
+        '@type': 'ListItem',
+        'position': 1,
+        'name': 'Home',
+        'item': 'https://www.trenztechnologies.com/',
+      },
+      {
+        '@type': 'ListItem',
+        'position': 2,
+        'name': 'IT Consulting',
+        'item': 'https://www.trenztechnologies.com/services/it-consulting',
+      },
+    ],
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+      />
+      <ITConsultingContent />
+    </>
+  )
+}

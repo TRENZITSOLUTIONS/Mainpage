@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Syne, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Navigation from '@/components/Navigation'
@@ -26,6 +27,9 @@ export const metadata: Metadata = {
     shortcut: '/logo.jpeg',
     apple: '/logo.jpeg',
   },
+  verification: {
+    google: 'a4XcQkAeOx7rjQGClWXwKDo1K1TwA-tC1V2FhPsloCo',
+  },
 }
 
 export default function RootLayout({
@@ -36,6 +40,22 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${syne.variable} ${spaceGrotesk.variable}`}>
       <body>
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-1QZKCL1NSN"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-1QZKCL1NSN');
+            `,
+          }}
+        />
         <CustomCursor />
         <Navigation />
         {children}

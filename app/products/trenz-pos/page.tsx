@@ -6,16 +6,16 @@ export const metadata: Metadata = {
   description: 'Trenz POS is a powerful point-of-sale software designed for retail stores, supermarkets, and enterprises. Manage billing, inventory, reports, and sales seamlessly with secure and scalable POS solutions.',
   keywords: 'Trenz POS software, retail POS system Chennai, billing software for retail shop, inventory management POS, supermarket POS software India, cloud POS solution, point of sale software company',
   alternates: {
-    canonical: 'https://www.trenztechnologies.com/trenz-pos',
+    canonical: 'https://www.trenztechnologies.com/products/trenz-pos',
   },
   openGraph: {
     title: 'Trenz POS – Advanced Retail Billing & Inventory Software',
     description: 'Smart POS solution for retail businesses with real-time billing, inventory control, reporting dashboards, and secure transaction management.',
-    url: 'https://www.trenztechnologies.com/trenz-pos',
+    url: 'https://www.trenztechnologies.com/products/trenz-pos',
     siteName: 'Trenz Technologies',
     images: [
       {
-        url: 'https://www.trenztechnologies.com/images/trenz-pos-banner.jpg',
+        url: 'https://www.trenztechnologies.com/logo.jpeg',
         width: 1200,
         height: 630,
       },
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Trenz POS – Retail Billing & Inventory Management Software',
     description: 'Powerful POS software built for retail stores and enterprises. Simplify billing, track inventory, and monitor performance in real time.',
-    images: ['https://www.trenztechnologies.com/images/trenz-pos-banner.jpg'],
+    images: ['https://www.trenztechnologies.com/logo.jpeg'],
   },
   robots: {
     index: true,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
 }
 
-export default function TrenzPOSPage() {
+export default function Page() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
