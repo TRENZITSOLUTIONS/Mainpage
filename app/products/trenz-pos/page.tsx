@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.trenztechnologies.com/products/trenz-pos',
   },
   openGraph: {
-    title: 'Trenz POS – Advanced Retail Billing & Inventory Software',
+    title: 'Trenz POS – Advanced Retail Billing & Inventory Softwares',
     description: 'Smart POS solution for retail businesses with real-time billing, inventory control, reporting dashboards, and secure transaction management.',
     url: 'https://www.trenztechnologies.com/products/trenz-pos',
     siteName: 'Trenz Technologies',
