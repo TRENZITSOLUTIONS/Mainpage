@@ -83,13 +83,13 @@ export default function ContactContent() {
                                     </div>
                                 </a>
 
-                                <a href="tel:+919944865057" className="flex items-start gap-4 group">
+                                <a href="tel:+919790124099" className="flex items-start gap-4 group">
                                     <div className="w-12 h-12 shrink-0 bg-gradient-to-br from-purple-400 to-pink-600 rounded-xl flex items-center justify-center">
                                         <Phone className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
                                         <h4 className="text-white font-semibold mb-1">Phone</h4>
-                                        <p className="text-neutral-400 group-hover:text-purple-400 transition-colors">+91 99448 65057</p>
+                                        <p className="text-neutral-400 group-hover:text-purple-400 transition-colors">+91 9790124099</p>
                                     </div>
                                 </a>
 
