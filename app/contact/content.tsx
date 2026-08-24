@@ -187,7 +187,7 @@ export default function ContactContent() {
                                             value={formData.phone}
                                             onChange={handleChange}
                                             className="w-full px-4 py-3 bg-black/50 border border-white/10 rounded-xl text-white placeholder-neutral-600 focus:outline-none focus:border-cyan-500/50 transition-colors"
-                                            placeholder="+91 99448 65057"
+                                            placeholder="+91 9790124099"
                                         />
                                     </div>
                                     <div>
